@@ -3,6 +3,9 @@
 import { request } from './client.js'
 
 export const checkoutApi = {
+	/** Obtener productos de una tienda */
+	getProducts: (storeSlug) => request(`/stores/${storeSlug}/products`),
+
 	/** Obtener configuración de una tienda (con defaults si falla) */
 	getConfig: (storeSlug) =>
 		request(`/stores/${storeSlug}/config`).catch(() => ({
