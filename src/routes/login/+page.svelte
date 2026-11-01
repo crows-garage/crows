@@ -2,7 +2,7 @@
 // redirige a /' siempre (el catch es dead code): mismo comportamiento acá.
 <script>
 	import { goto } from '$app/navigation'
-	import { auth } from '$lib/stores/auth.svelte.js'
+	import { auth } from '#lib/stores/auth.svelte.js'
 
 	let email = $state('')
 	let password = $state('')

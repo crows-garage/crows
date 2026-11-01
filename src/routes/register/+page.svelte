@@ -4,8 +4,8 @@
 	import { goto } from '$app/navigation'
 	import { page } from '$app/state'
 	import { Eye, EyeOff, CheckCircle2 } from '@lucide/svelte'
-	import { auth } from '$lib/stores/auth.svelte.js'
-	import { ORG_SLUG, STORE_SLUG } from '$lib/api/client.js'
+	import { auth } from '#lib/stores/auth.svelte.js'
+	import { ORG_SLUG, STORE_SLUG } from '#lib/api/client.js'
 
 	let formData = $state({
 		firstName: '',

@@ -2,8 +2,8 @@
 <script>
 	import { goto } from '$app/navigation'
 	import { Loader2, Package } from '@lucide/svelte'
-	import { auth } from '$lib/stores/auth.svelte.js'
-	import { authApi } from '$lib/api/auth.js'
+	import { auth } from '#lib/stores/auth.svelte.js'
+	import { authApi } from '#lib/api/auth.js'
 
 	const STATUS = {
 		CONFIRMED: { label: 'CONFIRMADO', cls: 'bg-signal/10 text-signal border border-signal/30' },
