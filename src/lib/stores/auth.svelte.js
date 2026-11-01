@@ -1,7 +1,7 @@
 // ≙ src/hooks/useAuth.js del original (la implementación usada; AuthContext
 // es duplicado obsoleto, R10). Estado de auth con runes de Svelte 5.
 // checkAuth se llama on mount desde +layout.svelte.
-import { authApi } from '$lib/api/auth.js'
+import { authApi } from '#lib/api/auth.js'
 
 class AuthState {
 	user = $state(null)

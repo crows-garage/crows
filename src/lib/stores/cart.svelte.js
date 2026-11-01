@@ -4,7 +4,7 @@
 // y mismo migrate. SSR-safe: items empiezan vacíos en server (R4).
 import { writable, derived, get } from 'svelte/store'
 import { browser } from '$app/environment'
-import { STORE_SLUG } from '$lib/api/client.js'
+import { STORE_SLUG } from '#lib/api/client.js'
 
 const STORAGE_KEY = 'econopet-cart'
 const VERSION = 2
