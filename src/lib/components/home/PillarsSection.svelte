@@ -1,4 +1,3 @@
-// ≙ PillarsSection de src/components/home/PurposeSection.jsx.
 <script>
 	import { ArrowUpRight, BookOpen, Lightbulb, UsersRound } from '@lucide/svelte'
 

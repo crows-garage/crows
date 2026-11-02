@@ -1,4 +1,3 @@
-// ≙ src/components/home/HeroSection.jsx.
 <script>
 	import { ArrowDown, ArrowRight, Sparkles } from '@lucide/svelte'
 	import { imgUrl } from '#lib/utils.js'

@@ -1,4 +1,3 @@
-// ≙ SearchBar (local en Navbar.jsx): búsqueda con sugerencias y tracking.
 <script>
 	import { goto } from '$app/navigation'
 	import { Search } from '@lucide/svelte'

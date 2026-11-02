@@ -1,4 +1,3 @@
-// ≙ src/components/contact/WhatsAppButton.jsx: botón flotante con panel.
 <script>
 	import { MessageCircle, X } from '@lucide/svelte'
 

@@ -1,6 +1,3 @@
-// ≙ src/app/layout.js del original: fetch global de tienda/org en paralelo
-// (server-side, Workers fetch sin Origin → API responde 200) + metadata base
-// (≙ generateMetadata) con favicon desde el logo de la org.
 import { api } from '#lib/api/store.js'
 import { organizationApi } from '#lib/api/organization.js'
 import { filterEducationalContent } from '#lib/contentFilter.js'

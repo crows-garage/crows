@@ -1,4 +1,3 @@
-// ≙ src/components/home/ProjectsSection.jsx.
 <script>
 	import { ArrowUpRight, Check, Users } from '@lucide/svelte'
 
