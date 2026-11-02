@@ -6,7 +6,7 @@
 		<div>
 			<p class="eyebrow !text-signal mb-3 flex items-center gap-2">
 				<span class="status-dot bg-signal"></span>
-				Por qué existe CursoX
+				01 · Por qué existe CursoX
 			</p>
 			<h2 class="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight text-fg">
 				El talento está. Ahora falta encontrarnos.

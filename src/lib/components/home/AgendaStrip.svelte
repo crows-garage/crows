@@ -24,7 +24,7 @@
 	<section class="py-16 sm:py-20 border-t border-line">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="mb-8">
-				<p class="eyebrow mb-2">Agenda · Oportunidades para participar</p>
+				<p class="eyebrow mb-2">06 · Agenda · Oportunidades para participar</p>
 				<h2 class="font-display font-semibold text-2xl sm:text-3xl tracking-tight text-fg">Eventos, concursos y encuentros</h2>
 			</div>
 			<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">

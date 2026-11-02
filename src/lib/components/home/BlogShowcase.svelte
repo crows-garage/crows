@@ -36,7 +36,7 @@
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
 				<div>
-					<p class="eyebrow mb-2">Conocimiento compartido · Publicaciones</p>
+					<p class="eyebrow mb-2">05 · Conocimiento compartido · Publicaciones</p>
 					<h2 class="font-display font-semibold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-fg">Ideas, experiencias y recursos</h2>
 				</div>
 				<a href="/blog" class="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-mute hover:text-signal transition-colors">

@@ -13,7 +13,7 @@
 <section id="proyectos" class="py-16 sm:py-20 lg:py-28 border-t border-line">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1fr_0.9fr] gap-12 lg:gap-20 lg:items-center">
 		<div>
-			<p class="eyebrow !text-signal mb-3 flex items-center gap-2"><Users class="w-4 h-4" /> Del aula al mundo real</p>
+			<p class="eyebrow !text-signal mb-3 flex items-center gap-2"><Users class="w-4 h-4" /> 03 · Del aula al mundo real</p>
 			<h2 class="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight text-fg">Tu próxima gran idea empieza con las personas correctas.</h2>
 			<p class="mt-5 max-w-xl text-base sm:text-lg leading-relaxed text-mute">Un proyecto no siempre necesita más ideas. A veces solo necesita una conexión y un impulso. Encontrar personas que compartan tus intereses, descubrir proyectos en los que participar o conectar con quienes quieran sumarse a construir algo juntos.</p>
 			<p class="mt-5 max-w-xl text-base sm:text-lg leading-relaxed text-fg">Eso es lo que queremos hacer posible con CursoX: conectar personas, ideas y oportunidades para que los proyectos puedan crecer.</p>
@@ -26,7 +26,7 @@
 				{/each}
 			</div>
 		</div>
-		<div class="relative overflow-hidden rounded-xl bg-night p-6 sm:p-8 text-white">
+		<div class="relative overflow-hidden bg-night p-6 sm:p-8 text-white">
 			<div class="absolute inset-0 graticule opacity-20" aria-hidden="true"></div>
 			<div class="relative">
 				<p class="eyebrow !text-brand">Caso real · BlackSun</p>
@@ -39,7 +39,7 @@
 	</div>
 	{#if Array.isArray(projects) && projects.length > 0}
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14">
-			<p class="eyebrow !text-signal mb-4">Proyectos publicados</p>
+			<p class="eyebrow !text-signal mb-4">Proyectos publicados · {projects.length}</p>
 			<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
 				{#each projects.slice(0, 3) as project}
 					<article class="border border-line bg-surface p-5">

@@ -31,7 +31,7 @@
 			<img src={src} alt={media.alt || name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
 			{#if media.type === 'video'}
 				<span class="absolute inset-0 flex items-center justify-center bg-night/30">
-					<span class="w-10 h-10 rounded-full border border-white/80 bg-night/60 flex items-center justify-center">
+					<span class="w-10 h-10 border border-brand/80 bg-night/60 flex items-center justify-center">
 						<Play class="w-4 h-4 text-white fill-current" />
 					</span>
 				</span>
@@ -44,7 +44,7 @@
 	<section id="galeria-section" class="py-16 sm:py-20 lg:py-24 border-t border-line">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="mb-10">
-				<p class="eyebrow mb-2">Proyectos · Lo que la comunidad esta haciendo</p>
+				<p class="eyebrow mb-2">07 · Proyectos · Lo que la comunidad esta haciendo</p>
 				<h2 class="font-display font-semibold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-fg">Ideas que toman forma</h2>
 			</div>
 

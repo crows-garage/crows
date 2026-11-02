@@ -31,7 +31,7 @@
 			</div>
 			<p class="mt-7 font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">Aprendé hoy. Crecé mañana.</p>
 		</div>
-		<div class="border border-white/20 bg-night/60 p-5 sm:p-7 backdrop-blur-sm">
+		<div class="border border-brand/30 bg-night/60 p-5 sm:p-7 backdrop-blur-sm">
 			<div class="mb-8 flex items-center justify-between border-b border-white/15 pb-4">
 				<span class="eyebrow !text-brand">La idea en movimiento</span>
 				<span class="font-mono text-[10px] text-white/50">01 / 04</span>

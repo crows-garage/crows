@@ -34,7 +34,7 @@
 			<img src={src} alt={m.alt || name} loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
 			{#if m.type === 'video'}
 				<span class="absolute inset-0 flex items-center justify-center bg-night/30">
-					<span class="w-10 h-10 rounded-full border border-white/80 bg-night/60 flex items-center justify-center">
+					<span class="w-10 h-10 border border-brand/80 bg-night/60 flex items-center justify-center">
 						<Play class="w-4 h-4 text-white fill-current" />
 					</span>
 				</span>
