@@ -74,20 +74,20 @@
 	})
 </script>
 
-<footer class="bg-cream text-fg mt-20">
+<footer class="bg-panel text-fg mt-20 border-t-2 border-brand">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 			<!-- Marca + redes -->
 			<div class="space-y-4">
 				<a href="/" class="flex items-center gap-3">
 					{#if store?.logo}
-						<img src={imgUrl(store.logo)} alt={store?.name || org?.name || 'Institución'} width="44" height="44" class="w-11 h-11 object-contain rounded-full bg-surface p-1" />
+						<img src={imgUrl(store.logo)} alt={store?.name || org?.name || 'Institución'} width="36" height="36" class="w-9 h-9 object-contain border border-line bg-surface p-0.5" />
 					{:else if org?.logo}
-						<img src={imgUrl(org.logo)} alt={org?.name || 'Institución'} width="44" height="44" class="w-11 h-11 object-contain rounded-full bg-surface p-1" />
+						<img src={imgUrl(org.logo)} alt={org?.name || 'Institución'} width="36" height="36" class="w-9 h-9 object-contain border border-line bg-surface p-0.5" />
 					{:else}
-						<span class="w-11 h-11 rounded-full bg-surface flex items-center justify-center font-display font-bold text-fg text-lg">{(org?.name || 'IN')[0]?.toUpperCase()}</span>
+						<span class="w-9 h-9 border border-line bg-surface flex items-center justify-center font-brand text-signal">{(org?.name || 'IN')[0]?.toUpperCase()}</span>
 					{/if}
-					<span class="font-display font-semibold text-signal text-lg leading-tight">
+					<span class="font-brand text-signal text-base leading-none tracking-tight">
 						{org?.name || store?.name || 'Institución'}
 					</span>
 				</a>
@@ -103,7 +103,7 @@
 								target="_blank"
 								rel="noopener noreferrer"
 								aria-label={label}
-								class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-fg/70 hover:bg-surface hover:text-signal hover:border-signal transition-colors"
+								class="w-9 h-9 border border-line flex items-center justify-center text-fg/70 hover:bg-surface hover:text-signal hover:border-signal transition-colors"
 							>
 								<SocialIcon {name} />
 							</a>

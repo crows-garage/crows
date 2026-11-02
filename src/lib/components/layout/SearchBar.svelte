@@ -66,15 +66,15 @@
 	</form>
 
 	{#if showSuggestions && suggestions.length > 0}
-		<div class="absolute top-full left-0 right-0 mt-1 bg-surface border border-line z-50 max-h-64 overflow-y-auto shadow-lg rounded-lg">
-			{#each suggestions as suggestion, i}
+		<div class="absolute top-full left-0 right-0 mt-1 bg-surface border border-line z-50 max-h-64 overflow-y-auto shadow-lg">
+			{#each suggestions as suggestion}
 				<button
 					type="button"
 					onmousedown={() => handleSuggestionClick(suggestion)}
-					class="w-full text-left px-4 py-2.5 text-sm text-fg hover:bg-signal/10 transition-colors"
+					class="w-full flex items-center justify-between text-left px-4 py-2.5 text-sm text-fg hover:bg-panel transition-colors border-b border-line/40 last:border-b-0"
 				>
 					{suggestion.name}
-					<span class="ml-2 text-xs text-mute">
+					<span class="ml-2 font-mono text-[9px] uppercase tracking-[0.18em] text-signal">
 						{suggestion.type === 'category' ? 'RUBRO' : 'CURSO'}
 					</span>
 				</button>
