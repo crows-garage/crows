@@ -1,5 +1,3 @@
-// ≙ src/app/layout.js + ClientLayout.js del original: html, fuentes,
-// Navbar/Footer/WhatsApp/Toaster/Analytics + init de auth.
 <script>
 	import '../app.css'
 	import '@fontsource/oswald/400.css'
