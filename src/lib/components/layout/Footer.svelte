@@ -1,4 +1,3 @@
-// ≙ src/components/layout/Footer.jsx.
 <script>
 	import { imgUrl } from '#lib/utils.js'
 	import { Mail, MapPin, Phone, MessageCircle, GraduationCap } from '@lucide/svelte'

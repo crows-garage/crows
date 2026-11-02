@@ -1,4 +1,3 @@
-// ≙ src/components/home/BlogShowcase.jsx: noticias destacadas + tarjetas.
 <script>
 	import { ArrowRight } from '@lucide/svelte'
 	import { imgUrl } from '#lib/utils.js'

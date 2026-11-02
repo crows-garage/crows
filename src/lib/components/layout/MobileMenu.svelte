@@ -1,4 +1,3 @@
-// ≙ MobileMenu (local en Navbar.jsx): drawer lateral con links y rubros.
 <script>
 	import { X, ChevronDown } from '@lucide/svelte'
 	import { buildCategoryTree } from '#lib/utils.js'

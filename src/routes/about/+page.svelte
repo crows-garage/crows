@@ -51,6 +51,7 @@
 
 <svelte:head>
 	<title>Sobre CursoX — CursoX</title>
+	<meta name="description" content={org?.description || store?.description || 'Una comunidad para compartir conocimiento, encontrar colaboradores y llevar tus ideas mas lejos.'} />
 </svelte:head>
 
 <div class="min-h-screen bg-base">

@@ -1,5 +1,3 @@
-// ≙ src/components/home/GalleryShowcase.jsx: galerías activas. Sin datos no
-// se muestra. MediaTile inline como snippet.
 <script>
 	import { ImageIcon, FileText, Play } from '@lucide/svelte'
 	import { imgUrl } from '#lib/utils.js'

@@ -1,5 +1,3 @@
-// ≙ src/components/product/ProductInfo.jsx: breadcrumb, precio, variantes,
-// cantidad y acciones de carrito.
 <script>
 	import { goto } from '$app/navigation'
 	import { formatPrice, getCategoryPath } from '#lib/utils.js'

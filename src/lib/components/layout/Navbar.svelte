@@ -1,5 +1,3 @@
-// ≙ src/components/layout/Navbar.jsx. Sin badge de carrito: el original
-// tampoco tiene (el plan lo mencionaba, el código fuente no).
 <script>
 	import { api } from '#lib/api/store.js'
 	import { auth } from '#lib/stores/auth.svelte.js'

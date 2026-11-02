@@ -1,4 +1,3 @@
-// ≙ src/components/product/RelatedProducts.jsx.
 <script>
 	import { formatPrice, getFirstImage, imgUrl } from '#lib/utils.js'
 

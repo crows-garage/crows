@@ -1,4 +1,3 @@
-// ≙ src/components/AnalyticsTracker.jsx: PAGE_VIEW por ruta con UTMs.
 <script>
 	import { page } from '$app/state'
 	import { trackEvent } from '#lib/api/analytics.js'

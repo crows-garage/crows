@@ -1,5 +1,3 @@
-// ≙ src/components/home/AgendaStrip.jsx: eventos próximos. Si no hay, no se
-// muestra la sección.
 <script>
 	import { MapPin } from '@lucide/svelte'
 

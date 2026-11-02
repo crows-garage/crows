@@ -1,5 +1,3 @@
-// ≙ src/components/products/ProductCard.jsx: ficha de curso con variantes,
-// carrito y favoritos.
 <script>
 	import { Heart, ShoppingCart, Check, Truck } from '@lucide/svelte'
 	import { formatPrice, getFirstImage, imgUrl } from '#lib/utils.js'
@@ -18,7 +16,7 @@
 	let selectedVariant = $state(null)
 	const currentVariant = $derived(selectedVariant || (hasVariants ? activeVariants[0] : null))
 
-	// Precios
+	
 	const variantPrice = $derived(currentVariant ? parseFloat(currentVariant.price) : null)
 	const variantFinalPrice = $derived(currentVariant ? parseFloat(currentVariant.finalPrice) : null)
 	const sellingPrice = $derived(variantFinalPrice || variantPrice || parseFloat(product.price))
@@ -26,14 +24,14 @@
 	const originalDisplayPrice = $derived(hasRealDiscount ? variantPrice : null)
 	const showFrom = $derived(hasVariants && !selectedVariant && activeVariants.length > 1)
 
-	// Envío
+	
 	const shipping = $derived(storeConfig?.shipping || {})
 	const freeShippingMin = $derived(shipping.freeShippingMin || 15000)
 	const SHIPPING_COST = $derived(shipping.shippingCost || 500)
 	const deliveryEnabled = $derived(shipping.deliveryEnabled !== false)
 	const hasFreeShipping = $derived(deliveryEnabled && sellingPrice >= freeShippingMin)
 
-	// Carrito
+	
 	let added = $state(false)
 
 	function handleAddToCart(e) {
@@ -58,7 +56,7 @@
 		setTimeout(() => (added = false), 1200)
 	}
 
-	// Favoritos
+	
 	let isFavorite = $state(isFavorited)
 	let favoriteLoading = $state(false)
 

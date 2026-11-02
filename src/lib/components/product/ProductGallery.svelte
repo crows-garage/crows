@@ -1,4 +1,3 @@
-// ≙ src/components/product/ProductGallery.jsx: thumbnails + lightbox.
 // next/image fill → <img> absoluto.
 <script>
 	import { X, ChevronLeft, ChevronRight } from '@lucide/svelte'

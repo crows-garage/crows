@@ -1,4 +1,3 @@
-// ≙ home de CursoX: aprendizaje, comunidad, colaboración e innovación.
 <script>
 	import AnalyticsTracker from '#lib/components/AnalyticsTracker.svelte'
 	import HeroSection from '#lib/components/home/HeroSection.svelte'

@@ -1,4 +1,4 @@
-// ≙ src/components/product/AttributeTable.jsx: especificaciones agrupadas.
+
 <script>
 	let { attributevalues } = $props()
 
