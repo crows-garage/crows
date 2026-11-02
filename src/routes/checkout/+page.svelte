@@ -70,9 +70,14 @@
 			.finally(() => (loadingConfig = false))
 	})
 
-	// ≙ useEffect: sin items → /cart (espera a hidratar el carrito persistido)
+	// ≙ useEffect: sin items → /cart (espera a hidratar el carrito persistido).
+	// orderCreated evita que el clearCart() posterior a crear la orden
+	// redirija al carrito en lugar de /pedido/success (§2.2 del plan).
+	let orderCreated = false
+
 	$effect(() => {
 		if (!$cartHydrated) return
+		if (orderCreated) return
 		if (!loadingConfig && items.length === 0) goto('/cart')
 	})
 
@@ -173,6 +178,7 @@
 			}
 			const result = await checkoutApi.createOrder(storeSlug, orderData)
 			const order = result.order
+			orderCreated = true
 			cart.clearCart()
 			if (form.paymentMethod === 'MERCADOPAGO') {
 				const mp = await checkoutApi.createMercadoPagoPreference(order.id)

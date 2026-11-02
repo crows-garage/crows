@@ -5,7 +5,7 @@
 // render del cliente; se cargan desde localStorage recién después de
 // hidratar (R4: sin mismatch de hidratación).
 import { writable, derived, get } from 'svelte/store'
-import { browser } from '$app/environment'
+import { browser } from '$app/env'
 import { STORE_SLUG } from '#lib/api/client.js'
 
 const STORAGE_KEY = 'econopet-cart'

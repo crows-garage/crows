@@ -1,6 +1,6 @@
 # crow-clone
 
-Port del frontend de **CursoX** (Next.js 16 + React 19) a **SvelteKit 2 + Svelte 5**, desplegado en **Cloudflare Pages**.
+Port del frontend de **CursoX** (Next.js 16 + React 19) a **SvelteKit 3 + Svelte 5**, desplegado en **Cloudflare Pages**.
 
 El frontend consume **directamente** la API pública `https://api.hodsoftware.com` (tienda `cursox`) desde el navegador, con `credentials: 'include'`, exactamente igual que el original: mismo origen, mismas rutas, mismos headers y payloads. **No hay proxy ni backend nuevo.**
 
@@ -20,7 +20,7 @@ PUBLIC_STORE_SLUG=cursox
 PUBLIC_ORG_SLUG=cursox
 ```
 
-- El prefijo `PUBLIC_` es **obligatorio**: SvelteKit solo expone al bundle del navegador las variables con ese prefijo.
+- Las tres variables están declaradas en `src/env.js` con `public: true` y `static: true`; SvelteKit 3 solo las expone al bundle si están declaradas explícitamente.
 - `PUBLIC_*` se **incrusta en tiempo de build**. En Cloudflare Pages definilas en el panel (se aplican al build) y no hace falta cambiarlas en runtime.
 - `PUBLIC_API_URL` va **sin barra final** (la app concatena `/stores/...`).
 

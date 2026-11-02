@@ -1,9 +1,12 @@
 // Base común de los clientes de API: mismas rutas/headers/payloads que el
 // original (src/lib/*.js). Nada de proxy: todo sale directo a la API pública.
+//
+// SvelteKit 3 exposes configured public variables through $app/env/public.
+import { PUBLIC_API_URL, PUBLIC_STORE_SLUG, PUBLIC_ORG_SLUG } from '$app/env/public'
 
-export const BASE = import.meta.env.PUBLIC_API_URL
-export const STORE_SLUG = import.meta.env.PUBLIC_STORE_SLUG
-export const ORG_SLUG = import.meta.env.PUBLIC_ORG_SLUG || STORE_SLUG
+export const BASE = PUBLIC_API_URL
+export const STORE_SLUG = PUBLIC_STORE_SLUG
+export const ORG_SLUG = PUBLIC_ORG_SLUG || STORE_SLUG
 export const STORE_ROOT = `${BASE}/stores/${STORE_SLUG}`
 export const ORG_ROOT = `${BASE}/organizations/${ORG_SLUG}`
 

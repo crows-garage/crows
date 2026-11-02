@@ -53,6 +53,35 @@
    --muted-foreground: #60708a;
 }
 
+/* Tema oscuro: mismos tokens, valores invertidos (Tailwind 4 usa la variante
+   dark por media query; acá responde a la clase .dark del store de tema). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+.dark {
+  --c-base: #0d1626;
+  --c-surface: #142033;
+  --c-panel: #1b2a41;
+  --c-fg: #e8eef7;
+  --c-mute: #9aabc4;
+  --c-line: #2a3b56;
+  --c-signal: #4bb3c6;
+  --c-night: #08111e;
+  --c-rec: #e07089;
+  --c-amber: #d9a441;
+  --c-gold: #e0a355;
+  --c-brass: #c98341;
+  --c-cream: #16243a;
+  --c-sand: #0d1626;
+
+  --background: #0d1626;
+  --foreground: #e8eef7;
+  --card: #142033;
+  --card-foreground: #e8eef7;
+  --border: #2a3b56;
+  --muted: #1b2a41;
+  --muted-foreground: #9aabc4;
+}
+
 * {
   box-sizing: border-box;
 }

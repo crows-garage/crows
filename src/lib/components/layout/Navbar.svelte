@@ -2,8 +2,9 @@
 	import { api } from '#lib/api/store.js'
 	import { auth } from '#lib/stores/auth.svelte.js'
 	import { page } from '$app/state'
-	import { Search, Menu, User, LogOut } from '@lucide/svelte'
+	import { Search, Menu, User, LogOut, Sun, Moon } from '@lucide/svelte'
 	import { imgUrl } from '#lib/utils.js'
+	import { theme, toggleTheme } from '#lib/stores/theme.svelte.js'
 	import SearchBar from './SearchBar.svelte'
 	import MobileMenu from './MobileMenu.svelte'
 
@@ -111,6 +112,20 @@
 						<span class="hidden md:inline text-sm">Ingresar</span>
 					</a>
 				{/if}
+
+				<button
+					type="button"
+					onclick={toggleTheme}
+					class="p-2 rounded-lg text-fg/80 hover:text-night hover:bg-panel transition-colors"
+					aria-label={$theme === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'}
+					title={$theme === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'}
+				>
+					{#if $theme === 'dark'}
+						<Sun class="w-5 h-5" />
+					{:else}
+						<Moon class="w-5 h-5" />
+					{/if}
+				</button>
 			</div>
 		</div>
 	</div>

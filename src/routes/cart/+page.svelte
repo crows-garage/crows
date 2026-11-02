@@ -35,9 +35,20 @@
 			.catch(() => {})
 	})
 
-	// ≙ useEffect([items.length, storeSlug]): sync de stock de todos los items
+	// ≙ useEffect([items.length, storeSlug]): sync de stock de todos los items.
+	// La firma evita el re-disparo: syncItem() reemplaza el array de items y
+	// en Svelte eso vuelve a disparar el efecto (en React no, porque la dep
+	// era items.length).
+	let lastSyncedSignature = ''
+
+	const itemsSignature = (list) => list.map((i) => `${i.key}:${i.quantity}`).join('|')
+
 	$effect(() => {
 		if (items.length === 0 || !storeSlug) return
+
+		const signature = itemsSignature(items)
+		if (signature === lastSyncedSignature) return
+		lastSyncedSignature = signature
 
 		const syncAll = async () => {
 			syncing = true

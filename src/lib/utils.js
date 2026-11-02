@@ -1,6 +1,8 @@
 // ≙ src/lib/utils.js del original. Sin rewrites en Pages: las imágenes del
 // backend se arman como URL absoluta contra la API.
-const IMAGE_BASE = import.meta.env.PUBLIC_API_URL
+import { PUBLIC_API_URL } from '$app/env/public'
+
+const IMAGE_BASE = PUBLIC_API_URL
 
 // ─── Imágenes ──────────────────────────────────────────────
 export function imgUrl(path) {
