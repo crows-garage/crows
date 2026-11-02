@@ -1,4 +1,3 @@
-// ≙ VisionSection de src/components/home/PurposeSection.jsx.
 <script>
 </script>
 

@@ -1,5 +1,3 @@
-// ≙ src/app/comunidad/page.jsx: publicaciones, comentarios, encuestas y
-// reacciones. La participación puede requerir una cuenta según el backend.
 <script>
 	import { Loader2, MessageSquare, Hourglass, XCircle, Users, ThumbsUp, Pin } from '@lucide/svelte'
 	import { auth } from '#lib/stores/auth.svelte.js'

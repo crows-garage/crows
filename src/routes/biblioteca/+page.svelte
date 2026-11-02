@@ -1,5 +1,3 @@
-// ≙ src/app/biblioteca/page.jsx + DownloadButton.jsx (inline como snippet).
-// El acceso (público o solo-miembros) lo controla el backend.
 <script>
 	import { FileText, Lock, BookOpen, Download, Loader2, CheckCircle2 } from '@lucide/svelte'
 	import { BASE, ORG_SLUG, STORE_SLUG } from '#lib/api/client.js'

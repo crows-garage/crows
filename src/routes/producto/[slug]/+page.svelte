@@ -1,5 +1,3 @@
-// ≙ src/app/producto/[slug]/page.jsx: detalle del curso con galería, info,
-// especificaciones, relacionados y FAQs. Tracker de vista inline.
 <script>
 	import { page } from '$app/state'
 	import { ArrowRight } from '@lucide/svelte'

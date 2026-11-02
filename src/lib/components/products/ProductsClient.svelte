@@ -1,6 +1,3 @@
-// ≙ src/app/productos/ProductsClient.jsx (el usado por la página): filtros,
-// orden, búsqueda y grilla en cliente. FilterSidebar de components/ es código
-// muerto en el original y no se porta.
 <script>
 	import { untrack } from 'svelte'
 	import { Search, X, ChevronDown, ChevronUp } from '@lucide/svelte'

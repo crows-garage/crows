@@ -1,5 +1,3 @@
-// ≙ src/app/login/page.jsx. El original ignora el resultado de login y
-// redirige a /' siempre (el catch es dead code): mismo comportamiento acá.
 <script>
 	import { goto } from '$app/navigation'
 	import { auth } from '#lib/stores/auth.svelte.js'

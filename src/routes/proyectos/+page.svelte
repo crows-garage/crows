@@ -1,4 +1,3 @@
-// ≙ src/app/proyectos/page.jsx: proyectos institucionales con hoja de ruta.
 <script>
 	import { FolderKanban, Flag, MapPin } from '@lucide/svelte'
 	import { imgUrl } from '#lib/utils.js'

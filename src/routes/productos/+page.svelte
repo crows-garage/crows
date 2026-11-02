@@ -1,4 +1,3 @@
-// ≙ src/app/productos/page.jsx: metadata + ProductsClient (filtros inline).
 <script>
 	import ProductsClient from '#lib/components/products/ProductsClient.svelte'
 	import { page } from '$app/state'

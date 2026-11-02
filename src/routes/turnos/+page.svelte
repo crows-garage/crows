@@ -1,5 +1,3 @@
-// ≙ src/app/turnos/page.jsx + TurnosClient.jsx: agenda de cupos con
-// reservas semanales.
 <script>
 	import { CalendarDays, Clock, MapPin, Users, Loader2, CalendarCheck, Ban, ChevronDown, ChevronRight } from '@lucide/svelte'
 	import { communityApi } from '#lib/api/community.js'
