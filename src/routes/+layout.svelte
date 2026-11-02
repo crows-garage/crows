@@ -18,12 +18,18 @@
 	import WhatsAppButton from '#lib/components/contact/WhatsAppButton.svelte'
 	import AnalyticsTracker from '#lib/components/AnalyticsTracker.svelte'
 	import { auth } from '#lib/stores/auth.svelte.js'
+	import { hydrateCart } from '#lib/stores/cart.svelte.js'
 
 	let { data, children } = $props()
 
 	// ≙ useEffect(() => checkAuth()) del AuthProvider
 	$effect(() => {
 		auth.checkAuth()
+	})
+
+	// Carrito persistido: se lee recién después de hidratar (evita mismatch SSR)
+	$effect(() => {
+		hydrateCart()
 	})
 
 	const contact = $derived(data.store?.contact || {})

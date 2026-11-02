@@ -2,7 +2,7 @@
 // Confirmar), cupones, creación de orden y redirecciones MP/Nave.
 <script>
 	import { goto } from '$app/navigation'
-	import { cart, cartItems, selectTotal, selectStoreSlug } from '#lib/stores/cart.svelte.js'
+	import { cart, cartItems, cartHydrated, selectTotal, selectStoreSlug } from '#lib/stores/cart.svelte.js'
 	import { checkoutApi } from '#lib/api/checkout.js'
 	import { request } from '#lib/api/client.js'
 	import {
@@ -70,8 +70,9 @@
 			.finally(() => (loadingConfig = false))
 	})
 
-	// ≙ useEffect: sin items → /cart
+	// ≙ useEffect: sin items → /cart (espera a hidratar el carrito persistido)
 	$effect(() => {
+		if (!$cartHydrated) return
 		if (!loadingConfig && items.length === 0) goto('/cart')
 	})
 

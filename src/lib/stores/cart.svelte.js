@@ -1,7 +1,9 @@
 // ≙ src/store/cartStore.js del original (Zustand + persist).
 // writable + sincronización manual con localStorage: misma key
 // (`econopet-cart`), mismo formato JSON `{ state: { items }, version: 2 }`
-// y mismo migrate. SSR-safe: items empiezan vacíos en server (R4).
+// y mismo migrate. SSR-safe: items empiezan vacíos en server y en el primer
+// render del cliente; se cargan desde localStorage recién después de
+// hidratar (R4: sin mismatch de hidratación).
 import { writable, derived, get } from 'svelte/store'
 import { browser } from '$app/environment'
 import { STORE_SLUG } from '#lib/api/client.js'
@@ -37,13 +39,32 @@ function loadItems() {
 	}
 }
 
-export const cartItems = writable(loadItems())
+export const cartItems = writable([])
+
+// Guard until hydration: avoids overwriting the saved cart before reading it
+let hydrated = false
+
+// Estado de hidratación del carrito (false en SSR y hasta el primer render
+// del cliente): lo usan /cart y /checkout para no actuar sobre un carrito
+// todavía vacío.
+export const cartHydrated = writable(false)
 
 if (browser) {
 	// Persistir con el mismo formato que escribe zustand/persist
 	cartItems.subscribe((value) => {
+		if (!hydrated) return
 		localStorage.setItem(STORAGE_KEY, JSON.stringify({ state: { items: value }, version: VERSION }))
 	})
+}
+
+/**
+ * Carga el carrito persistido. Se llama una vez, después de hidratar.
+ */
+export function hydrateCart() {
+	if (!browser || hydrated) return
+	hydrated = true
+	cartItems.set(loadItems())
+	cartHydrated.set(true)
 }
 
 // ─── Acciones (misma forma de datos que el original) ───────

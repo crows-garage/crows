@@ -1,6 +1,6 @@
 // ≙ src/app/cart/page.jsx: carrito con sync de stock y barra de envío gratis.
 <script>
-	import { cart, cartItems, selectTotal, selectCount, selectStoreSlug } from '#lib/stores/cart.svelte.js'
+	import { cart, cartItems, cartHydrated, selectTotal, selectCount, selectStoreSlug } from '#lib/stores/cart.svelte.js'
 	import { Minus, Plus, Trash2, ShoppingBag, ArrowRight, AlertTriangle, Loader2, Truck } from '@lucide/svelte'
 	import { imgUrl } from '#lib/utils.js'
 	import { checkoutApi } from '#lib/api/checkout.js'
@@ -9,7 +9,6 @@
 	const total = $derived($selectTotal)
 	const count = $derived($selectCount)
 	const storeSlug = $derived($selectStoreSlug)
-
 	let syncing = $state(false)
 	let stockWarnings = $state([])
 	let productStocks = $state({})
@@ -86,7 +85,12 @@
 	const estimatedTotal = $derived(deliveryEnabled && !isFreeShipping ? total + deliveryCost : total)
 </script>
 
-{#if items.length === 0}
+{#if !$cartHydrated}
+	<!-- Esqueleto hasta hidratar el carrito persistido (R4) -->
+	<div class="max-w-3xl mx-auto px-4 py-10 bg-base pt-10">
+		<div class="border border-line bg-surface p-4 animate-pulse h-32"></div>
+	</div>
+{:else if items.length === 0}
 	<div class="min-h-[60vh] flex flex-col items-center justify-center px-4 bg-base pt-20">
 		<div class="w-16 h-16 border border-line flex items-center justify-center mb-4">
 			<ShoppingBag size={32} class="text-mute" />
