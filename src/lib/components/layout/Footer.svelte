@@ -85,9 +85,9 @@
 					{:else if org?.logo}
 						<img src={imgUrl(org.logo)} alt={org?.name || 'Institución'} width="44" height="44" class="w-11 h-11 object-contain rounded-full bg-surface p-1" />
 					{:else}
-						<span class="w-11 h-11 rounded-full bg-surface flex items-center justify-center font-display font-bold text-night text-lg">{(org?.name || 'IN')[0]?.toUpperCase()}</span>
+						<span class="w-11 h-11 rounded-full bg-surface flex items-center justify-center font-display font-bold text-fg text-lg">{(org?.name || 'IN')[0]?.toUpperCase()}</span>
 					{/if}
-					<span class="font-display font-semibold text-night text-lg leading-tight">
+					<span class="font-display font-semibold text-signal text-lg leading-tight">
 						{org?.name || store?.name || 'Institución'}
 					</span>
 				</a>
@@ -103,7 +103,7 @@
 								target="_blank"
 								rel="noopener noreferrer"
 								aria-label={label}
-								class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-fg/70 hover:bg-surface hover:text-gold hover:border-gold transition-colors"
+								class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-fg/70 hover:bg-surface hover:text-signal hover:border-signal transition-colors"
 							>
 								<SocialIcon {name} />
 							</a>
@@ -114,48 +114,48 @@
 
 			<!-- Recursos -->
 			<div class="space-y-4">
-				<h4 class="eyebrow !text-gold">Recursos</h4>
+				<h4 class="eyebrow !text-signal">Recursos</h4>
 				<ul class="space-y-2.5">
 					{#if mainCategories.length > 0}
 						{#each mainCategories as cat}
 							<li>
-								<a href={`/productos?categoria=${cat.slug}`} class="text-sm text-fg/75 hover:text-night transition-colors">
+								<a href={`/productos?categoria=${cat.slug}`} class="text-sm text-fg/75 hover:text-signal transition-colors">
 									{cat.name}
 								</a>
 							</li>
 						{/each}
 					{:else}
-						<li><a href="/biblioteca" class="text-sm text-fg/75 hover:text-night transition-colors">Biblioteca académica</a></li>
-						<li><a href="/proyectos" class="text-sm text-fg/75 hover:text-night transition-colors">Proyectos colaborativos</a></li>
+						<li><a href="/biblioteca" class="text-sm text-fg/75 hover:text-signal transition-colors">Biblioteca académica</a></li>
+						<li><a href="/proyectos" class="text-sm text-fg/75 hover:text-signal transition-colors">Proyectos colaborativos</a></li>
 					{/if}
 					<li>
-						<a href="/biblioteca" class="text-sm text-fg/75 hover:text-night transition-colors">Explorar recursos</a>
+						<a href="/biblioteca" class="text-sm text-fg/75 hover:text-signal transition-colors">Explorar recursos</a>
 					</li>
 				</ul>
 			</div>
 
 			<!-- Institucional -->
 			<div class="space-y-4">
-				<h4 class="eyebrow !text-gold">CursoX</h4>
+				<h4 class="eyebrow !text-signal">CursoX</h4>
 				<ul class="space-y-2.5">
-					<li><a href="/about" class="text-sm text-fg/75 hover:text-night transition-colors">La visión de CursoX</a></li>
-					<li><a href="/comunidad" class="text-sm text-fg/75 hover:text-night transition-colors">Comunidad</a></li>
-					<li><a href="/blog" class="text-sm text-fg/75 hover:text-night transition-colors">Publicaciones</a></li>
-					<li><a href="/contacto" class="text-sm text-fg/75 hover:text-night transition-colors">Contacto</a></li>
-					<li><a href="/privacidad" class="text-sm text-fg/75 hover:text-night transition-colors">Política de privacidad</a></li>
-					<li><a href="/terms-and-conditions" class="text-sm text-fg/75 hover:text-night transition-colors">Términos y condiciones</a></li>
+					<li><a href="/about" class="text-sm text-fg/75 hover:text-signal transition-colors">La visión de CursoX</a></li>
+					<li><a href="/comunidad" class="text-sm text-fg/75 hover:text-signal transition-colors">Comunidad</a></li>
+					<li><a href="/blog" class="text-sm text-fg/75 hover:text-signal transition-colors">Publicaciones</a></li>
+					<li><a href="/contacto" class="text-sm text-fg/75 hover:text-signal transition-colors">Contacto</a></li>
+					<li><a href="/privacidad" class="text-sm text-fg/75 hover:text-signal transition-colors">Política de privacidad</a></li>
+					<li><a href="/terms-and-conditions" class="text-sm text-fg/75 hover:text-signal transition-colors">Términos y condiciones</a></li>
 				</ul>
 			</div>
 
 			<!-- Contacto -->
 			<div class="space-y-4">
-				<h4 class="eyebrow !text-gold">Contacto</h4>
+				<h4 class="eyebrow !text-signal">Contacto</h4>
 				<ul class="space-y-3">
 					{#if emails.length > 0}
 						{#each emails.slice(0, 2) as email, i}
 							<li>
-								<a href={`mailto:${email}`} class="flex items-center gap-2.5 text-sm text-fg/75 hover:text-night transition-colors break-all">
-									<Mail class="w-4 h-4 shrink-0 text-gold" />
+								<a href={`mailto:${email}`} class="flex items-center gap-2.5 text-sm text-fg/75 hover:text-signal transition-colors break-all">
+									<Mail class="w-4 h-4 shrink-0 text-signal" />
 									{email}
 								</a>
 							</li>
@@ -163,8 +163,8 @@
 					{/if}
 					{#if whatsapp}
 						<li>
-							<a href={`https://wa.me/${whatsapp.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 text-sm text-fg/75 hover:text-night transition-colors">
-								<MessageCircle class="w-4 h-4 shrink-0 text-gold" />
+							<a href={`https://wa.me/${whatsapp.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 text-sm text-fg/75 hover:text-signal transition-colors">
+								<MessageCircle class="w-4 h-4 shrink-0 text-signal" />
 								{whatsapp}
 							</a>
 						</li>
@@ -172,8 +172,8 @@
 					{#if phones.length > 0}
 						{#each phones.slice(0, 2) as phone, i}
 							<li>
-								<a href={`tel:${phone}`} class="flex items-center gap-2.5 text-sm text-fg/75 hover:text-night transition-colors">
-									<Phone class="w-4 h-4 shrink-0 text-gold" />
+								<a href={`tel:${phone}`} class="flex items-center gap-2.5 text-sm text-fg/75 hover:text-signal transition-colors">
+									<Phone class="w-4 h-4 shrink-0 text-signal" />
 									{phone}
 								</a>
 							</li>
@@ -181,7 +181,7 @@
 					{/if}
 					{#if address}
 						<li class="flex items-start gap-2.5 text-sm text-fg/75">
-							<MapPin class="w-4 h-4 shrink-0 mt-0.5 text-gold" />
+							<MapPin class="w-4 h-4 shrink-0 mt-0.5 text-signal" />
 							<span>{address}</span>
 						</li>
 					{/if}
@@ -190,7 +190,7 @@
 		</div>
 	</div>
 
-	<div class="border-t border-gold/20 py-4">
+	<div class="border-t border-signal/20 py-4">
 		<div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-2">
 			<p class="font-mono text-[10px] uppercase tracking-[0.24em] text-fg/60">
 				© {currentYear} {org?.name || store?.name || 'Institución'} · Todos los derechos reservados
@@ -204,7 +204,7 @@
 
 	<div
 		bind:this={creditsRef}
-		class={`border-t border-gold/20 py-4 bg-sand transition-all duration-700 ${isRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+		class={`border-t border-signal/20 py-4 bg-sand transition-all duration-700 ${isRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
 	>
 		<div class="max-w-7xl mx-auto px-4 flex items-center justify-center gap-2">
 			<img src="/HOD.png" alt="HOD software" width="20" height="20" class="opacity-60" />

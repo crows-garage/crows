@@ -37,7 +37,7 @@
 {:else}
 	<div class="max-w-4xl mx-auto px-4 py-12">
 		<p class="eyebrow mb-2">ARCHIVO · EXPEDIENTES DE COMPRA</p>
-		<h1 class="font-saira text-3xl font-semibold tracking-tight mb-8">Mis Pedidos</h1>
+		<h1 class="font-display text-3xl font-semibold tracking-tight mb-8">Mis Pedidos</h1>
 
 		{#if loadingOrders}
 			<div class="panel p-10 flex justify-center py-20"><Loader2 class="animate-spin text-mute" /></div>

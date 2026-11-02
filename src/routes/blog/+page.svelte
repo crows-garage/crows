@@ -76,7 +76,7 @@
 								<span class="font-mono text-[10px] uppercase tracking-[0.28em] text-mute">Sin imagen</span>
 							</div>
 						{/if}
-						<span class="absolute top-3 left-3 font-mono text-[9px] uppercase tracking-[0.22em] bg-gold text-white px-2 py-1 rounded-full">★ Nota destacada</span>
+						<span class="absolute top-3 left-3 font-mono text-[9px] uppercase tracking-[0.22em] bg-signal text-base px-2 py-1 rounded-full">★ Nota destacada</span>
 					</div>
 					<div class="p-6 sm:p-10 flex flex-col justify-center">
 						{@render meta(featured)}
@@ -106,7 +106,7 @@
 									<div class="absolute inset-0 graticule"></div>
 								{/if}
 								{#if post.featured}
-									<span class="absolute top-2.5 left-2.5 font-mono text-[9px] uppercase tracking-[0.2em] bg-gold text-white px-2 py-0.5 rounded-full">★ Destacado</span>
+									<span class="absolute top-2.5 left-2.5 font-mono text-[9px] uppercase tracking-[0.2em] bg-signal text-base px-2 py-0.5 rounded-full">★ Destacado</span>
 								{/if}
 							</div>
 							<div class="p-5 flex flex-col flex-1">

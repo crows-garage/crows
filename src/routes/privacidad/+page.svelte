@@ -16,7 +16,7 @@
 	<title>Política de Privacidad — CursoX</title>
 </svelte:head>
 
-<div class="min-h-screen bg-black pt-32 pb-16">
+<div class="min-h-screen bg-night pt-32 pb-16">
 	<div class="max-w-3xl mx-auto px-4">
 		<h1 class="text-3xl font-light tracking-tight text-white mb-8">Política de Privacidad</h1>
 		{#if data.content}

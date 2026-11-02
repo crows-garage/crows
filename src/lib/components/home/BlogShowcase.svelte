@@ -55,7 +55,7 @@
 							<span class="font-mono text-[10px] uppercase tracking-[0.28em] text-mute">Sin imagen</span>
 						</div>
 					{/if}
-					<span class="absolute top-3 left-3 font-mono text-[9px] uppercase tracking-[0.22em] bg-signal text-night px-2 py-1">★ Destacado</span>
+					<span class="absolute top-3 left-3 font-mono text-[9px] uppercase tracking-[0.22em] bg-signal text-base px-2 py-1">★ Destacado</span>
 				</div>
 
 				<div class="p-6 sm:p-8 flex flex-col justify-center">

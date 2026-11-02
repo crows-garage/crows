@@ -134,7 +134,7 @@
 									target="_blank"
 									rel="noopener noreferrer"
 									aria-label={label}
-									class="w-10 h-10 bg-signal/10 text-signal rounded-xl flex items-center justify-center hover:bg-signal hover:text-white transition-colors"
+									class="w-10 h-10 bg-signal/10 text-signal rounded-xl flex items-center justify-center hover:bg-signal hover:text-base transition-colors"
 								>
 									<SocialIcon {name} class="w-5 h-5" />
 								</a>

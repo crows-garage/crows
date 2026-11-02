@@ -38,7 +38,7 @@
 		<div class="flex items-center gap-3 mb-8">
 			<Heart class="text-signal" size={28} />
 			<p class="eyebrow">VIGILANCIA · LISTA DE INTERÉS</p>
-			<h1 class="font-saira text-2xl md:text-3xl font-semibold tracking-tight">Mis Favoritos</h1>
+			<h1 class="font-display text-2xl md:text-3xl font-semibold tracking-tight">Mis Favoritos</h1>
 			{#if items.length > 0}
 				<span class="text-sm text-mute">({items.length})</span>
 			{/if}

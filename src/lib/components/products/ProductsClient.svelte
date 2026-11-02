@@ -102,7 +102,7 @@
 	const sectionHeaderClass = 'flex items-center justify-between w-full py-2.5'
 	const sectionLabelClass = 'eyebrow'
 	const optionClass = (active) =>
-		`w-full text-left px-3 py-2 font-mono text-xs transition-colors ${active ? 'bg-signal text-night' : 'text-mute hover:bg-panel hover:text-fg'}`
+		`w-full text-left px-3 py-2 font-mono text-xs transition-colors ${active ? 'bg-signal text-base' : 'text-mute hover:bg-panel hover:text-fg'}`
 </script>
 
 {#snippet filterContent()}

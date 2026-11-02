@@ -173,7 +173,7 @@
 				<button
 					type="button"
 					onclick={() => goto('/')}
-					class="mt-6 w-full py-2.5 bg-fg text-base text-sm font-medium hover:bg-black/80 transition-colors"
+					class="mt-6 w-full py-2.5 bg-fg text-base text-sm font-medium hover:opacity-90 transition-colors"
 				>
 					Volver al inicio
 				</button>
@@ -194,7 +194,7 @@
 				<div class="flex items-center justify-center w-8 h-8 text-xs font-medium border border-fg text-fg">
 					{step === 1 ? '1' : '✓'}
 				</div>
-				<div class="w-12 h-px bg-black/20"></div>
+				<div class="w-12 h-px bg-fg/20"></div>
 				<div class={`flex items-center justify-center w-8 h-8 text-xs font-medium border ${step === 2 ? 'border-fg text-fg' : 'border-line text-mute'}`}>
 					2
 				</div>
@@ -207,21 +207,21 @@
 			<form onsubmit={handleSubmit} class="space-y-4">
 				{#if step === 1}
 					<div>
-						<label class="block text-xs font-medium text-black/70 mb-1" for="reg-firstName">Nombre *</label>
+						<label class="block text-xs font-medium text-fg/70 mb-1" for="reg-firstName">Nombre *</label>
 						<input
 							id="reg-firstName"
 							name="firstName"
 							type="text"
 							value={formData.firstName}
 							oninput={handleChange}
-							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.firstName ? 'border-black/60' : 'border-line'}`}
+							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.firstName ? 'border-rec' : 'border-line'}`}
 							placeholder="Nombre"
 						/>
 						{#if fieldErrors.firstName}<p class="mt-1 text-[10px] text-mute">{fieldErrors.firstName}</p>{/if}
 					</div>
 
 					<div>
-						<label class="block text-xs font-medium text-black/70 mb-1" for="reg-lastName">Apellido *</label>
+						<label class="block text-xs font-medium text-fg/70 mb-1" for="reg-lastName">Apellido *</label>
 						<input
 							id="reg-lastName"
 							name="lastName"
@@ -234,21 +234,21 @@
 					</div>
 
 					<div>
-						<label class="block text-xs font-medium text-black/70 mb-1" for="reg-email">Email *</label>
+						<label class="block text-xs font-medium text-fg/70 mb-1" for="reg-email">Email *</label>
 						<input
 							id="reg-email"
 							name="email"
 							type="email"
 							value={formData.email}
 							oninput={handleChange}
-							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.email ? 'border-black/60' : 'border-line'}`}
+							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.email ? 'border-rec' : 'border-line'}`}
 							placeholder="tu@email.com"
 						/>
 						{#if fieldErrors.email}<p class="mt-1 text-[10px] text-mute">{fieldErrors.email}</p>{/if}
 					</div>
 
 					<div>
-						<label class="block text-xs font-medium text-black/70 mb-1" for="reg-phone">Teléfono</label>
+						<label class="block text-xs font-medium text-fg/70 mb-1" for="reg-phone">Teléfono</label>
 						<input
 							id="reg-phone"
 							name="phone"
@@ -261,7 +261,7 @@
 					</div>
 
 					<div>
-						<label class="block text-xs font-medium text-black/70 mb-1" for="reg-password">Contraseña *</label>
+						<label class="block text-xs font-medium text-fg/70 mb-1" for="reg-password">Contraseña *</label>
 						<div class="relative">
 							<input
 								id="reg-password"
@@ -269,13 +269,13 @@
 								type={showPassword ? 'text' : 'password'}
 								value={formData.password}
 								oninput={handleChange}
-								class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.password ? 'border-black/60' : 'border-line'}`}
+								class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.password ? 'border-rec' : 'border-line'}`}
 								placeholder="Mínimo 8 caracteres"
 							/>
 							<button
 								type="button"
 								onclick={() => (showPassword = !showPassword)}
-								class="absolute right-3 top-1/2 -translate-y-1/2 text-mute hover:text-black"
+								class="absolute right-3 top-1/2 -translate-y-1/2 text-mute hover:text-fg"
 							>
 								{#if showPassword}<EyeOff size={16} />{:else}<Eye size={16} />{/if}
 							</button>
@@ -284,14 +284,14 @@
 					</div>
 
 					<div>
-						<label class="block text-xs font-medium text-black/70 mb-1" for="reg-confirm">Confirmar contraseña *</label>
+						<label class="block text-xs font-medium text-fg/70 mb-1" for="reg-confirm">Confirmar contraseña *</label>
 						<input
 							id="reg-confirm"
 							name="confirmPassword"
 							type="password"
 							value={formData.confirmPassword}
 							oninput={handleChange}
-							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.confirmPassword ? 'border-black/60' : 'border-line'}`}
+							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.confirmPassword ? 'border-rec' : 'border-line'}`}
 							placeholder="Repite tu contraseña"
 						/>
 						{#if fieldErrors.confirmPassword}<p class="mt-1 text-[10px] text-mute">{fieldErrors.confirmPassword}</p>{/if}
@@ -308,41 +308,41 @@
 					</div>
 
 					<div>
-						<label class="block text-xs font-medium text-black/70 mb-1" for="reg-profession">Profesión *</label>
+						<label class="block text-xs font-medium text-fg/70 mb-1" for="reg-profession">Profesión *</label>
 						<input
 							id="reg-profession"
 							name="profession"
 							type="text"
 							value={formData.profession}
 							oninput={handleChange}
-							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.profession ? 'border-black/60' : 'border-line'}`}
+							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.profession ? 'border-rec' : 'border-line'}`}
 							placeholder="Ej: Docente, Diseñador, Contador..."
 						/>
 						{#if fieldErrors.profession}<p class="mt-1 text-[10px] text-mute">{fieldErrors.profession}</p>{/if}
 					</div>
 
 					<div>
-						<label class="block text-xs font-medium text-black/70 mb-1" for="reg-registration">Matrícula profesional *</label>
+						<label class="block text-xs font-medium text-fg/70 mb-1" for="reg-registration">Matrícula profesional *</label>
 						<input
 							id="reg-registration"
 							name="registrationNumber"
 							type="text"
 							value={formData.registrationNumber}
 							oninput={handleChange}
-							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.registrationNumber ? 'border-black/60' : 'border-line'}`}
+							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.registrationNumber ? 'border-rec' : 'border-line'}`}
 							placeholder="Ej: MP-1234"
 						/>
 						{#if fieldErrors.registrationNumber}<p class="mt-1 text-[10px] text-mute">{fieldErrors.registrationNumber}</p>{/if}
 					</div>
 
 					<div>
-						<label class="block text-xs font-medium text-black/70 mb-1" for="reg-docType">Tipo de documento *</label>
+						<label class="block text-xs font-medium text-fg/70 mb-1" for="reg-docType">Tipo de documento *</label>
 						<select
 							id="reg-docType"
 							name="documentType"
 							value={formData.documentType}
 							onchange={handleChange}
-							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.documentType ? 'border-black/60' : 'border-line'}`}
+							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.documentType ? 'border-rec' : 'border-line'}`}
 						>
 							<option value="">Seleccionar...</option>
 							<option value="DNI">DNI</option>
@@ -355,14 +355,14 @@
 					</div>
 
 					<div>
-						<label class="block text-xs font-medium text-black/70 mb-1" for="reg-docNumber">Número de documento *</label>
+						<label class="block text-xs font-medium text-fg/70 mb-1" for="reg-docNumber">Número de documento *</label>
 						<input
 							id="reg-docNumber"
 							name="documentNumber"
 							type="text"
 							value={formData.documentNumber}
 							oninput={handleChange}
-							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.documentNumber ? 'border-black/60' : 'border-line'}`}
+							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.documentNumber ? 'border-rec' : 'border-line'}`}
 							placeholder="Sin puntos ni guiones"
 						/>
 						{#if fieldErrors.documentNumber}<p class="mt-1 text-[10px] text-mute">{fieldErrors.documentNumber}</p>{/if}
@@ -373,7 +373,7 @@
 					<button
 						type="button"
 						onclick={handleNextStep}
-						class="w-full py-2.5 bg-fg text-base text-sm font-medium hover:bg-black/80 transition-colors"
+						class="w-full py-2.5 bg-fg text-base text-sm font-medium hover:opacity-90 transition-colors"
 					>
 						Continuar →
 					</button>
@@ -382,7 +382,7 @@
 						<button
 							type="submit"
 							disabled={auth.loading}
-							class="w-full py-2.5 bg-fg text-base text-sm font-medium hover:bg-black/80 disabled:opacity-50 transition-colors"
+							class="w-full py-2.5 bg-fg text-base text-sm font-medium hover:opacity-90 disabled:opacity-50 transition-colors"
 						>
 							{auth.loading ? 'Enviando...' : 'Solicitar afiliación'}
 						</button>
@@ -397,7 +397,7 @@
 							type="button"
 							onclick={handleSkip}
 							disabled={auth.loading}
-							class="w-full py-2 text-xs text-mute hover:text-black transition-colors disabled:opacity-50"
+							class="w-full py-2 text-xs text-mute hover:text-fg transition-colors disabled:opacity-50"
 						>
 							Solo quiero la cuenta para comprar cursos
 						</button>

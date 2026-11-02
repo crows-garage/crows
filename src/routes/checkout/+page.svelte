@@ -207,7 +207,7 @@
 {:else if items.length > 0}
 	<div class="min-h-screen bg-base pt-20">
 		<div class="max-w-2xl mx-auto px-4 py-8">
-			<a href="/cart" class="inline-flex items-center gap-1 text-xs text-mute hover:text-black mb-6 transition-colors">
+			<a href="/cart" class="inline-flex items-center gap-1 text-xs text-mute hover:text-fg mb-6 transition-colors">
 				<ArrowLeft size={14} /> Volver al carrito
 			</a>
 
@@ -229,7 +229,7 @@
 							{i < step ? '✓' : i + 1}
 						</div>
 						<span class={`text-[11px] font-medium hidden sm:block ${i <= step ? 'text-fg' : 'text-mute'}`}>{s}</span>
-						{#if i < 3}<div class={`w-4 h-px ${i < step ? 'bg-black' : 'bg-black/20'}`}></div>{/if}
+						{#if i < 3}<div class={`w-4 h-px ${i < step ? 'bg-fg' : 'bg-fg/20'}`}></div>{/if}
 					</div>
 				{/each}
 			</div>
@@ -239,7 +239,7 @@
 				<div class="space-y-3">
 					<div class="space-y-3">
 						<div>
-							<label class="flex items-center gap-1.5 text-xs font-medium text-black/70 mb-1" for="co-name">
+							<label class="flex items-center gap-1.5 text-xs font-medium text-fg/70 mb-1" for="co-name">
 								<User size={12} /> Nombre completo *
 							</label>
 							<input id="co-name" type="text" bind:value={form.customerName}
@@ -247,7 +247,7 @@
 								placeholder="Nombre Apellido" />
 						</div>
 						<div>
-							<label class="flex items-center gap-1.5 text-xs font-medium text-black/70 mb-1" for="co-phone">
+							<label class="flex items-center gap-1.5 text-xs font-medium text-fg/70 mb-1" for="co-phone">
 								<Phone size={12} /> Teléfono *
 							</label>
 							<input id="co-phone" type="tel" bind:value={form.customerPhone}
@@ -256,7 +256,7 @@
 							<p class="text-[10px] text-mute mt-1">Mínimo 8 dígitos, sin guiones</p>
 						</div>
 						<div>
-							<label class="flex items-center gap-1.5 text-xs font-medium text-black/70 mb-1" for="co-email">
+							<label class="flex items-center gap-1.5 text-xs font-medium text-fg/70 mb-1" for="co-email">
 								<Mail size={12} /> Email *
 							</label>
 							<input id="co-email" type="email" bind:value={form.customerEmail}
@@ -265,7 +265,7 @@
 						</div>
 					</div>
 					<div>
-						<label class="flex items-center gap-1.5 text-xs font-medium text-black/70 mb-1" for="co-notes">
+						<label class="flex items-center gap-1.5 text-xs font-medium text-fg/70 mb-1" for="co-notes">
 							<MessageSquare size={12} /> Notas (opcional)
 						</label>
 						<textarea id="co-notes" bind:value={form.notes} rows="2"
@@ -281,7 +281,7 @@
 					<div class="grid grid-cols-2 gap-3">
 						{#if storeConfig?.delivery !== false}
 							<button type="button" onclick={() => (form = { ...form, modalidad: 'DELIVERY' })}
-								class={`flex flex-col items-center gap-1.5 p-3 border transition-all ${form.modalidad === 'DELIVERY' ? 'border-fg bg-panel' : 'border-line hover:border-black/40'}`}>
+								class={`flex flex-col items-center gap-1.5 p-3 border transition-all ${form.modalidad === 'DELIVERY' ? 'border-fg bg-panel' : 'border-line hover:border-fg/60'}`}>
 								<Truck size={18} class={form.modalidad === 'DELIVERY' ? 'text-fg' : 'text-mute'} />
 								<span class="text-xs font-medium">Delivery</span>
 								{#if !isDeliveryFree}<span class="text-[10px] text-mute">+${deliveryCost.toLocaleString('es-AR')}</span>{/if}
@@ -290,7 +290,7 @@
 						{/if}
 						{#if storeConfig?.takeaway !== false}
 							<button type="button" onclick={() => (form = { ...form, modalidad: 'TAKEAWAY' })}
-								class={`flex flex-col items-center gap-1.5 p-3 border transition-all ${form.modalidad === 'TAKEAWAY' ? 'border-fg bg-panel' : 'border-line hover:border-black/40'}`}>
+								class={`flex flex-col items-center gap-1.5 p-3 border transition-all ${form.modalidad === 'TAKEAWAY' ? 'border-fg bg-panel' : 'border-line hover:border-fg/60'}`}>
 								<Store size={18} class={form.modalidad === 'TAKEAWAY' ? 'text-fg' : 'text-mute'} />
 								<span class="text-xs font-medium">Retiro en local</span>
 								<span class="text-[10px] text-mute">Sin costo</span>
@@ -299,7 +299,7 @@
 					</div>
 					{#if form.modalidad === 'DELIVERY'}
 						<div>
-							<label class="flex items-center gap-1.5 text-xs font-medium text-black/70 mb-1" for="co-address">
+							<label class="flex items-center gap-1.5 text-xs font-medium text-fg/70 mb-1" for="co-address">
 								<MapPin size={12} /> Dirección *
 							</label>
 							<input id="co-address" type="text" bind:value={form.customerAddress}
@@ -315,7 +315,7 @@
 				<div class="space-y-2">
 					{#each filteredMethods as pm (pm.id)}
 						<button type="button" onclick={() => (form = { ...form, paymentMethod: pm.id })}
-							class={`w-full flex items-center gap-3 p-3 border transition-all ${form.paymentMethod === pm.id ? 'border-fg bg-panel' : 'border-line hover:border-black/40'}`}>
+							class={`w-full flex items-center gap-3 p-3 border transition-all ${form.paymentMethod === pm.id ? 'border-fg bg-panel' : 'border-line hover:border-fg/60'}`}>
 							<pm.icon size={18} class={form.paymentMethod === pm.id ? 'text-fg' : 'text-mute'} />
 							<div class="text-left">
 								<p class="text-xs font-medium">{pm.label}</p>
@@ -323,7 +323,7 @@
 							</div>
 							{#if form.paymentMethod === pm.id}
 								<div class="ml-auto w-4 h-4 border border-fg flex items-center justify-center">
-									<div class="w-1.5 h-1.5 bg-black"></div>
+									<div class="w-1.5 h-1.5 bg-fg"></div>
 								</div>
 							{/if}
 						</button>
@@ -357,7 +357,7 @@
 										<p class="text-[10px] text-mute">{appliedCoupon.description}</p>
 									</div>
 								</div>
-								<button type="button" onclick={handleRemoveCoupon} class="text-mute hover:text-black">
+								<button type="button" onclick={handleRemoveCoupon} class="text-mute hover:text-fg">
 									<X size={14} />
 								</button>
 							</div>
@@ -441,12 +441,12 @@
 				{/if}
 				{#if step < 3}
 					<button type="button" onclick={handleNext}
-						class="flex-1 bg-fg text-base py-2 text-xs font-medium hover:bg-black/80 transition-colors">
+						class="flex-1 bg-fg text-base py-2 text-xs font-medium hover:opacity-90 transition-colors">
 						Continuar
 					</button>
 				{:else}
 					<button type="button" onclick={handleSubmit} disabled={loading}
-						class="flex-1 bg-fg text-base py-2 text-xs font-medium hover:bg-black/80 disabled:opacity-50 transition-colors flex items-center justify-center gap-2">
+						class="flex-1 bg-fg text-base py-2 text-xs font-medium hover:opacity-90 disabled:opacity-50 transition-colors flex items-center justify-center gap-2">
 						{#if loading}<Loader2 size={12} class="animate-spin" />{/if}
 						{loading ? 'Procesando...' : `Confirmar • $${finalTotal.toLocaleString('es-AR')}`}
 					</button>

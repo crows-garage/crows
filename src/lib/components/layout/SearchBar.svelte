@@ -61,7 +61,7 @@
 				if (suggestionTimeout) clearTimeout(suggestionTimeout)
 			}}
 			placeholder="Buscar recursos..."
-			class={`input bg-white pl-9 ${compact ? 'py-2' : ''}`}
+			class={`input pl-9 ${compact ? 'py-2' : ''}`}
 		/>
 	</form>
 
@@ -71,7 +71,7 @@
 				<button
 					type="button"
 					onmousedown={() => handleSuggestionClick(suggestion)}
-					class="w-full text-left px-4 py-2.5 text-sm text-fg hover:bg-gold/10 transition-colors"
+					class="w-full text-left px-4 py-2.5 text-sm text-fg hover:bg-signal/10 transition-colors"
 				>
 					{suggestion.name}
 					<span class="ml-2 text-xs text-mute">

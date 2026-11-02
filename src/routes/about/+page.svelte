@@ -71,11 +71,11 @@
 					</div>
 				{/if}
 				<div class="min-w-0">
-					<p class="eyebrow !text-gold mb-3 flex items-center gap-2">
+					<p class="eyebrow !text-signal mb-3 flex items-center gap-2">
 						<GraduationCap class="w-3.5 h-3.5" />
 						CursoX · La comunidad
 					</p>
-					<h1 class="font-display font-semibold tracking-tight text-night text-[clamp(2.2rem,6vw,4.2rem)] leading-[1.02]">
+					<h1 class="font-display font-semibold tracking-tight text-fg text-[clamp(2.2rem,6vw,4.2rem)] leading-[1.02]">
 						{name}
 					</h1>
 					<p class="mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-fg/85">{description}</p>

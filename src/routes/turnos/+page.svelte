@@ -199,7 +199,7 @@
 								<button
 									type="button"
 									onclick={() => handleCancel(r)}
-									class="flex items-center gap-1 text-[11px] text-mute hover:text-red-500 transition-colors flex-shrink-0"
+									class="flex items-center gap-1 text-[11px] text-mute hover:text-rec transition-colors flex-shrink-0"
 								>
 									<Ban size={11} /> Cancelar
 								</button>
@@ -211,7 +211,7 @@
 		{/if}
 
 		{#if actionError}
-			<div class="mb-6 border border-red-200 bg-red-50 text-red-700 px-3 py-2 text-xs">{actionError}</div>
+			<div class="mb-6 border border-rec/30 bg-rec/10 text-rec px-3 py-2 text-xs">{actionError}</div>
 		{/if}
 
 		{#if loading}

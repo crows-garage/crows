@@ -8,7 +8,7 @@
 		PLANNED: 'border-line text-mute',
 		IN_PROGRESS: 'border-signal text-signal',
 		DONE: 'border-signal bg-signal/10 text-fg',
-		DELAYED: 'border-red-300 text-red-600'
+		DELAYED: 'border-rec/30 text-rec'
 	}
 
 	const MILESTONE_LABELS = {

@@ -90,7 +90,7 @@
 								<p class="text-[11px] text-mute mt-1.5 flex items-center gap-2 flex-wrap">
 									{#if doc.category}<span class="uppercase tracking-[0.15em]">{doc.category}</span>{/if}
 									{#if membersOnly}
-										<span class="flex items-center gap-1 text-gold"><Lock size={10} /> Acceso restringido</span>
+										<span class="flex items-center gap-1 text-signal"><Lock size={10} /> Acceso restringido</span>
 									{/if}
 									{#if price}<span class="text-fg font-medium">{price}</span>{/if}
 								</p>
@@ -117,7 +117,7 @@
 										type="button"
 										onclick={() => handleDownload(doc)}
 										disabled={dlState === 'loading'}
-										class="flex items-center gap-2 px-4 py-2 bg-fg text-base text-xs font-medium hover:bg-black/80 transition-colors disabled:opacity-50"
+										class="flex items-center gap-2 px-4 py-2 bg-fg text-base text-xs font-medium hover:opacity-90 transition-colors disabled:opacity-50"
 									>
 										{#if dlState === 'loading'}
 											<Loader2 size={13} class="animate-spin" />
@@ -129,7 +129,7 @@
 										{dlState === 'loading' ? 'Descargando…' : dlState === 'done' ? 'Descargado' : 'Descargar'}
 									</button>
 									{#if dlState === 'error'}
-										<p class="text-[11px] text-red-600 mt-1.5">{dlMessage}</p>
+										<p class="text-[11px] text-rec mt-1.5">{dlMessage}</p>
 									{/if}
 								</div>
 							{/if}

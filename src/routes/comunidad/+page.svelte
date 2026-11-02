@@ -160,7 +160,7 @@
 					<a href="/login?redirect=/comunidad" class="px-4 py-2 border border-line text-fg text-xs font-medium hover:bg-panel transition-colors">
 						Iniciar sesión
 					</a>
-					<a href="/register?redirect=/comunidad" class="px-4 py-2 bg-fg text-base text-xs font-medium hover:bg-black/80 transition-colors">
+					<a href="/register?redirect=/comunidad" class="px-4 py-2 bg-fg text-base text-xs font-medium hover:opacity-90 transition-colors">
 						Crear cuenta
 					</a>
 				</div>
@@ -183,7 +183,7 @@
 			</div>
 		{:else if membershipStatus === 'REJECTED'}
 			<div class="bg-panel border border-line p-5 flex items-start gap-3">
-				<XCircle size={20} class="text-red-500 flex-shrink-0 mt-0.5" />
+				<XCircle size={20} class="text-rec flex-shrink-0 mt-0.5" />
 				<div class="flex-1">
 					<p class="text-sm text-fg font-medium">Tu solicitud fue rechazada</p>
 					{#if membership.rejectionReason}
@@ -202,7 +202,7 @@
 		{/if}
 
 		{#if commentError}
-			<div class="mt-4 border border-red-200 bg-red-50 text-red-700 px-3 py-2 text-xs">{commentError}</div>
+			<div class="mt-4 border border-rec/30 bg-rec/10 text-rec px-3 py-2 text-xs">{commentError}</div>
 		{/if}
 
 		{#if loading}
@@ -309,7 +309,7 @@
 											type="button"
 											onclick={() => handleSubmitComment(post.id)}
 											disabled={commentLoading === post.id || !(commentDrafts[post.id] || '').trim()}
-											class="px-4 py-2 bg-fg text-base text-xs font-medium hover:bg-black/80 transition-colors disabled:opacity-50"
+											class="px-4 py-2 bg-fg text-base text-xs font-medium hover:opacity-90 transition-colors disabled:opacity-50"
 										>
 											{#if commentLoading === post.id}<Loader2 size={14} class="animate-spin" />{:else}Comentar{/if}
 										</button>

@@ -42,12 +42,12 @@
 	]
 
 	function navLinkClass(active) {
-		return active ? 'text-night font-semibold' : 'text-fg/80 hover:text-night'
+		return active ? 'text-signal font-semibold' : 'text-fg/80 hover:text-signal'
 	}
 
 	function activeBorder(active) {
 		return active
-			? 'after:absolute after:inset-x-0 after:-bottom-1 after:h-[3px] after:bg-gold after:rounded-full'
+			? 'after:absolute after:inset-x-0 after:-bottom-1 after:h-[3px] after:bg-signal after:rounded-full'
 			: ''
 	}
 </script>
@@ -70,9 +70,9 @@
 				{:else if org?.logo}
 					<img src={imgUrl(org.logo)} alt={org?.name || 'Institución'} width="44" height="44" class="w-11 h-11 object-contain rounded-full bg-cream p-1" />
 				{:else}
-					<span class="w-11 h-11 rounded-full bg-cream flex items-center justify-center font-display font-bold text-night text-lg">{(org?.name || 'IN')[0]?.toUpperCase()}</span>
+					<span class="w-11 h-11 rounded-full bg-cream flex items-center justify-center font-display font-bold text-fg text-lg">{(org?.name || 'IN')[0]?.toUpperCase()}</span>
 				{/if}
-				<span class="font-display font-semibold text-night text-lg sm:text-xl tracking-tight leading-tight">CursoX</span>
+				<span class="font-display font-semibold text-signal text-lg sm:text-xl tracking-tight leading-tight">CursoX</span>
 			</a>
 
 			<div class="hidden 2xl:block flex-1 max-w-xs ml-4">
@@ -93,21 +93,21 @@
 
 				{#if auth.user}
 					<div class="relative group">
-						<button type="button" class="flex items-center gap-1 p-2 rounded-lg text-fg/80 hover:text-night hover:bg-panel transition-colors">
+						<button type="button" class="flex items-center gap-1 p-2 rounded-lg text-fg/80 hover:text-signal hover:bg-panel transition-colors">
 							<User class="w-5 h-5" />
 							<span class="hidden md:inline text-sm">{auth.user.firstName}</span>
 						</button>
 						<div class="absolute right-0 top-full mt-1 w-44 bg-surface border border-line rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 overflow-hidden">
 							<a href="/orders" class="block w-full px-4 py-2.5 text-sm text-fg hover:bg-panel">Mis pedidos</a>
 							<a href="/wishlist" class="block w-full px-4 py-2.5 text-sm text-fg hover:bg-panel">Favoritos</a>
-							<button type="button" onclick={() => auth.logout()} class="flex items-center gap-2 w-full px-4 py-2.5 text-sm text-red-600 hover:bg-panel">
+							<button type="button" onclick={() => auth.logout()} class="flex items-center gap-2 w-full px-4 py-2.5 text-sm text-rec hover:bg-panel">
 								<LogOut class="w-4 h-4" />
 								Cerrar sesión
 							</button>
 						</div>
 					</div>
 				{:else}
-					<a href="/login" class="flex items-center gap-1 px-3 py-2 rounded-lg text-fg/80 hover:text-night hover:bg-panel transition-colors">
+					<a href="/login" class="flex items-center gap-1 px-3 py-2 rounded-lg text-fg/80 hover:text-signal hover:bg-panel transition-colors">
 						<User class="w-5 h-5" />
 						<span class="hidden md:inline text-sm">Ingresar</span>
 					</a>
@@ -116,7 +116,7 @@
 				<button
 					type="button"
 					onclick={toggleTheme}
-					class="p-2 rounded-lg text-fg/80 hover:text-night hover:bg-panel transition-colors"
+					class="p-2 rounded-lg text-fg/80 hover:text-signal hover:bg-panel transition-colors"
 					aria-label={$theme === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'}
 					title={$theme === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'}
 				>

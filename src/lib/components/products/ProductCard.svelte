@@ -110,7 +110,7 @@
 			type="button"
 			onclick={handleToggleFavorite}
 			disabled={favoriteLoading}
-			class={`absolute top-2 right-2 z-10 w-9 h-9 flex items-center justify-center border transition-all ${isFavorite ? 'bg-signal border-signal text-night' : 'bg-surface/90 border-line text-mute hover:border-signal hover:text-fg'}`}
+			class={`absolute top-2 right-2 z-10 w-9 h-9 flex items-center justify-center border transition-all ${isFavorite ? 'bg-signal border-signal text-base' : 'bg-surface/90 border-line text-mute hover:border-signal hover:text-fg'}`}
 			title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
 			aria-label={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
 		>
@@ -128,7 +128,7 @@
 		{#if product.labels?.length > 0}
 			<div class="absolute top-2 left-2 flex flex-col gap-1">
 				{#each product.labels.slice(0, 2) as label}
-					<span class="inline-flex items-center gap-1 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.12em] bg-gold text-white border border-gold">
+					<span class="inline-flex items-center gap-1 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.12em] bg-signal text-base border border-signal">
 						{label.emoji} {label.name}
 					</span>
 				{/each}
@@ -224,7 +224,7 @@
 			type="button"
 			onclick={handleAddToCart}
 			disabled={outOfStock}
-			class={`btn mt-3 w-full !py-2.5 text-[10px] ${added ? '!bg-signal !border-signal !text-night' : ''}`}
+			class={`btn mt-3 w-full !py-2.5 text-[10px] ${added ? '!bg-signal !border-signal !text-base' : ''}`}
 		>
 			{#if outOfStock}
 				Sin stock

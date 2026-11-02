@@ -36,7 +36,7 @@
 
 		<form onsubmit={handleSubmit} class="space-y-4">
 			<div>
-				<label class="block text-xs font-medium text-black/70 mb-1" for="login-email">Email</label>
+				<label class="block text-xs font-medium text-fg/70 mb-1" for="login-email">Email</label>
 				<input
 					id="login-email"
 					type="email"
@@ -48,7 +48,7 @@
 			</div>
 
 			<div>
-				<label class="block text-xs font-medium text-black/70 mb-1" for="login-password">Contraseña</label>
+				<label class="block text-xs font-medium text-fg/70 mb-1" for="login-password">Contraseña</label>
 				<input
 					id="login-password"
 					type="password"
@@ -66,7 +66,7 @@
 			<button
 				type="submit"
 				disabled={loading}
-				class="w-full py-2.5 bg-fg text-base text-sm font-medium hover:bg-black/80 transition-colors disabled:opacity-50"
+				class="w-full py-2.5 bg-fg text-base text-sm font-medium hover:opacity-90 transition-colors disabled:opacity-50"
 			>
 				{loading ? 'Cargando...' : 'Ingresar'}
 			</button>

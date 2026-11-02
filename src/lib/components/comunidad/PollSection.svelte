@@ -109,11 +109,11 @@
 					type="button"
 					onclick={handleVote}
 					disabled={voting || selected.length === 0}
-					class="w-full px-4 py-2 bg-fg text-base text-xs font-medium hover:bg-black/80 transition-colors disabled:opacity-50"
+					class="w-full px-4 py-2 bg-fg text-base text-xs font-medium hover:opacity-90 transition-colors disabled:opacity-50"
 				>
 					{#if voting}<Loader2 size={14} class="animate-spin mx-auto" />{:else}Votar{/if}
 				</button>
-				{#if pollError}<p class="text-xs text-red-600">{pollError}</p>{/if}
+				{#if pollError}<p class="text-xs text-rec">{pollError}</p>{/if}
 			</div>
 		{/if}
 	</div>

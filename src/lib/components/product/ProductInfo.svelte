@@ -158,7 +158,7 @@
 
 		{#if isAvailable}
 			<div class="flex flex-col sm:flex-row gap-3">
-				<button type="button" onclick={handleAddToCart} class={`btn flex-1 ${added ? '!bg-signal !border-signal !text-night' : ''}`}>
+				<button type="button" onclick={handleAddToCart} class={`btn flex-1 ${added ? '!bg-signal !border-signal !text-base' : ''}`}>
 					{added ? '✓ Agregado' : 'Agregar al carrito'}
 				</button>
 				<button type="button" onclick={handleBuyNow} class="btn btn-primary flex-1">Comprar ahora</button>
