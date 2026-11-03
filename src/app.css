@@ -1,8 +1,8 @@
+/* Identidad 0SC1: blanco/negro, teal de marca, superficies duras y
+   metadatos monoespaciados. Tokens semánticos con tema claro y oscuro. */
+
 @import "tailwindcss";
 
-/* Identidad 0SC1: blanco/negro, teal de marca, superficies duras y
-   metadatos monoespaciados. Tokens semánticos con alias temporales
-   (gold, brass, cream, sand) para no romper clases existentes. */
 @theme inline {
   --color-base: var(--c-base);
   --color-surface: var(--c-surface);
@@ -15,11 +15,6 @@
   --color-rec: var(--c-rec);
   --color-amber: var(--c-amber);
   --color-brand: var(--c-brand);
-  /* Alias compatibles: se migran o eliminan al final del restyling */
-  --color-gold: var(--c-signal);
-  --color-brass: var(--c-signal);
-  --color-cream: var(--c-panel);
-  --color-sand: var(--c-sand);
 
   --font-sans: var(--font-body-mplus), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-display-rajdhani), var(--font-body-mplus), ui-sans-serif, system-ui, sans-serif;
@@ -49,7 +44,6 @@
   --c-rec: #a81446;
   --c-amber: #8a5a00;
   --c-brand: #2ca798;
-  --c-sand: #d0d0d0;
   --c-feather: rgba(44, 167, 152, 0.35);
 }
 
@@ -71,7 +65,6 @@
   --c-rec: #ff3370;
   --c-amber: #d9a441;
   --c-brand: #2ca798;
-  --c-sand: #050505;
 }
 
 * {
@@ -470,6 +463,6 @@ body {
 }
 
 /* Sección con superficie secundaria (alternancia) */
-.section-cream {
+.section-panel {
   background: var(--c-panel);
 }

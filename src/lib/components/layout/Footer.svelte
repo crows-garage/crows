@@ -204,7 +204,7 @@
 
 	<div
 		bind:this={creditsRef}
-		class={`border-t border-signal/20 py-4 bg-sand transition-all duration-700 ${isRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+		class={`border-t border-signal/20 py-4 bg-base transition-all duration-700 ${isRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
 	>
 		<div class="max-w-7xl mx-auto px-4 flex items-center justify-center gap-2">
 			<img src="/HOD.png" alt="HOD software" width="20" height="20" class="opacity-60" />

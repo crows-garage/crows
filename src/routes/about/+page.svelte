@@ -56,12 +56,12 @@
 
 <div class="min-h-screen bg-base">
 	<!-- Portada + logo de la organización -->
-	<div class="relative overflow-hidden bg-sand">
+	<div class="relative overflow-hidden bg-base">
 		{#if cover}
 			<img src={cover} alt={`${name} · portada`} loading="lazy" class="absolute inset-0 w-full h-full object-cover" />
 		{/if}
-		<div class="absolute inset-0 bg-gradient-to-r from-cream/95 via-cream/85 to-cream/60"></div>
-		<div class="absolute inset-0 bg-gradient-to-b from-sand/40 via-transparent to-sand/60"></div>
+		<div class="absolute inset-0 bg-gradient-to-r from-panel/95 via-panel/85 to-panel/60"></div>
+		<div class="absolute inset-0 bg-gradient-to-b from-base/40 via-transparent to-base/60"></div>
 
 		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
 			<div class="flex flex-col sm:flex-row items-start sm:items-end gap-6">
