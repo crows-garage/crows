@@ -11,8 +11,8 @@
 </svelte:head>
 
 <div class="min-h-[70vh] flex flex-col items-center justify-center px-4 text-center bg-base">
-	<div class="border border-line bg-surface p-8 sm:p-12 max-md:w-full max-w-md w-full rounded-2xl shadow-sm">
-		<div class="w-14 h-14 rounded-full bg-signal/10 text-signal flex items-center justify-center mx-auto mb-5">
+	<div class="border border-line bg-surface p-8 sm:p-12 max-md:w-full max-w-md w-full">
+		<div class="w-14 h-14 border border-line bg-signal/10 text-signal flex items-center justify-center mx-auto mb-5">
 			<SearchX class="w-7 h-7" />
 		</div>
 		<p class="eyebrow mb-3">Página no encontrada · Error {page.status}</p>

@@ -20,7 +20,7 @@
 	<div class="max-w-3xl mx-auto px-4">
 		<div class="mb-10">
 			<p class="text-[10px] uppercase tracking-[0.3em] text-mute mb-2">Legal</p>
-			<h1 class="text-3xl sm:text-4xl font-light tracking-tight text-fg">Términos y Condiciones</h1>
+			<h1 class="text-3xl sm:text-4xl font-display font-semibold tracking-tight text-fg">Términos y Condiciones</h1>
 		</div>
 
 		{#if data.content}

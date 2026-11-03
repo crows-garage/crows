@@ -144,7 +144,7 @@
 	<div class="max-w-3xl mx-auto px-4">
 		<div class="text-center mb-8">
 			<p class="text-[10px] uppercase tracking-[0.3em] mb-2 text-mute">Comunidad</p>
-			<h1 class="text-2xl sm:text-3xl font-light tracking-tight text-fg">Comunidad estudiantil</h1>
+			<h1 class="text-2xl sm:text-3xl font-display font-semibold tracking-tight text-fg">Comunidad estudiantil</h1>
 			<p class="text-sm text-mute mt-2">Un espacio para compartir ideas, experiencias y oportunidades con estudiantes.</p>
 		</div>
 
@@ -160,7 +160,7 @@
 					<a href="/login?redirect=/comunidad" class="px-4 py-2 border border-line text-fg text-xs font-medium hover:bg-panel transition-colors">
 						Iniciar sesión
 					</a>
-					<a href="/register?redirect=/comunidad" class="px-4 py-2 bg-fg text-base text-xs font-medium hover:opacity-90 transition-colors">
+					<a href="/register?redirect=/comunidad" class="px-4 py-2 bg-signal text-base text-xs font-medium hover:bg-brand transition-colors">
 						Crear cuenta
 					</a>
 				</div>
@@ -309,7 +309,7 @@
 											type="button"
 											onclick={() => handleSubmitComment(post.id)}
 											disabled={commentLoading === post.id || !(commentDrafts[post.id] || '').trim()}
-											class="px-4 py-2 bg-fg text-base text-xs font-medium hover:opacity-90 transition-colors disabled:opacity-50"
+											class="px-4 py-2 bg-signal text-base text-xs font-medium hover:bg-brand transition-colors disabled:opacity-50"
 										>
 											{#if commentLoading === post.id}<Loader2 size={14} class="animate-spin" />{:else}Comentar{/if}
 										</button>

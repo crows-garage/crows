@@ -31,7 +31,7 @@
 	<div class="max-w-md mx-auto px-4">
 		<div class="text-center mb-8">
 			<p class="text-[10px] uppercase tracking-[0.3em] mb-2 text-mute">Acceso</p>
-			<h1 class="text-2xl sm:text-3xl font-light tracking-tight text-fg">Iniciar sesión</h1>
+			<h1 class="text-2xl sm:text-3xl font-display font-semibold tracking-tight text-fg">Iniciar sesión</h1>
 		</div>
 
 		<form onsubmit={handleSubmit} class="space-y-4">
@@ -66,7 +66,7 @@
 			<button
 				type="submit"
 				disabled={loading}
-				class="w-full py-2.5 bg-fg text-base text-sm font-medium hover:opacity-90 transition-colors disabled:opacity-50"
+				class="w-full py-2.5 bg-signal text-base text-sm font-medium hover:bg-brand transition-colors disabled:opacity-50"
 			>
 				{loading ? 'Cargando...' : 'Ingresar'}
 			</button>

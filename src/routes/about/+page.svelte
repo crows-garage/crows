@@ -66,7 +66,7 @@
 		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
 			<div class="flex flex-col sm:flex-row items-start sm:items-end gap-6">
 				{#if logo}
-					<div class="w-20 h-20 sm:w-28 sm:h-28 shrink-0 bg-surface rounded-xl p-2 flex items-center justify-center overflow-hidden shadow-lg border border-line">
+					<div class="w-20 h-20 sm:w-28 sm:h-28 shrink-0 bg-surface p-2 flex items-center justify-center overflow-hidden border border-line">
 						<img src={logo} alt={`${name} · logo`} loading="lazy" class="w-full h-full object-contain" />
 					</div>
 				{/if}
@@ -106,7 +106,7 @@
 				<h2 class="font-display font-semibold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-fg mb-8">Autoridades</h2>
 				<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 					{#each activeAuthorities as authority (authority.id)}
-						<div class="rounded-xl border border-line bg-surface p-5 transition-colors hover:border-signal/40">
+						<div class="border border-line bg-surface p-5 transition-colors hover:border-signal/40">
 							<p class="font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
 								{authority.position || authority.role || 'Autoridad'}
 							</p>
@@ -133,10 +133,10 @@
 								href={item.href}
 								target={item.href.startsWith('http') ? '_blank' : undefined}
 								rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-								class="rounded-xl border border-line bg-surface p-5 block transition-all hover:-translate-y-0.5 hover:shadow-lg hover:border-signal/40"
+								class="border border-line bg-surface p-5 block transition-colors hover:border-signal/40"
 							>
 								<div class="flex items-center gap-3 mb-3">
-									<span class="w-9 h-9 rounded-lg bg-signal/10 text-signal flex items-center justify-center">
+									<span class="w-9 h-9 bg-signal/10 text-signal flex items-center justify-center">
 										<Icon class="w-4 h-4" />
 									</span>
 									<span class="font-mono text-[9px] uppercase tracking-[0.22em] text-mute">{item.label}</span>
@@ -144,9 +144,9 @@
 								<p class="font-medium text-sm text-fg break-all">{item.value}</p>
 							</a>
 						{:else}
-							<div class="rounded-xl border border-line bg-surface p-5">
+							<div class="border border-line bg-surface p-5">
 								<div class="flex items-center gap-3 mb-3">
-									<span class="w-9 h-9 rounded-lg bg-signal/10 text-signal flex items-center justify-center">
+									<span class="w-9 h-9 bg-signal/10 text-signal flex items-center justify-center">
 										<Icon class="w-4 h-4" />
 									</span>
 									<span class="font-mono text-[9px] uppercase tracking-[0.22em] text-mute">{item.label}</span>

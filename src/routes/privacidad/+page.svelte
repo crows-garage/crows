@@ -18,9 +18,9 @@
 
 <div class="min-h-screen bg-night pt-32 pb-16">
 	<div class="max-w-3xl mx-auto px-4">
-		<h1 class="text-3xl font-light tracking-tight text-white mb-8">Política de Privacidad</h1>
+		<h1 class="text-3xl font-display font-semibold tracking-tight text-white mb-8">Política de Privacidad</h1>
 		{#if data.content}
-			<article class="article max-w-none !text-white/80">
+			<article class="article legal max-w-none !text-white/80">
 				{@html renderMarkdown(data.content)}
 			</article>
 		{:else}
@@ -31,3 +31,23 @@
 		{/if}
 	</div>
 </div>
+
+<style>
+	/* Página sobre fondo night permanente: headings, code y tablas heredan blanco
+	   para no quedar invisibles con los tokens del tema claro */
+	.legal :global(h1),
+	.legal :global(h2),
+	.legal :global(h3),
+	.legal :global(h4) {
+		color: inherit;
+	}
+
+	.legal :global(code),
+	.legal :global(th) {
+		background: rgba(255, 255, 255, 0.1);
+	}
+
+	.legal :global(pre) {
+		background: rgba(255, 255, 255, 0.05);
+	}
+</style>

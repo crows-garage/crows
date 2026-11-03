@@ -82,9 +82,9 @@
 			<div class="lg:col-span-1 space-y-6">
 				<!-- WhatsApp -->
 				{#if whatsappLink}
-					<div class="rounded-2xl p-6 border border-line bg-surface">
+					<div class="p-6 border border-line bg-surface">
 						<div class="flex items-center gap-3 mb-3">
-							<div class="w-12 h-12 bg-[#25d366] rounded-xl flex items-center justify-center">
+							<div class="w-12 h-12 bg-signal flex items-center justify-center">
 								<Phone class="w-6 h-6 text-white" />
 							</div>
 							<div>
@@ -96,7 +96,7 @@
 							href={whatsappLink}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="block w-full text-center py-3 bg-[#25d366] text-white rounded-xl font-semibold hover:bg-[#1fb958] transition-colors"
+							class="block w-full text-center py-3 bg-signal text-base font-semibold hover:bg-brand transition-colors"
 						>
 							{whatsapp}
 						</a>
@@ -105,9 +105,9 @@
 
 				<!-- Email -->
 				{#if emails.length > 0}
-					<div class="rounded-2xl p-6 border border-line bg-surface">
+					<div class="p-6 border border-line bg-surface">
 						<div class="flex items-center gap-3 mb-3">
-							<div class="w-12 h-12 bg-signal/10 rounded-xl flex items-center justify-center">
+							<div class="w-12 h-12 bg-signal/10 flex items-center justify-center">
 								<Mail class="w-6 h-6 text-signal" />
 							</div>
 							<div>
@@ -125,7 +125,7 @@
 
 				<!-- Redes sociales -->
 				{#if socialItems.length > 0}
-					<div class="rounded-2xl p-6 border border-line bg-surface">
+					<div class="p-6 border border-line bg-surface">
 						<h3 class="font-semibold text-fg mb-3">Redes Sociales</h3>
 						<div class="flex gap-3">
 							{#each socialItems as { label, href, name }}
@@ -134,7 +134,7 @@
 									target="_blank"
 									rel="noopener noreferrer"
 									aria-label={label}
-									class="w-10 h-10 bg-signal/10 text-signal rounded-xl flex items-center justify-center hover:bg-signal hover:text-base transition-colors"
+									class="w-10 h-10 bg-signal/10 text-signal flex items-center justify-center hover:bg-signal hover:text-base transition-colors"
 								>
 									<SocialIcon {name} class="w-5 h-5" />
 								</a>
@@ -145,7 +145,7 @@
 
 				<!-- Ubicación -->
 				{#if address}
-					<div class="rounded-2xl p-6 border border-line bg-surface">
+					<div class="p-6 border border-line bg-surface">
 						<h3 class="font-semibold text-fg mb-3 flex items-center gap-2">
 							<MapPin class="w-5 h-5 text-signal" />
 							Ubicación
@@ -159,7 +159,7 @@
 						>
 							Ver en Google Maps →
 						</a>
-						<div class="rounded-xl overflow-hidden border border-line">
+						<div class="overflow-hidden border border-line">
 							<iframe
 								src={`https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`}
 								width="100%"
@@ -177,12 +177,12 @@
 
 			<!-- Columna derecha: formulario -->
 			<div class="lg:col-span-2">
-				<div class="rounded-2xl p-6 md:p-8 border border-line bg-surface">
+				<div class="p-6 md:p-8 border border-line bg-surface">
 					<h2 class="text-xl font-semibold text-fg mb-6">Enviá tu consulta</h2>
 					{#if sent}
 						<div class="text-center py-8">
-							<div class="w-16 h-16 bg-[#25d366]/15 rounded-full flex items-center justify-center mx-auto mb-4">
-								<Send class="w-8 h-8 text-[#25d366]" />
+							<div class="w-16 h-16 bg-signal/10 border border-line flex items-center justify-center mx-auto mb-4">
+								<Send class="w-8 h-8 text-signal" />
 							</div>
 							<h3 class="text-lg font-semibold text-fg mb-2">¡Mensaje listo!</h3>
 							<p class="text-mute">Te redirigimos a WhatsApp para continuar la conversación.</p>

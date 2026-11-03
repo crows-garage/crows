@@ -166,7 +166,7 @@
 	<div class="max-w-5xl mx-auto px-4">
 		<div class="text-center mb-8">
 			<p class="text-[10px] uppercase tracking-[0.3em] mb-2 text-mute">Agenda</p>
-			<h1 class="text-2xl sm:text-3xl font-light tracking-tight text-fg">Turnos y Cupos</h1>
+			<h1 class="text-2xl sm:text-3xl font-display font-semibold tracking-tight text-fg">Turnos y Cupos</h1>
 			<p class="text-sm text-mute mt-2">Reservá tu lugar en clases, jornadas y atenciones de la institución.</p>
 		</div>
 

@@ -59,7 +59,7 @@
 
 	{#if published.length === 0}
 		<div class="max-w-7xl mx-auto px-4 py-16">
-			<div class="border border-line bg-surface p-10 text-center rounded-2xl">
+			<div class="border border-line bg-surface p-10 text-center">
 				<p class="font-mono text-xs uppercase tracking-[0.2em] text-mute">Aún no hay noticias publicadas</p>
 				<p class="text-sm text-mute mt-2">Volvé pronto para leer las últimas novedades de CursoX.</p>
 			</div>
@@ -76,7 +76,7 @@
 								<span class="font-mono text-[10px] uppercase tracking-[0.28em] text-mute">Sin imagen</span>
 							</div>
 						{/if}
-						<span class="absolute top-3 left-3 font-mono text-[9px] uppercase tracking-[0.22em] bg-signal text-base px-2 py-1 rounded-full">★ Nota destacada</span>
+						<span class="absolute top-3 left-3 font-mono text-[9px] uppercase tracking-[0.22em] bg-signal text-base px-2 py-1">★ Nota destacada</span>
 					</div>
 					<div class="p-6 sm:p-10 flex flex-col justify-center">
 						{@render meta(featured)}
@@ -106,7 +106,7 @@
 									<div class="absolute inset-0 graticule"></div>
 								{/if}
 								{#if post.featured}
-									<span class="absolute top-2.5 left-2.5 font-mono text-[9px] uppercase tracking-[0.2em] bg-signal text-base px-2 py-0.5 rounded-full">★ Destacado</span>
+									<span class="absolute top-2.5 left-2.5 font-mono text-[9px] uppercase tracking-[0.2em] bg-signal text-base px-2 py-0.5">★ Destacado</span>
 								{/if}
 							</div>
 							<div class="p-5 flex flex-col flex-1">

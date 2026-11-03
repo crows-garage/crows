@@ -160,7 +160,7 @@
 			<div class="bg-panel border border-line p-6 sm:p-8 text-center">
 				<CheckCircle2 size={44} class="mx-auto mb-4 text-signal" />
 				<p class="text-[10px] uppercase tracking-[0.3em] mb-2 text-mute">Solicitud enviada</p>
-				<h1 class="text-xl sm:text-2xl font-light tracking-tight text-fg">¡Gracias por querer asociarte!</h1>
+				<h1 class="text-xl sm:text-2xl font-display font-semibold tracking-tight text-fg">¡Gracias por querer asociarte!</h1>
 				<p class="text-sm text-mute mt-3 leading-relaxed">
 					Tu solicitud de afiliación fue enviada y está
 					<strong class="text-fg">pendiente de revisión</strong> por la comisión
@@ -173,7 +173,7 @@
 				<button
 					type="button"
 					onclick={() => goto('/')}
-					class="mt-6 w-full py-2.5 bg-fg text-base text-sm font-medium hover:opacity-90 transition-colors"
+					class="mt-6 w-full py-2.5 bg-signal text-base text-sm font-medium hover:bg-brand transition-colors"
 				>
 					Volver al inicio
 				</button>
@@ -185,7 +185,7 @@
 		<div class="max-w-md mx-auto px-4">
 			<div class="text-center mb-8">
 				<p class="text-[10px] uppercase tracking-[0.3em] mb-2 text-mute">Registro</p>
-				<h1 class="text-2xl sm:text-3xl font-light tracking-tight text-fg">Crear cuenta</h1>
+				<h1 class="text-2xl sm:text-3xl font-display font-semibold tracking-tight text-fg">Crear cuenta</h1>
 				<p class="text-sm text-mute mt-1">{step === 1 ? 'Completa tus datos' : 'Datos de asociado'}</p>
 			</div>
 
@@ -373,7 +373,7 @@
 					<button
 						type="button"
 						onclick={handleNextStep}
-						class="w-full py-2.5 bg-fg text-base text-sm font-medium hover:opacity-90 transition-colors"
+						class="w-full py-2.5 bg-signal text-base text-sm font-medium hover:bg-brand transition-colors"
 					>
 						Continuar →
 					</button>
@@ -382,7 +382,7 @@
 						<button
 							type="submit"
 							disabled={auth.loading}
-							class="w-full py-2.5 bg-fg text-base text-sm font-medium hover:opacity-90 disabled:opacity-50 transition-colors"
+							class="w-full py-2.5 bg-signal text-base text-sm font-medium hover:bg-brand disabled:opacity-50 transition-colors"
 						>
 							{auth.loading ? 'Enviando...' : 'Solicitar afiliación'}
 						</button>

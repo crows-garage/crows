@@ -43,7 +43,7 @@
 	<div class="max-w-5xl mx-auto px-4">
 		<div class="text-center mb-10">
 			<p class="text-[10px] uppercase tracking-[0.3em] mb-2 text-mute">Colaboracion</p>
-			<h1 class="text-2xl sm:text-3xl font-light tracking-tight text-fg">Proyectos</h1>
+			<h1 class="text-2xl sm:text-3xl font-display font-semibold tracking-tight text-fg">Proyectos</h1>
 			<p class="text-sm text-mute mt-2">Ideas y proyectos que pueden crecer con las personas correctas.</p>
 		</div>
 
@@ -109,7 +109,7 @@
 									<div class="space-y-3">
 										{#each milestones as m, idx}
 											<div class="flex items-start gap-3">
-												<span class="w-6 h-6 rounded-full border bg-base flex items-center justify-center text-[10px] font-mono text-mute flex-shrink-0">
+												<span class="w-6 h-6 border bg-base flex items-center justify-center text-[10px] font-mono text-mute flex-shrink-0">
 													{idx + 1}
 												</span>
 												<div class="min-w-0 flex-1">

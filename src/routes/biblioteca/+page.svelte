@@ -63,7 +63,7 @@
 	<div class="max-w-5xl mx-auto px-4">
 		<div class="text-center mb-10">
 			<p class="text-[10px] uppercase tracking-[0.3em] mb-2 text-mute">Recursos academicos</p>
-			<h1 class="text-2xl sm:text-3xl font-light tracking-tight text-fg">Biblioteca</h1>
+			<h1 class="text-2xl sm:text-3xl font-display font-semibold tracking-tight text-fg">Biblioteca</h1>
 			<p class="text-sm text-mute mt-2">Apuntes, materiales y conocimientos compartidos por la comunidad.</p>
 		</div>
 
@@ -79,7 +79,7 @@
 					{@const membersOnly = doc.visibility === 'MEMBERS_ONLY'}
 					<article class="bg-panel border border-line p-5 flex flex-col gap-3">
 						<div class="flex items-start gap-3">
-							<span class="w-10 h-10 rounded-full bg-cream flex items-center justify-center flex-shrink-0">
+							<span class="w-10 h-10 border border-line bg-panel flex items-center justify-center flex-shrink-0">
 								<FileText size={16} class="text-fg/70" />
 							</span>
 							<div class="min-w-0 flex-1">
@@ -117,7 +117,7 @@
 										type="button"
 										onclick={() => handleDownload(doc)}
 										disabled={dlState === 'loading'}
-										class="flex items-center gap-2 px-4 py-2 bg-fg text-base text-xs font-medium hover:opacity-90 transition-colors disabled:opacity-50"
+										class="flex items-center gap-2 px-4 py-2 bg-signal text-base text-xs font-medium hover:bg-brand transition-colors disabled:opacity-50"
 									>
 										{#if dlState === 'loading'}
 											<Loader2 size={13} class="animate-spin" />
