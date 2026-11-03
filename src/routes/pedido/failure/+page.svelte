@@ -73,43 +73,43 @@
 	</div>
 {:else if !orderId}
 	<div class="max-w-md mx-auto px-4 py-12 text-center">
-		<div class="w-16 h-16 rounded-full bg-panel flex items-center justify-center mx-auto mb-5">
+		<div class="w-16 h-16 border border-line bg-panel flex items-center justify-center mx-auto mb-5">
 			<XCircle size={32} class="text-mute" />
 		</div>
-		<h1 class="text-xl font-light text-fg mb-2">Pago no procesado</h1>
+		<h1 class="font-display font-semibold text-xl text-fg mb-2">Pago no procesado</h1>
 		<p class="text-sm text-mute mb-6">No se encontró información del pago.</p>
-		<a href="/cart" class="inline-flex items-center gap-2 bg-fg text-base px-5 py-2.5 rounded-lg text-sm font-medium hover:opacity-90 transition-colors">
+		<a href="/cart" class="btn btn-primary">
 			<ArrowLeft size={14} /> Volver al carrito
 		</a>
 	</div>
 {:else}
 	<div class="max-w-md mx-auto px-4 py-12">
 		<div class="text-center mb-5">
-			<div class="w-16 h-16 rounded-full bg-panel flex items-center justify-center mx-auto mb-5">
+			<div class="w-16 h-16 border border-line bg-panel flex items-center justify-center mx-auto mb-5">
 				<XCircle size={32} class="text-mute" />
 			</div>
-			<h1 class="text-xl font-light text-fg mb-2">Pago rechazado</h1>
+			<h1 class="font-display font-semibold text-xl text-fg mb-2">Pago rechazado</h1>
 			<p class="text-sm text-mute">El pago no pudo procesarse. Intentá nuevamente.</p>
 		</div>
 
-		<div class="bg-panel rounded-lg p-4 mb-5">
+		<div class="border border-line bg-surface p-4 mb-5">
 			<div class="flex justify-between items-center mb-3">
-				<span class="text-xs text-mute">N° de pedido</span>
-				<span class="text-sm font-medium text-fg">#{orderId}</span>
+				<span class="font-mono text-[10px] uppercase tracking-[0.14em] text-mute">N° de pedido</span>
+				<span class="font-mono text-sm tel text-fg">#{orderId}</span>
 			</div>
 			{#if order?.total}
 				<div class="flex justify-between items-center mb-3">
-					<span class="text-xs text-mute">Total</span>
-					<span class="text-sm font-medium text-fg">${parseFloat(order.total).toLocaleString('es-AR')}</span>
+					<span class="font-mono text-[10px] uppercase tracking-[0.14em] text-mute">Total</span>
+					<span class="font-mono text-sm tel text-fg">${parseFloat(order.total).toLocaleString('es-AR')}</span>
 				</div>
 			{/if}
 			{#if paymentId}
 				<div class="pt-3 border-t border-line">
-					<span class="text-xs text-mute">ID de transacción</span>
+					<span class="font-mono text-[10px] uppercase tracking-[0.14em] text-mute">ID de transacción</span>
 					<p class="text-xs text-mute font-mono mt-1 break-all">{paymentId}</p>
 				</div>
 			{/if}
-			<div class="mt-3 flex items-center gap-2 text-amber bg-amber/10 p-2.5 rounded-lg">
+			<div class="mt-3 flex items-center gap-2 text-amber bg-amber/10 border border-amber/30 p-2.5">
 				<AlertTriangle size={14} />
 				<p class="text-xs">El pago fue rechazado. Intentá con otro método.</p>
 			</div>
@@ -120,13 +120,13 @@
 				type="button"
 				onclick={handleRetry}
 				disabled={retrying}
-				class="flex items-center justify-center gap-2 w-full py-2.5 bg-fg text-base rounded-lg text-sm font-medium hover:opacity-90 transition-colors disabled:opacity-50"
+				class="btn btn-primary w-full"
 			>
 				{#if retrying}<Loader2 size={14} class="animate-spin" />{:else}<RefreshCw size={14} />{/if}
 				{retrying ? 'Procesando...' : 'Intentar nuevamente'}
 			</button>
 
-			<a href="/checkout" class="flex items-center justify-center gap-2 w-full py-2.5 border border-line text-fg/85 rounded-lg text-sm font-medium hover:bg-panel transition-colors">
+			<a href="/checkout" class="btn w-full">
 				<CreditCard size={14} /> Elegir otro método
 			</a>
 		</div>

@@ -39,7 +39,7 @@
 	</div>
 {:else}
 	<div class="max-w-xl mx-auto px-4 py-12 text-center">
-		<div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5 bg-panel">
+		<div class="w-16 h-16 border border-line bg-panel flex items-center justify-center mx-auto mb-5">
 			{#if isPaid}
 				<CheckCircle2 size={36} class="text-fg" />
 			{:else}
@@ -47,7 +47,7 @@
 			{/if}
 		</div>
 
-		<h1 class="text-xl font-light text-fg mb-2">{isPaid ? '¡Pago confirmado!' : '¡Pedido recibido!'}</h1>
+		<h1 class="font-display font-semibold text-xl text-fg mb-2">{isPaid ? '¡Pago confirmado!' : '¡Pedido recibido!'}</h1>
 
 		<p class="text-sm text-mute mb-6">
 			{isPaid
@@ -55,26 +55,26 @@
 				: 'Tu pedido fue registrado. Te contactaremos para coordinar el pago.'}
 		</p>
 
-		<div class="bg-panel rounded-lg p-4 text-left mb-6">
+		<div class="border border-line bg-surface p-4 text-left mb-6">
 			<div class="flex justify-between items-center mb-3">
-				<span class="text-xs text-mute">N° de pedido</span>
-				<span class="text-sm font-medium text-fg">#{order?.id || orderId}</span>
+				<span class="font-mono text-[10px] uppercase tracking-[0.14em] text-mute">N° de pedido</span>
+				<span class="font-mono text-sm tel text-fg">#{order?.id || orderId}</span>
 			</div>
 			{#if order?.total}
 				<div class="flex justify-between items-center">
-					<span class="text-xs text-mute">Total</span>
-					<span class="text-sm font-medium text-fg">${parseFloat(order.total).toLocaleString('es-AR')}</span>
+					<span class="font-mono text-[10px] uppercase tracking-[0.14em] text-mute">Total</span>
+					<span class="font-mono text-sm tel text-fg">${parseFloat(order.total).toLocaleString('es-AR')}</span>
 				</div>
 			{/if}
 			{#if paymentId}
 				<div class="mt-3 pt-3 border-t border-line">
-					<span class="text-xs text-mute">ID de transacción</span>
+					<span class="font-mono text-[10px] uppercase tracking-[0.14em] text-mute">ID de transacción</span>
 					<p class="text-xs text-mute font-mono mt-1 break-all">{paymentId}</p>
 				</div>
 			{/if}
 		</div>
 
-		<a href="/" class="inline-flex items-center justify-center gap-2 w-full bg-fg text-base py-2.5 rounded-lg text-sm font-medium hover:opacity-90 transition-colors">
+		<a href="/" class="btn btn-primary w-full">
 			Volver a la tienda <ArrowRight size={14} />
 		</a>
 	</div>

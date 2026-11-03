@@ -61,10 +61,10 @@
 	</div>
 {:else if !orderId}
 	<div class="max-w-md mx-auto px-4 py-12 text-center">
-		<div class="w-16 h-16 rounded-full bg-panel flex items-center justify-center mx-auto mb-5">
+		<div class="w-16 h-16 border border-line bg-panel flex items-center justify-center mx-auto mb-5">
 			<Clock size={32} class="text-mute" />
 		</div>
-		<h1 class="text-xl font-light text-fg mb-2">Pago pendiente</h1>
+		<h1 class="font-display font-semibold text-xl text-fg mb-2">Pago pendiente</h1>
 		<p class="text-sm text-mute mb-6">No se encontró información del pedido.</p>
 		<a href="/" class="inline-flex items-center gap-2 text-mute text-sm hover:text-fg transition-colors">
 			<ArrowLeft size={14} /> Volver a la tienda
@@ -72,27 +72,27 @@
 	</div>
 {:else}
 	<div class="max-w-md mx-auto px-4 py-12 text-center">
-		<div class="w-16 h-16 rounded-full bg-panel flex items-center justify-center mx-auto mb-5">
+		<div class="w-16 h-16 border border-line bg-panel flex items-center justify-center mx-auto mb-5">
 			<Clock size={32} class="text-mute" />
 		</div>
 
-		<h1 class="text-xl font-light text-fg mb-2">Pago pendiente</h1>
+		<h1 class="font-display font-semibold text-xl text-fg mb-2">Pago pendiente</h1>
 		<p class="text-sm text-mute mb-6">Tu pago está siendo procesado. Te notificaremos cuando se confirme.</p>
 
-		<div class="bg-panel rounded-lg p-4 text-left mb-6">
+		<div class="border border-line bg-surface p-4 text-left mb-6">
 			<div class="flex justify-between items-center mb-3">
-				<span class="text-xs text-mute">N° de pedido</span>
-				<span class="text-sm font-medium text-fg">#{order.id}</span>
+				<span class="font-mono text-[10px] uppercase tracking-[0.14em] text-mute">N° de pedido</span>
+				<span class="font-mono text-sm tel text-fg">#{order.id}</span>
 			</div>
 			{#if order.total}
 				<div class="flex justify-between items-center mb-3">
-					<span class="text-xs text-mute">Total</span>
-					<span class="text-sm font-medium text-fg">${parseFloat(order.total).toLocaleString('es-AR')}</span>
+					<span class="font-mono text-[10px] uppercase tracking-[0.14em] text-mute">Total</span>
+					<span class="font-mono text-sm tel text-fg">${parseFloat(order.total).toLocaleString('es-AR')}</span>
 				</div>
 			{/if}
 			<div class="flex justify-between items-center pt-3 border-t border-line">
-				<span class="text-xs text-mute">Estado</span>
-				<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs bg-panel text-mute">
+				<span class="font-mono text-[10px] uppercase tracking-[0.14em] text-mute">Estado</span>
+				<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs border border-amber/30 bg-amber/10 text-amber">
 					<Clock size={10} /> Pendiente
 				</span>
 			</div>
@@ -102,7 +102,7 @@
 			type="button"
 			onclick={handleRefresh}
 			disabled={refreshing}
-			class="flex items-center justify-center gap-2 w-full py-2.5 border border-line text-fg/85 rounded-lg text-sm font-medium hover:bg-panel transition-colors mb-3 disabled:opacity-50"
+			class="btn w-full mb-3"
 		>
 			{#if refreshing}<Loader2 size={14} class="animate-spin" />{:else}<RefreshCw size={14} />{/if}
 			{refreshing ? 'Actualizando...' : 'Consultar estado'}
@@ -112,7 +112,7 @@
 			<ArrowLeft size={14} /> Volver a la tienda
 		</a>
 
-		<div class="mt-5 p-3 bg-panel rounded-lg">
+		<div class="mt-5 border border-line bg-panel p-3">
 			<p class="text-xs text-mute">💡 La página se actualiza automáticamente cada 5 segundos.</p>
 		</div>
 	</div>

@@ -224,7 +224,7 @@
 			type="button"
 			onclick={handleAddToCart}
 			disabled={outOfStock}
-			class={`btn mt-3 w-full !py-2.5 text-[10px] ${added ? '!bg-signal !border-signal !text-base' : ''}`}
+			class={`btn btn-primary mt-3 w-full !py-2.5 text-[10px] ${added ? '!bg-signal !border-signal !text-base' : ''}`}
 		>
 			{#if outOfStock}
 				Sin stock

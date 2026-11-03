@@ -212,7 +212,7 @@
 			</a>
 
 			<p class="text-[10px] uppercase tracking-[0.3em] mb-2 text-mute">Checkout</p>
-			<h1 class="text-2xl font-light text-fg mb-6">Finalizar compra</h1>
+			<h1 class="font-display font-semibold text-2xl text-fg mb-6">Finalizar compra</h1>
 
 			{#if error}
 				<div class="border border-line text-mute text-xs px-3 py-2 mb-4 flex items-start gap-2">
@@ -441,12 +441,12 @@
 				{/if}
 				{#if step < 3}
 					<button type="button" onclick={handleNext}
-						class="flex-1 bg-fg text-base py-2 text-xs font-medium hover:opacity-90 transition-colors">
+						class="btn btn-primary flex-1 !py-2 text-xs">
 						Continuar
 					</button>
 				{:else}
 					<button type="button" onclick={handleSubmit} disabled={loading}
-						class="flex-1 bg-fg text-base py-2 text-xs font-medium hover:opacity-90 disabled:opacity-50 transition-colors flex items-center justify-center gap-2">
+						class="btn btn-primary flex-1 !py-2 text-xs disabled:opacity-50 flex items-center justify-center gap-2">
 						{#if loading}<Loader2 size={12} class="animate-spin" />{/if}
 						{loading ? 'Procesando...' : `Confirmar • $${finalTotal.toLocaleString('es-AR')}`}
 					</button>

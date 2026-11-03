@@ -1,4 +1,3 @@
-// ≙ src/components/icons/SocialIcons.jsx: SVG inline de redes sociales.
 <script>
 	let { name = '', className = 'w-4 h-4' } = $props()
 </script>
