@@ -19,8 +19,7 @@
 				{#if logo}<img src={logo} alt="" class="w-7 h-7 object-contain" />{:else}<Sparkles class="w-4 h-4" />{/if}
 				<span>Desarrollado por estudiantes y devs del IES</span>
 			</div>
-			<h1 class="mt-7 max-w-4xl font-display font-semibold text-[clamp(3.5rem,10vw,8rem)] leading-[0.86] tracking-[-0.06em]">Aprendé.<br />Conectá.<br /><span class="text-brand">Creá.</span></h1>
-			<p class="mt-8 max-w-2xl text-lg leading-relaxed text-white/75 sm:text-xl">{name} es una comunidad educativa y colaborativa para conectar personas, ideas y oportunidades. Nace en el IES y busca crecer como un proyecto de código abierto para cualquier estudiante con ganas de aprender y construir.</p>
+			<h1 class="mt-7 max-w-4xl font-display font-semibold text-[clamp(3.5rem,10vw,8rem)] leading-[0.86] tracking-[-0.06em]">Explorá.<br />Conectá.<br /><span class="text-brand">Creá.</span></h1>
 			<div class="mt-9 flex flex-wrap gap-3">
 				<a href="#proposito" class="btn btn-primary">Descubrí CursoX <ArrowDown class="w-3.5 h-3.5" /></a>
 				<a href="#proyectos" class="btn border-white/30 text-white hover:text-brand">Pensá en grande <ArrowRight class="w-3.5 h-3.5" /></a>
@@ -36,7 +35,7 @@
 				<span class="eyebrow !text-brand">La idea en movimiento</span>
 				<span class="font-mono text-[10px] text-white/50">01 / 04</span>
 			</div>
-			<p class="font-display font-semibold text-2xl sm:text-3xl leading-tight">Más que apuntes.<br />Una comunidad de ideas.</p>
+			<p class="font-display font-semibold text-2xl sm:text-3xl leading-tight">...<br />Una comunidad de ideas.</p>
 			<p class="mt-5 text-sm leading-relaxed text-white/70">Un lugar para descubrir recursos, oportunidades y personas que quizás todavía no conocés.</p>
 			<div class="mt-10 grid grid-cols-3 border-t border-white/15 pt-4 font-mono text-[9px] uppercase tracking-[0.14em] text-white/50">
 				<span>Compartir</span><span class="text-center">Conectar</span><span class="text-right">Construir</span>
