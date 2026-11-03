@@ -42,8 +42,8 @@
 	}
 </script>
 
-<header class={`fixed top-0 inset-x-0 z-40 border-b border-line bg-surface/90 backdrop-blur transition-colors duration-300 ${scrolled ? 'bg-surface' : ''}`}>
-	<div class="mx-auto max-w-7xl px-4 sm:px-6">
+<header class={`fixed top-4 inset-x-0 mx-auto  w-[calc(100%_-_2rem)] max-w-7xl z-40 border-b border-line bg-surface/90 backdrop-blur transition-colors duration-300 ${scrolled ? 'bg-surface' : ''}`}>
+	<div class="px-4 sm:px-6">
 		<div class="flex h-14 items-center justify-between gap-3">
 			<button
 				type="button"
@@ -57,7 +57,7 @@
 			<a href="/" class="shrink-0 flex items-center gap-3">
 				<!-- Logo por tema: dark.svg = cuervo oscuro (tema claro), ligth.svg = cuervo beige (tema oscuro) -->
 				<img src={$theme === 'dark' ? '/ligth.svg' : '/dark.svg'} alt="Crow Projects" width="28" height="28" class="w-7 h-7 object-contain" />
-				<span class="font-brand text-signal text-base sm:text-lg leading-none tracking-tight">Crow Projects</span>
+				<span class="font-display text-signal text-base sm:text-lg leading-none tracking-tight">Crow Projects</span>
 			</a>
 
 			<div class="flex items-center">
@@ -65,7 +65,7 @@
 					{#each NAV_LINKS.slice(0, 6) as link}
 						<a
 							href={link.href}
-							class={`relative px-2.5 py-2 font-mono text-[11px] uppercase tracking-[0.08em] transition-colors ${navLinkClass(pathname === link.href)} ${activeBorder(pathname === link.href)}`}
+							class={`relative px-2.5 py-2 font-display text-[11px] uppercase tracking-[0.08em] transition-colors ${navLinkClass(pathname === link.href)} ${activeBorder(pathname === link.href)}`}
 						>
 							{link.label}
 						</a>
