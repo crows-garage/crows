@@ -19,7 +19,6 @@
 	const pathname = $derived(page.url.pathname)
 
 	const NAV_LINKS = [
-		{ href: '/', label: 'Inicio' },
 		{ href: '/productos', label: 'Recursos' },
 		{ href: '/turnos', label: 'Turnos' },
 		{ href: '/comunidad', label: 'Comunidad' },
@@ -62,7 +61,7 @@
 
 			<div class="flex items-center">
 				<nav class="hidden lg:flex items-center gap-1 mr-2">
-					{#each NAV_LINKS.slice(0, 6) as link}
+					{#each NAV_LINKS.slice(0, 5) as link}
 						<a
 							href={link.href}
 							class={`relative px-2.5 py-2 font-display text-[11px] uppercase tracking-[0.08em] transition-colors ${navLinkClass(pathname === link.href)} ${activeBorder(pathname === link.href)}`}
@@ -92,7 +91,7 @@
 				<button
 					type="button"
 					onclick={toggleTheme}
-					class="p-2 border rounded-xs border-line text-fg/80 hover:border-signal hover:text-signal transition-colors"
+					class="p-2 text-fg/80 hover:text-signal transition-colors"
 					aria-label={$theme === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'}
 					title={$theme === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'}
 				>
