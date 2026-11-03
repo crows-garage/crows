@@ -51,7 +51,7 @@
 							<p class="text-white/50 font-mono text-[10px] uppercase tracking-[0.14em]">Respuesta rápida</p>
 						</div>
 					</div>
-					<button type="button" onclick={() => (isOpen = false)} class="text-white/60 hover:text-white">
+					<button type="button" onclick={() => (isOpen = false)} class="text-white/60 hover:text-white" aria-label="Cerrar WhatsApp">
 						<X class="w-4 h-4" />
 					</button>
 				</div>
