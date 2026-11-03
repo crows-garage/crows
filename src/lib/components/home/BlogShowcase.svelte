@@ -46,7 +46,7 @@
 			</div>
 
 			<!-- Destacado -->
-			<a href={`/blog/${featured.slug}`} class="group grid md:grid-cols-2 border border-line bg-surface transition-colors hover:border-signal">
+			<a href={`/blog/${featured.slug}`} class="group grid md:grid-cols-2 border rounded-xs border-line bg-surface transition-colors hover:border-signal">
 				<div class="relative aspect-[16/10] md:aspect-auto md:min-h-[320px] overflow-hidden bg-panel">
 					{#if imgUrl(featured.coverImage)}
 						<img src={imgUrl(featured.coverImage)} alt={featured.title} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -82,7 +82,7 @@
 			{#if rest.length > 0}
 				<div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 					{#each rest as post}
-						<a href={`/blog/${post.slug}`} class="group border border-line bg-surface flex flex-col transition-colors hover:border-signal">
+						<a href={`/blog/${post.slug}`} class="group border rounded-xs border-line bg-surface flex flex-col transition-colors hover:border-signal">
 							<div class="relative aspect-[16/10] overflow-hidden bg-panel">
 								{#if imgUrl(post.coverImage)}
 									<img src={imgUrl(post.coverImage)} alt={post.title} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />

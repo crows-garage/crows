@@ -13,7 +13,7 @@
 </script>
 
 <svelte:head>
-	<title>CursoX</title>
+	<title>Crow Projects</title>
 </svelte:head>
 
 <AnalyticsTracker />

@@ -30,10 +30,10 @@
 			<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
 				{#each upcoming as event}
 					{@const { day, month } = formatEventDate(event.eventDate)}
-					<div class="border border-line bg-surface p-5 flex flex-col min-w-[260px] sm:min-w-0 transition-colors hover:border-signal">
+					<div class="border rounded-xs border-line bg-surface p-5 flex flex-col min-w-[260px] sm:min-w-0 transition-colors hover:border-signal">
 						<div class="flex items-start justify-between gap-3">
 							<div class="flex items-center gap-3">
-								<div class="text-center border border-line px-2.5 py-1.5">
+								<div class="text-center border rounded-xs border-line px-2.5 py-1.5">
 									<p class="font-mono text-xl font-semibold tel text-fg leading-none">{day}</p>
 									<p class="font-mono text-[9px] uppercase tracking-[0.2em] text-mute mt-1">{month}</p>
 								</div>

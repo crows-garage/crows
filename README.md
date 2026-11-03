@@ -1,6 +1,6 @@
 # crow-clone
 
-Port del frontend de **CursoX** (Next.js 16 + React 19) a **SvelteKit 3 + Svelte 5**, desplegado en **Cloudflare Pages**.
+Port del frontend de **Crow Projects** (Next.js 16 + React 19) a **SvelteKit 3 + Svelte 5**, desplegado en **Cloudflare Pages**.
 
 El frontend consume **directamente** la API pública `https://api.hodsoftware.com` (tienda `cursox`) desde el navegador, con `credentials: 'include'`, exactamente igual que el original: mismo origen, mismas rutas, mismos headers y payloads. **No hay proxy ni backend nuevo.**
 

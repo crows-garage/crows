@@ -57,7 +57,7 @@
 								<span class="font-mono text-sm font-semibold">Pedido #{order.id}</span>
 								<p class="text-sm text-mute mt-0.5">{new Date(order.createdAt).toLocaleDateString('es-AR')}</p>
 							</div>
-							<span class={`text-[10px] font-mono tracking-wider px-2.5 py-1 rounded-full ${STATUS[order.status]?.cls || 'bg-panel text-mute border border-line'}`}>
+							<span class={`text-[10px] font-mono tracking-wider px-2.5 py-1 rounded-full ${STATUS[order.status]?.cls || 'bg-panel text-mute border rounded-xs border-line'}`}>
 								{STATUS[order.status]?.label || order.status}
 							</span>
 						</div>

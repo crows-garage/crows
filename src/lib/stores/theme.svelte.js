@@ -7,11 +7,12 @@ import { browser } from '$app/env'
 const STORAGE_KEY = 'crow-theme'
 
 function readInitialTheme() {
-	if (!browser) return 'light'
+	// Tema oscuro por defecto; el usuario sólo queda en claro si lo eligió
+	if (!browser) return 'dark'
 	try {
-		return localStorage.getItem(STORAGE_KEY) === 'dark' ? 'dark' : 'light'
+		return localStorage.getItem(STORAGE_KEY) === 'light' ? 'light' : 'dark'
 	} catch {
-		return 'light'
+		return 'dark'
 	}
 }
 

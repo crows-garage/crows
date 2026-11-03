@@ -136,7 +136,7 @@
 </script>
 
 <svelte:head>
-	<title>Comunidad — CursoX</title>
+	<title>Comunidad — Crow Projects</title>
 	<meta name="description" content="Un espacio para compartir ideas, experiencias y oportunidades con estudiantes." />
 </svelte:head>
 
@@ -153,11 +153,11 @@
 				<Loader2 size={24} class="animate-spin text-mute" />
 			</div>
 		{:else if !auth.user}
-			<div class="bg-panel border border-line p-5 flex flex-col sm:flex-row sm:items-center gap-3">
+			<div class="bg-panel border rounded-xs border-line p-5 flex flex-col sm:flex-row sm:items-center gap-3">
 				<MessageSquare size={20} class="text-mute flex-shrink-0" />
 				<p class="text-sm text-mute flex-1">Inicia sesion para participar en la comunidad.</p>
 				<div class="flex gap-2 flex-shrink-0">
-					<a href="/login?redirect=/comunidad" class="px-4 py-2 border border-line text-fg text-xs font-medium hover:bg-panel transition-colors">
+					<a href="/login?redirect=/comunidad" class="px-4 py-2 border rounded-xs border-line text-fg text-xs font-medium hover:bg-panel transition-colors">
 						Iniciar sesión
 					</a>
 					<a href="/register?redirect=/comunidad" class="px-4 py-2 bg-signal text-base text-xs font-medium hover:bg-brand transition-colors">
@@ -166,7 +166,7 @@
 				</div>
 			</div>
 		{:else if !membership}
-			<div class="bg-panel border border-line p-5">
+			<div class="bg-panel border rounded-xs border-line p-5">
 				<p class="text-sm text-mute">
 					Tu cuenta aún no está vinculada a la institución.
 					<a href="/register" class="text-fg underline">Completá tu perfil</a>
@@ -174,7 +174,7 @@
 				</p>
 			</div>
 		{:else if membershipStatus === 'PENDING'}
-			<div class="bg-panel border border-line p-5 flex items-start gap-3">
+			<div class="bg-panel border rounded-xs border-line p-5 flex items-start gap-3">
 				<Hourglass size={20} class="text-mute flex-shrink-0 mt-0.5" />
 				<p class="text-sm text-mute">
 					Tu solicitud de acceso está<strong class="text-fg"> pendiente de revisión</strong>.
@@ -182,14 +182,14 @@
 				</p>
 			</div>
 		{:else if membershipStatus === 'REJECTED'}
-			<div class="bg-panel border border-line p-5 flex items-start gap-3">
+			<div class="bg-panel border rounded-xs border-line p-5 flex items-start gap-3">
 				<XCircle size={20} class="text-rec flex-shrink-0 mt-0.5" />
 				<div class="flex-1">
 					<p class="text-sm text-fg font-medium">Tu solicitud fue rechazada</p>
 					{#if membership.rejectionReason}
 						<p class="text-xs text-mute mt-1">Motivo: {membership.rejectionReason}</p>
 					{/if}
-					<button type="button" onclick={handleResubmit} class="mt-3 px-4 py-2 border border-line text-fg text-xs font-medium hover:bg-panel transition-colors">
+					<button type="button" onclick={handleResubmit} class="mt-3 px-4 py-2 border rounded-xs border-line text-fg text-xs font-medium hover:bg-panel transition-colors">
 						Volver a solicitar
 					</button>
 				</div>
@@ -202,7 +202,7 @@
 		{/if}
 
 		{#if commentError}
-			<div class="mt-4 border border-rec/30 bg-rec/10 text-rec px-3 py-2 text-xs">{commentError}</div>
+			<div class="mt-4 border rounded-xs border-rec/30 bg-rec/10 text-rec px-3 py-2 text-xs">{commentError}</div>
 		{/if}
 
 		{#if loading}
@@ -219,7 +219,7 @@
 		{:else}
 			<div class="space-y-6 mt-6">
 				{#each posts as post (post.id)}
-					<article class="bg-panel border border-line">
+					<article class="bg-panel border rounded-xs border-line">
 						<div class="p-5 border-b border-line">
 							<div class="flex items-start justify-between gap-3">
 								<h2 class="text-lg font-medium text-fg leading-snug flex items-center gap-2">
@@ -303,7 +303,7 @@
 											oninput={(e) => (commentDrafts = { ...commentDrafts, [post.id]: e.currentTarget.value })}
 											onkeydown={(e) => e.key === 'Enter' && handleSubmitComment(post.id)}
 											placeholder="Escribí un comentario..."
-											class="flex-1 px-3 py-2 border border-line bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors"
+											class="flex-1 px-3 py-2 border rounded-xs border-line bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors"
 										/>
 										<button
 											type="button"

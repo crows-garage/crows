@@ -4,7 +4,7 @@
 
 	let { store = null, org = null } = $props()
 
-	const name = $derived(org?.name || store?.name || 'CursoX')
+	const name = $derived(org?.name || store?.name || 'Crow Projects')
 	const cover = $derived(imgUrl(org?.coverImage))
 	const logo = $derived(imgUrl(org?.logo || store?.logo))
 </script>
@@ -21,16 +21,16 @@
 			</div>
 			<h1 class="mt-7 max-w-4xl font-display font-semibold text-[clamp(3.5rem,10vw,8rem)] leading-[0.86] tracking-[-0.06em]">Explorá.<br />Conectá.<br /><span class="text-brand">Creá.</span></h1>
 			<div class="mt-9 flex flex-wrap gap-3">
-				<a href="#proposito" class="btn btn-primary">Descubrí CursoX <ArrowDown class="w-3.5 h-3.5" /></a>
+				<a href="#proposito" class="btn btn-primary">Descubrí Crow Projects <ArrowDown class="w-3.5 h-3.5" /></a>
 				<a href="#proyectos" class="btn border-white/30 text-white hover:text-brand">Pensá en grande <ArrowRight class="w-3.5 h-3.5" /></a>
 			</div>
 			<div class="mt-8 max-w-xl border-l-2 border-brand/70 pl-4">
 				<p class="font-mono text-[10px] uppercase tracking-[0.16em] text-brand">Proyecto abierto · Para todos los IES</p>
-				<p class="mt-2 text-sm leading-relaxed text-white/55">Si estudiás Desarrollo, Ciberseguridad o cualquier otra carrera, si tenés una idea o querés sumarte, CursoX también puede ser tu espacio. El repositorio público llegará pronto a GitHub.</p>
+				<p class="mt-2 text-sm leading-relaxed text-white/55">Si estudiás Desarrollo, Ciberseguridad o cualquier otra carrera, si tenés una idea o querés sumarte, Crow Projects también puede ser tu espacio. El repositorio público llegará pronto a GitHub.</p>
 			</div>
 			<p class="mt-7 font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">Aprendé hoy. Crecé mañana.</p>
 		</div>
-		<div class="border border-brand/30 bg-night/60 p-5 sm:p-7 backdrop-blur-sm">
+		<div class="border rounded-xs border-brand/30 bg-night/60 p-5 sm:p-7 backdrop-blur-sm">
 			<div class="mb-8 flex items-center justify-between border-b border-white/15 pb-4">
 				<span class="eyebrow !text-brand">La idea en movimiento</span>
 				<span class="font-mono text-[10px] text-white/50">01 / 04</span>

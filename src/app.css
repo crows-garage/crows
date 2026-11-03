@@ -34,16 +34,20 @@
   /* Tema claro: signal/rec/amber son variantes oscuras accesibles de
      #2ca798 / #ff3370 sobre superficies blancas */
   --c-base: #d0d0d0;
-  --c-surface: #ffffff;
+  --c-surface: #dad4c3;
   --c-panel: #e2e2e3;
-  --c-fg: #1b1b1b;
+  --c-fg: #222222;
   --c-mute: #595959;
   --c-line: #a6a6a6;
   --c-signal: #0f5f56;
-  --c-night: #000000;
+  --c-night: #222222;
   --c-rec: #a81446;
   --c-amber: #8a5a00;
   --c-brand: #2ca798;
+  --c-on-primary: #dad4c3;
+
+  /* Radio unificado de componentes (2 px) */
+  --radius-ui: 0.125rem;
   --c-feather: rgba(44, 167, 152, 0.35);
 }
 
@@ -65,6 +69,10 @@
   --c-rec: #ff3370;
   --c-amber: #d9a441;
   --c-brand: #2ca798;
+  --c-on-primary: #ffffff;
+
+  /* Radio unificado de componentes (2 px) */
+  --radius-ui: 0.125rem;
 }
 
 * {
@@ -87,7 +95,7 @@ body {
 
 ::selection {
   background: var(--c-signal);
-  color: #ffffff;
+  color: var(--c-on-primary);
 }
 
 .dark ::selection {
@@ -141,7 +149,7 @@ body {
 .panel {
   border: 1px solid var(--c-line);
   background: var(--c-surface);
-  border-radius: 4px;
+  border-radius: var(--radius-ui);
 }
 
 /* Fondo técnico: grilla de instrumentación, definida una sola vez */
@@ -156,6 +164,7 @@ body {
 .tech-frame {
   position: relative;
   border: 1px solid var(--c-feather);
+  border-radius: var(--radius-ui);
 }
 
 /* Etiqueta técnica montada sobre el borde superior del marco */
@@ -186,7 +195,7 @@ body {
   font-size: 14px;
   font-weight: 600;
   padding: 0.65rem 1.4rem;
-  border-radius: 4px;
+  border-radius: var(--radius-ui);
   border: 1px solid var(--c-line);
   background: var(--c-surface);
   color: var(--c-fg);
@@ -209,7 +218,7 @@ body {
 .btn-primary {
   background: var(--c-signal);
   border-color: var(--c-signal);
-  color: #ffffff;
+  color: var(--c-on-primary);
 }
 
 .btn-primary:hover {
@@ -223,7 +232,7 @@ body {
   padding: 0.65rem 0.9rem;
   font-family: var(--font-sans);
   font-size: 14px;
-  border-radius: 4px;
+  border-radius: var(--radius-ui);
   background: var(--c-surface);
   border: 1px solid var(--c-line);
   color: var(--c-fg);
@@ -269,7 +278,7 @@ body {
 .chip-active {
   background: var(--c-signal);
   border-color: var(--c-signal);
-  color: #ffffff;
+  color: var(--c-on-primary);
 }
 
 .dark .chip-active {
@@ -344,13 +353,13 @@ body {
   font-size: 0.85em;
   background: var(--c-panel);
   padding: 0.15em 0.4em;
-  border-radius: 4px;
+  border-radius: var(--radius-ui);
 }
 
 .article pre {
   background: var(--c-panel);
   border: 1px solid var(--c-line);
-  border-radius: 4px;
+  border-radius: var(--radius-ui);
   padding: 1rem;
   overflow-x: auto;
   font-family: var(--font-mono);
@@ -363,7 +372,7 @@ body {
 
 .article img {
   border: 1px solid var(--c-line);
-  border-radius: 4px;
+  border-radius: var(--radius-ui);
   max-width: 100%;
   height: auto;
   margin: 1.5em 0;
@@ -402,7 +411,7 @@ body {
   width: 100%;
   aspect-ratio: 16 / 9;
   border: 1px solid var(--c-line);
-  border-radius: 4px;
+  border-radius: var(--radius-ui);
   margin: 1.5em 0;
   display: block;
 }

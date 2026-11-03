@@ -158,7 +158,7 @@
 </script>
 
 <svelte:head>
-	<title>Turnos y Cupos — CursoX</title>
+	<title>Turnos y Cupos — Crow Projects</title>
 	<meta name="description" content="Reservá tu lugar en clases, jornadas y atenciones de la institución." />
 </svelte:head>
 
@@ -172,7 +172,7 @@
 
 		<!-- Mis reservas -->
 		{#if user}
-			<div class="bg-panel border border-line p-5 mb-6">
+			<div class="bg-panel border rounded-xs border-line p-5 mb-6">
 				<p class="text-[10px] uppercase tracking-[0.3em] text-mute mb-3">Mis reservas</p>
 				{#if mineLoading}
 					<div class="flex justify-center py-3">
@@ -183,7 +183,7 @@
 				{:else}
 					<div class="space-y-2">
 						{#each upcoming as r (r.id)}
-							<div class="flex items-center gap-3 border border-line bg-base px-3 py-2.5">
+							<div class="flex items-center gap-3 border rounded-xs border-line bg-base px-3 py-2.5">
 								<CalendarCheck size={16} class="text-signal flex-shrink-0" />
 								<div class="flex-1 min-w-0">
 									<p class="text-sm text-fg truncate">
@@ -211,7 +211,7 @@
 		{/if}
 
 		{#if actionError}
-			<div class="mb-6 border border-rec/30 bg-rec/10 text-rec px-3 py-2 text-xs">{actionError}</div>
+			<div class="mb-6 border rounded-xs border-rec/30 bg-rec/10 text-rec px-3 py-2 text-xs">{actionError}</div>
 		{/if}
 
 		{#if loading}
@@ -230,7 +230,7 @@
 				{#each turneros as turnero (turnero.id)}
 					{@const isExpanded = expandedId === turnero.id}
 					{@const typeLabel = TYPE_LABELS[turnero.type] || 'Cupos'}
-					<article class="bg-panel border border-line">
+					<article class="bg-panel border rounded-xs border-line">
 						<button
 							type="button"
 							onclick={() => toggleExpand(turnero.id)}
@@ -266,7 +266,7 @@
 									<button
 										type="button"
 										onclick={() => changeWeek(-1)}
-										class="px-3 py-1.5 border border-line text-xs text-fg hover:bg-base transition-colors"
+										class="px-3 py-1.5 border rounded-xs border-line text-xs text-fg hover:bg-base transition-colors"
 									>
 										← Semana anterior
 									</button>
@@ -278,7 +278,7 @@
 									<button
 										type="button"
 										onclick={() => changeWeek(1)}
-										class="px-3 py-1.5 border border-line text-xs text-fg hover:bg-base transition-colors"
+										class="px-3 py-1.5 border rounded-xs border-line text-xs text-fg hover:bg-base transition-colors"
 									>
 										Semana siguiente →
 									</button>
@@ -305,7 +305,7 @@
 															type="button"
 															disabled={!free || !user || busySlotId === slot.id}
 															onclick={() => handleReserve(turnero.id, slot)}
-															class={`px-3 py-2 border text-xs font-mono transition-colors ${
+															class={`px-3 py-2 border rounded-xs text-xs font-mono transition-colors ${
 																slot.isPast
 																	? 'border-line text-mute/40 cursor-default'
 																	: full

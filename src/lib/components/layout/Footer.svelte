@@ -1,5 +1,6 @@
 <script>
 	import { imgUrl } from '#lib/utils.js'
+	import { theme } from '#lib/stores/theme.svelte.js'
 	import { Mail, MapPin, Phone, MessageCircle, GraduationCap } from '@lucide/svelte'
 	import SocialIcon from '#lib/components/icons/SocialIcon.svelte'
 
@@ -80,13 +81,8 @@
 			<!-- Marca + redes -->
 			<div class="space-y-4">
 				<a href="/" class="flex items-center gap-3">
-					{#if store?.logo}
-						<img src={imgUrl(store.logo)} alt={store?.name || org?.name || 'Institución'} width="36" height="36" class="w-9 h-9 object-contain border border-line bg-surface p-0.5" />
-					{:else if org?.logo}
-						<img src={imgUrl(org.logo)} alt={org?.name || 'Institución'} width="36" height="36" class="w-9 h-9 object-contain border border-line bg-surface p-0.5" />
-					{:else}
-						<span class="w-9 h-9 border border-line bg-surface flex items-center justify-center font-brand text-signal">{(org?.name || 'IN')[0]?.toUpperCase()}</span>
-					{/if}
+					<!-- Logo por tema: dark.svg = cuervo oscuro (tema claro), ligth.svg = cuervo beige (tema oscuro) -->
+					<img src={$theme === 'dark' ? '/ligth.svg' : '/dark.svg'} alt="Crow Projects" width="28" height="28" class="w-7 h-7 object-contain" />
 					<span class="font-brand text-signal text-base leading-none tracking-tight">
 						{org?.name || store?.name || 'Institución'}
 					</span>
@@ -103,7 +99,7 @@
 								target="_blank"
 								rel="noopener noreferrer"
 								aria-label={label}
-								class="w-9 h-9 border border-line flex items-center justify-center text-fg/70 hover:bg-surface hover:text-signal hover:border-signal transition-colors"
+								class="w-9 h-9 border rounded-xs border-line flex items-center justify-center text-fg/70 hover:bg-surface hover:text-signal hover:border-signal transition-colors"
 							>
 								<SocialIcon {name} />
 							</a>
@@ -136,9 +132,9 @@
 
 			<!-- Institucional -->
 			<div class="space-y-4">
-				<h4 class="eyebrow !text-signal">CursoX</h4>
+				<h4 class="eyebrow !text-signal">Crow Projects</h4>
 				<ul class="space-y-2.5">
-					<li><a href="/about" class="text-sm text-fg/75 hover:text-signal transition-colors">La visión de CursoX</a></li>
+					<li><a href="/about" class="text-sm text-fg/75 hover:text-signal transition-colors">La visión de Crow Projects</a></li>
 					<li><a href="/comunidad" class="text-sm text-fg/75 hover:text-signal transition-colors">Comunidad</a></li>
 					<li><a href="/blog" class="text-sm text-fg/75 hover:text-signal transition-colors">Publicaciones</a></li>
 					<li><a href="/contacto" class="text-sm text-fg/75 hover:text-signal transition-colors">Contacto</a></li>
@@ -207,10 +203,12 @@
 		class={`border-t border-signal/20 py-4 bg-base transition-all duration-700 ${isRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
 	>
 		<div class="max-w-7xl mx-auto px-4 flex items-center justify-center gap-2">
-			<img src="/HOD.png" alt="HOD software" width="20" height="20" class="opacity-60" />
-			<p class="font-mono text-[10px] uppercase tracking-[0.24em] text-fg/60">
-				Desarrollado por HOD software
-			</p>
+			<a href="https://hodsoftware.com/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 hover:opacity-80 transition-opacity">
+				<img src="/HOD.png" alt="HOD software" width="20" height="20" class="opacity-60" />
+				<p class="font-mono text-[10px] uppercase tracking-[0.24em] text-fg/60">
+					Desarrollado por HOD software
+				</p>
+			</a>
 		</div>
 	</div>
 </footer>

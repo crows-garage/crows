@@ -2,7 +2,6 @@ import { api } from '#lib/api/store.js'
 import { organizationApi } from '#lib/api/organization.js'
 import { filterEducationalContent } from '#lib/contentFilter.js'
 import { getSiteBranding } from '#lib/branding.js'
-import { BASE } from '#lib/api/client.js'
 
 export async function load({ setHeaders }) {
 	const [store, categories, collections, labels, locals, branding] = await Promise.all([
@@ -19,16 +18,10 @@ export async function load({ setHeaders }) {
 
 	const org = branding?.org ?? null
 
-	// Metadata base: título y favicon (logo de la org en la API)
-	const name = 'CursoX'
+	// Metadata base: título (el favicon se resuelve por tema en +layout.svelte)
+	const name = 'Crow Projects'
 	const description =
-		'CursoX es una comunidad estudiantil para compartir conocimiento, encontrar colaboradores y convertir ideas en proyectos.'
-	const rawIcon = org?.logo || store?.logo || ''
-	const metaIcon = rawIcon
-		? rawIcon.startsWith('http')
-			? rawIcon
-			: `${BASE}${rawIcon}`
-		: '/favicon.ico'
+		'Crow Projects es una comunidad estudiantil para compartir conocimiento, encontrar colaboradores y convertir ideas en proyectos.'
 
-	return { store, categories, collections, labels, locals, org, metaTitle: name, metaDescription: description, metaIcon }
+	return { store, categories, collections, labels, locals, org, metaTitle: name, metaDescription: description }
 }

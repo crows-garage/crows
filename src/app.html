@@ -4,6 +4,12 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="text-scale" content="scale" />
+		<script>
+			// Anti-FOUC: aplica el tema oscuro antes del primer paint salvo elección explícita de claro
+			try {
+				if (localStorage.getItem('crow-theme') !== 'light') document.documentElement.classList.add('dark')
+			} catch {}
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

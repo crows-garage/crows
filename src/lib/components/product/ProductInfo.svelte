@@ -133,7 +133,7 @@
 	<div class="space-y-4">
 		<div class="flex items-center gap-4">
 			<span class="eyebrow">Cantidad</span>
-			<div class="flex items-center border border-line bg-surface">
+			<div class="flex items-center border rounded-xs border-line bg-surface">
 				<button
 					type="button"
 					onclick={() => (qty = Math.max(1, qty - 1))}
@@ -164,7 +164,7 @@
 				<button type="button" onclick={handleBuyNow} class="btn btn-primary flex-1">Comprar ahora</button>
 			</div>
 		{:else}
-			<div class="border border-rec/40 bg-panel p-4 text-center">
+			<div class="border rounded-xs border-rec/40 bg-panel p-4 text-center">
 				<p class="font-mono text-xs uppercase tracking-[0.18em] text-rec mb-2">Sin stock registrado</p>
 				<a
 					href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hola! Consulto disponibilidad de: ${product.name}`)}`}

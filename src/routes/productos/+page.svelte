@@ -6,8 +6,8 @@
 </script>
 
 <svelte:head>
-	<title>Recursos — CursoX</title>
-	<meta name="description" content="Recursos y propuestas de aprendizaje de la comunidad de CursoX." />
+	<title>Recursos — Crow Projects</title>
+	<meta name="description" content="Recursos y propuestas de aprendizaje de la comunidad de Crow Projects." />
 </svelte:head>
 
 <ProductsClient

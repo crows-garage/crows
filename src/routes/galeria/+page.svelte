@@ -9,8 +9,8 @@
 </script>
 
 <svelte:head>
-	<title>Actividad — CursoX</title>
-	<meta name="description" content="Proyectos y registros de la comunidad de CursoX." />
+	<title>Actividad — Crow Projects</title>
+	<meta name="description" content="Proyectos y registros de la comunidad de Crow Projects." />
 </svelte:head>
 
 <div class="min-h-screen bg-base pb-16">
@@ -26,7 +26,7 @@
 
 	{#if active.length === 0}
 		<div class="max-w-7xl mx-auto px-4 py-16">
-			<div class="border border-line bg-surface p-10 text-center">
+			<div class="border rounded-xs border-line bg-surface p-10 text-center">
 				<p class="font-mono text-xs uppercase tracking-[0.2em] text-mute">Todavía no hay imágenes publicadas</p>
 				<p class="text-sm text-mute mt-2">Volvé pronto para ver las primeras actividades.</p>
 			</div>

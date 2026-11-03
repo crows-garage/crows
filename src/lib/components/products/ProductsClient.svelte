@@ -229,7 +229,7 @@
 
 			<main class="flex-1 min-w-0">
 				{#if filteredProducts.length === 0}
-					<div class="text-center py-20 border border-line bg-surface">
+					<div class="text-center py-20 border rounded-xs border-line bg-surface">
 						<p class="font-mono text-xs uppercase tracking-[0.2em] text-mute mb-4">Sin resultados para esta búsqueda</p>
 						<button type="button" onclick={clearFilters} class="btn text-[10px]">Limpiar filtros</button>
 					</div>

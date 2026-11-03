@@ -13,7 +13,7 @@
 </script>
 
 <svelte:head>
-	<title>Términos y Condiciones — CursoX</title>
+	<title>Términos y Condiciones — Crow Projects</title>
 </svelte:head>
 
 <div class="min-h-screen bg-base pt-32 pb-16">

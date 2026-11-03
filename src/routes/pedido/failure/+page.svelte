@@ -73,7 +73,7 @@
 	</div>
 {:else if !orderId}
 	<div class="max-w-md mx-auto px-4 py-12 text-center">
-		<div class="w-16 h-16 border border-line bg-panel flex items-center justify-center mx-auto mb-5">
+		<div class="w-16 h-16 border rounded-xs border-line bg-panel flex items-center justify-center mx-auto mb-5">
 			<XCircle size={32} class="text-mute" />
 		</div>
 		<h1 class="font-display font-semibold text-xl text-fg mb-2">Pago no procesado</h1>
@@ -85,14 +85,14 @@
 {:else}
 	<div class="max-w-md mx-auto px-4 py-12">
 		<div class="text-center mb-5">
-			<div class="w-16 h-16 border border-line bg-panel flex items-center justify-center mx-auto mb-5">
+			<div class="w-16 h-16 border rounded-xs border-line bg-panel flex items-center justify-center mx-auto mb-5">
 				<XCircle size={32} class="text-mute" />
 			</div>
 			<h1 class="font-display font-semibold text-xl text-fg mb-2">Pago rechazado</h1>
 			<p class="text-sm text-mute">El pago no pudo procesarse. Intentá nuevamente.</p>
 		</div>
 
-		<div class="border border-line bg-surface p-4 mb-5">
+		<div class="border rounded-xs border-line bg-surface p-4 mb-5">
 			<div class="flex justify-between items-center mb-3">
 				<span class="font-mono text-[10px] uppercase tracking-[0.14em] text-mute">N° de pedido</span>
 				<span class="font-mono text-sm tel text-fg">#{orderId}</span>
@@ -109,7 +109,7 @@
 					<p class="text-xs text-mute font-mono mt-1 break-all">{paymentId}</p>
 				</div>
 			{/if}
-			<div class="mt-3 flex items-center gap-2 text-amber bg-amber/10 border border-amber/30 p-2.5">
+			<div class="mt-3 flex items-center gap-2 text-amber bg-amber/10 border rounded-xs border-amber/30 p-2.5">
 				<AlertTriangle size={14} />
 				<p class="text-xs">El pago fue rechazado. Intentá con otro método.</p>
 			</div>

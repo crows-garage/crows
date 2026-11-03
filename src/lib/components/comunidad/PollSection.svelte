@@ -64,7 +64,7 @@
 </script>
 
 {#if poll}
-	<div class="mt-4 border border-line bg-base p-4">
+	<div class="mt-4 border rounded-xs border-line bg-base p-4">
 		<p class="text-sm font-medium text-fg flex items-center gap-2">
 			<BarChart3 size={15} class="text-signal flex-shrink-0" />
 			{poll.question}
@@ -96,7 +96,7 @@
 					<button
 						type="button"
 						onclick={() => toggleOption(option.id)}
-						class={`w-full text-left px-3 py-2 border text-sm transition-colors ${
+						class={`w-full text-left px-3 py-2 border rounded-xs text-sm transition-colors ${
 							selected.includes(option.id)
 								? 'border-signal bg-signal/10 text-fg'
 								: 'border-line text-fg/80 hover:border-fg/40'

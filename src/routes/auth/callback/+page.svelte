@@ -25,7 +25,7 @@
 <div class="min-h-screen flex items-center justify-center bg-panel">
 	<div class="text-center">
 		{#if success === 'true'}
-			<div class="mx-auto flex items-center justify-center h-12 w-12 bg-signal/10 border border-line">
+			<div class="mx-auto flex items-center justify-center h-12 w-12 bg-signal/10 border rounded-xs border-line">
 				<svg class="h-6 w-6 text-signal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
 				</svg>
@@ -33,7 +33,7 @@
 			<h3 class="mt-3 text-lg font-medium text-fg">¡Inicio de sesión exitoso!</h3>
 			<p class="mt-2 text-sm text-mute">Redirigiendo...</p>
 		{:else}
-			<div class="mx-auto flex items-center justify-center h-12 w-12 bg-rec/10 border border-line">
+			<div class="mx-auto flex items-center justify-center h-12 w-12 bg-rec/10 border rounded-xs border-line">
 				<svg class="h-6 w-6 text-rec" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
 				</svg>

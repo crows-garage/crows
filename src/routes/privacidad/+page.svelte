@@ -13,7 +13,7 @@
 </script>
 
 <svelte:head>
-	<title>Política de Privacidad — CursoX</title>
+	<title>Política de Privacidad — Crow Projects</title>
 </svelte:head>
 
 <div class="min-h-screen bg-night pt-32 pb-16">

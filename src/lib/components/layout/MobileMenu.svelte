@@ -14,7 +14,7 @@
 		{ href: '/comunidad', label: 'Comunidad' },
 		{ href: '/biblioteca', label: 'Biblioteca' },
 		{ href: '/proyectos', label: 'Proyectos' },
-		{ href: '/about', label: 'Sobre CursoX' },
+		{ href: '/about', label: 'Sobre Crow Projects' },
 		{ href: '/galeria', label: 'Actividad' },
 		{ href: '/blog', label: 'Publicaciones' },
 		{ href: '/contacto', label: 'Contacto' }
@@ -27,7 +27,7 @@
 	<div class="absolute inset-0 bg-black/50" onclick={onClose}></div>
 	<div class="absolute inset-y-0 left-0 w-80 max-w-[88vw] bg-surface border-r border-line flex flex-col animate-fade-in">
 		<div class="flex items-center justify-between p-4 border-b border-line">
-			<span class="font-brand text-signal text-base leading-none">CursoX</span>
+			<span class="font-brand text-signal text-base leading-none">Crow Projects</span>
 			<button onclick={onClose} class="p-2 hover:bg-panel" aria-label="Cerrar menú">
 				<X class="w-5 h-5 text-mute" />
 			</button>

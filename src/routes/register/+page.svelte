@@ -157,7 +157,7 @@
 {#if done}
 	<div class="min-h-screen pt-20 pb-16 bg-base">
 		<div class="max-w-md mx-auto px-4">
-			<div class="bg-panel border border-line p-6 sm:p-8 text-center">
+			<div class="bg-panel border rounded-xs border-line p-6 sm:p-8 text-center">
 				<CheckCircle2 size={44} class="mx-auto mb-4 text-signal" />
 				<p class="text-[10px] uppercase tracking-[0.3em] mb-2 text-mute">Solicitud enviada</p>
 				<h1 class="text-xl sm:text-2xl font-display font-semibold tracking-tight text-fg">¡Gracias por querer asociarte!</h1>
@@ -191,17 +191,17 @@
 
 			<!-- Step indicator -->
 			<div class="flex items-center justify-center gap-3 mb-8">
-				<div class="flex items-center justify-center w-8 h-8 text-xs font-medium border border-fg text-fg">
+				<div class="flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-xs border-fg text-fg">
 					{step === 1 ? '1' : '✓'}
 				</div>
 				<div class="w-12 h-px bg-fg/20"></div>
-				<div class={`flex items-center justify-center w-8 h-8 text-xs font-medium border ${step === 2 ? 'border-fg text-fg' : 'border-line text-mute'}`}>
+				<div class={`flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-xs ${step === 2 ? 'border-fg text-fg' : 'border-line text-mute'}`}>
 					2
 				</div>
 			</div>
 
 			{#if formError}
-				<div class="mb-4 border border-line text-mute px-3 py-2 text-xs">{formError}</div>
+				<div class="mb-4 border rounded-xs border-line text-mute px-3 py-2 text-xs">{formError}</div>
 			{/if}
 
 			<form onsubmit={handleSubmit} class="space-y-4">
@@ -214,7 +214,7 @@
 							type="text"
 							value={formData.firstName}
 							oninput={handleChange}
-							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.firstName ? 'border-rec' : 'border-line'}`}
+							class={`w-full px-3 py-2 border rounded-xs bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.firstName ? 'border-rec' : 'border-line'}`}
 							placeholder="Nombre"
 						/>
 						{#if fieldErrors.firstName}<p class="mt-1 text-[10px] text-mute">{fieldErrors.firstName}</p>{/if}
@@ -228,7 +228,7 @@
 							type="text"
 							value={formData.lastName}
 							oninput={handleChange}
-							class="w-full px-3 py-2 border border-line bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors"
+							class="w-full px-3 py-2 border rounded-xs border-line bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors"
 							placeholder="Apellido"
 						/>
 					</div>
@@ -241,7 +241,7 @@
 							type="email"
 							value={formData.email}
 							oninput={handleChange}
-							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.email ? 'border-rec' : 'border-line'}`}
+							class={`w-full px-3 py-2 border rounded-xs bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.email ? 'border-rec' : 'border-line'}`}
 							placeholder="tu@email.com"
 						/>
 						{#if fieldErrors.email}<p class="mt-1 text-[10px] text-mute">{fieldErrors.email}</p>{/if}
@@ -255,7 +255,7 @@
 							type="tel"
 							value={formData.phone}
 							oninput={handleChange}
-							class="w-full px-3 py-2 border border-line bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors"
+							class="w-full px-3 py-2 border rounded-xs border-line bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors"
 							placeholder="+54 261 1234567"
 						/>
 					</div>
@@ -269,7 +269,7 @@
 								type={showPassword ? 'text' : 'password'}
 								value={formData.password}
 								oninput={handleChange}
-								class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.password ? 'border-rec' : 'border-line'}`}
+								class={`w-full px-3 py-2 border rounded-xs bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.password ? 'border-rec' : 'border-line'}`}
 								placeholder="Mínimo 8 caracteres"
 							/>
 							<button
@@ -291,7 +291,7 @@
 							type="password"
 							value={formData.confirmPassword}
 							oninput={handleChange}
-							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.confirmPassword ? 'border-rec' : 'border-line'}`}
+							class={`w-full px-3 py-2 border rounded-xs bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.confirmPassword ? 'border-rec' : 'border-line'}`}
 							placeholder="Repite tu contraseña"
 						/>
 						{#if fieldErrors.confirmPassword}<p class="mt-1 text-[10px] text-mute">{fieldErrors.confirmPassword}</p>{/if}
@@ -299,7 +299,7 @@
 				{/if}
 
 				{#if step === 2}
-					<div class="border border-line p-3">
+					<div class="border rounded-xs border-line p-3">
 						<p class="text-xs text-mute leading-relaxed">
 							Completá tus datos profesionales para solicitar la
 							<strong class="text-fg">afiliación a la Asociación</strong>.
@@ -315,7 +315,7 @@
 							type="text"
 							value={formData.profession}
 							oninput={handleChange}
-							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.profession ? 'border-rec' : 'border-line'}`}
+							class={`w-full px-3 py-2 border rounded-xs bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.profession ? 'border-rec' : 'border-line'}`}
 							placeholder="Ej: Docente, Diseñador, Contador..."
 						/>
 						{#if fieldErrors.profession}<p class="mt-1 text-[10px] text-mute">{fieldErrors.profession}</p>{/if}
@@ -329,7 +329,7 @@
 							type="text"
 							value={formData.registrationNumber}
 							oninput={handleChange}
-							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.registrationNumber ? 'border-rec' : 'border-line'}`}
+							class={`w-full px-3 py-2 border rounded-xs bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.registrationNumber ? 'border-rec' : 'border-line'}`}
 							placeholder="Ej: MP-1234"
 						/>
 						{#if fieldErrors.registrationNumber}<p class="mt-1 text-[10px] text-mute">{fieldErrors.registrationNumber}</p>{/if}
@@ -342,7 +342,7 @@
 							name="documentType"
 							value={formData.documentType}
 							onchange={handleChange}
-							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.documentType ? 'border-rec' : 'border-line'}`}
+							class={`w-full px-3 py-2 border rounded-xs bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.documentType ? 'border-rec' : 'border-line'}`}
 						>
 							<option value="">Seleccionar...</option>
 							<option value="DNI">DNI</option>
@@ -362,7 +362,7 @@
 							type="text"
 							value={formData.documentNumber}
 							oninput={handleChange}
-							class={`w-full px-3 py-2 border bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.documentNumber ? 'border-rec' : 'border-line'}`}
+							class={`w-full px-3 py-2 border rounded-xs bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors ${fieldErrors.documentNumber ? 'border-rec' : 'border-line'}`}
 							placeholder="Sin puntos ni guiones"
 						/>
 						{#if fieldErrors.documentNumber}<p class="mt-1 text-[10px] text-mute">{fieldErrors.documentNumber}</p>{/if}
@@ -389,7 +389,7 @@
 						<button
 							type="button"
 							onclick={handlePrevStep}
-							class="w-full py-2.5 border border-line text-fg text-sm font-medium hover:bg-panel transition-colors"
+							class="w-full py-2.5 border rounded-xs border-line text-fg text-sm font-medium hover:bg-panel transition-colors"
 						>
 							← Volver
 						</button>
@@ -417,7 +417,7 @@
 			<button
 				type="button"
 				onclick={() => auth.googleLogin()}
-				class="w-full flex items-center justify-center gap-2 py-2.5 border border-line text-fg text-sm font-medium hover:bg-panel transition-colors"
+				class="w-full flex items-center justify-center gap-2 py-2.5 border rounded-xs border-line text-fg text-sm font-medium hover:bg-panel transition-colors"
 			>
 				<svg class="w-4 h-4" viewBox="0 0 24 24">
 					<path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.2 3.32v2.77h3.56c2.08-1.92 3.28-4.74 3.28-8.1z" />

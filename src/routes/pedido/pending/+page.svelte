@@ -61,7 +61,7 @@
 	</div>
 {:else if !orderId}
 	<div class="max-w-md mx-auto px-4 py-12 text-center">
-		<div class="w-16 h-16 border border-line bg-panel flex items-center justify-center mx-auto mb-5">
+		<div class="w-16 h-16 border rounded-xs border-line bg-panel flex items-center justify-center mx-auto mb-5">
 			<Clock size={32} class="text-mute" />
 		</div>
 		<h1 class="font-display font-semibold text-xl text-fg mb-2">Pago pendiente</h1>
@@ -72,14 +72,14 @@
 	</div>
 {:else}
 	<div class="max-w-md mx-auto px-4 py-12 text-center">
-		<div class="w-16 h-16 border border-line bg-panel flex items-center justify-center mx-auto mb-5">
+		<div class="w-16 h-16 border rounded-xs border-line bg-panel flex items-center justify-center mx-auto mb-5">
 			<Clock size={32} class="text-mute" />
 		</div>
 
 		<h1 class="font-display font-semibold text-xl text-fg mb-2">Pago pendiente</h1>
 		<p class="text-sm text-mute mb-6">Tu pago está siendo procesado. Te notificaremos cuando se confirme.</p>
 
-		<div class="border border-line bg-surface p-4 text-left mb-6">
+		<div class="border rounded-xs border-line bg-surface p-4 text-left mb-6">
 			<div class="flex justify-between items-center mb-3">
 				<span class="font-mono text-[10px] uppercase tracking-[0.14em] text-mute">N° de pedido</span>
 				<span class="font-mono text-sm tel text-fg">#{order.id}</span>
@@ -92,7 +92,7 @@
 			{/if}
 			<div class="flex justify-between items-center pt-3 border-t border-line">
 				<span class="font-mono text-[10px] uppercase tracking-[0.14em] text-mute">Estado</span>
-				<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs border border-amber/30 bg-amber/10 text-amber">
+				<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs border rounded-xs border-amber/30 bg-amber/10 text-amber">
 					<Clock size={10} /> Pendiente
 				</span>
 			</div>
@@ -112,7 +112,7 @@
 			<ArrowLeft size={14} /> Volver a la tienda
 		</a>
 
-		<div class="mt-5 border border-line bg-panel p-3">
+		<div class="mt-5 border rounded-xs border-line bg-panel p-3">
 			<p class="text-xs text-mute">💡 La página se actualiza automáticamente cada 5 segundos.</p>
 		</div>
 	</div>

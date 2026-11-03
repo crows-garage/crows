@@ -215,7 +215,7 @@
 			<h1 class="font-display font-semibold text-2xl text-fg mb-6">Finalizar compra</h1>
 
 			{#if error}
-				<div class="border border-line text-mute text-xs px-3 py-2 mb-4 flex items-start gap-2">
+				<div class="border rounded-xs border-line text-mute text-xs px-3 py-2 mb-4 flex items-start gap-2">
 					<AlertTriangle size={14} class="shrink-0 mt-0.5" />
 					<span>{error}</span>
 				</div>
@@ -225,7 +225,7 @@
 			<div class="flex items-center gap-2 mb-6">
 				{#each ['Datos', 'Entrega', 'Pago', 'Confirmar'] as s, i}
 					<div class="flex items-center gap-2">
-						<div class={`w-7 h-7 flex items-center justify-center text-[11px] font-medium border ${i < step || i === step ? 'border-fg text-fg' : 'border-line text-mute'}`}>
+						<div class={`w-7 h-7 flex items-center justify-center text-[11px] font-medium border rounded-xs ${i < step || i === step ? 'border-fg text-fg' : 'border-line text-mute'}`}>
 							{i < step ? '✓' : i + 1}
 						</div>
 						<span class={`text-[11px] font-medium hidden sm:block ${i <= step ? 'text-fg' : 'text-mute'}`}>{s}</span>
@@ -243,7 +243,7 @@
 								<User size={12} /> Nombre completo *
 							</label>
 							<input id="co-name" type="text" bind:value={form.customerName}
-								class="w-full border border-line px-3 py-2 text-sm bg-base text-fg focus:outline-none focus:border-signal transition-colors"
+								class="w-full border rounded-xs border-line px-3 py-2 text-sm bg-base text-fg focus:outline-none focus:border-signal transition-colors"
 								placeholder="Nombre Apellido" />
 						</div>
 						<div>
@@ -251,7 +251,7 @@
 								<Phone size={12} /> Teléfono *
 							</label>
 							<input id="co-phone" type="tel" bind:value={form.customerPhone}
-								class="w-full border border-line px-3 py-2 text-sm bg-base text-fg focus:outline-none focus:border-signal transition-colors"
+								class="w-full border rounded-xs border-line px-3 py-2 text-sm bg-base text-fg focus:outline-none focus:border-signal transition-colors"
 								placeholder="Ej: 2613456789" />
 							<p class="text-[10px] text-mute mt-1">Mínimo 8 dígitos, sin guiones</p>
 						</div>
@@ -260,7 +260,7 @@
 								<Mail size={12} /> Email *
 							</label>
 							<input id="co-email" type="email" bind:value={form.customerEmail}
-								class="w-full border border-line px-3 py-2 text-sm bg-base text-fg focus:outline-none focus:border-signal transition-colors"
+								class="w-full border rounded-xs border-line px-3 py-2 text-sm bg-base text-fg focus:outline-none focus:border-signal transition-colors"
 								placeholder="email@ejemplo.com" />
 						</div>
 					</div>
@@ -269,7 +269,7 @@
 							<MessageSquare size={12} /> Notas (opcional)
 						</label>
 						<textarea id="co-notes" bind:value={form.notes} rows="2"
-							class="w-full border border-line px-3 py-2 text-sm bg-base text-fg focus:outline-none focus:border-signal transition-colors resize-none"
+							class="w-full border rounded-xs border-line px-3 py-2 text-sm bg-base text-fg focus:outline-none focus:border-signal transition-colors resize-none"
 							placeholder="Ej: Llamar antes de entregar"></textarea>
 					</div>
 				</div>
@@ -281,7 +281,7 @@
 					<div class="grid grid-cols-2 gap-3">
 						{#if storeConfig?.delivery !== false}
 							<button type="button" onclick={() => (form = { ...form, modalidad: 'DELIVERY' })}
-								class={`flex flex-col items-center gap-1.5 p-3 border transition-all ${form.modalidad === 'DELIVERY' ? 'border-fg bg-panel' : 'border-line hover:border-fg/60'}`}>
+								class={`flex flex-col items-center gap-1.5 p-3 border rounded-xs transition-all ${form.modalidad === 'DELIVERY' ? 'border-fg bg-panel' : 'border-line hover:border-fg/60'}`}>
 								<Truck size={18} class={form.modalidad === 'DELIVERY' ? 'text-fg' : 'text-mute'} />
 								<span class="text-xs font-medium">Delivery</span>
 								{#if !isDeliveryFree}<span class="text-[10px] text-mute">+${deliveryCost.toLocaleString('es-AR')}</span>{/if}
@@ -290,7 +290,7 @@
 						{/if}
 						{#if storeConfig?.takeaway !== false}
 							<button type="button" onclick={() => (form = { ...form, modalidad: 'TAKEAWAY' })}
-								class={`flex flex-col items-center gap-1.5 p-3 border transition-all ${form.modalidad === 'TAKEAWAY' ? 'border-fg bg-panel' : 'border-line hover:border-fg/60'}`}>
+								class={`flex flex-col items-center gap-1.5 p-3 border rounded-xs transition-all ${form.modalidad === 'TAKEAWAY' ? 'border-fg bg-panel' : 'border-line hover:border-fg/60'}`}>
 								<Store size={18} class={form.modalidad === 'TAKEAWAY' ? 'text-fg' : 'text-mute'} />
 								<span class="text-xs font-medium">Retiro en local</span>
 								<span class="text-[10px] text-mute">Sin costo</span>
@@ -303,7 +303,7 @@
 								<MapPin size={12} /> Dirección *
 							</label>
 							<input id="co-address" type="text" bind:value={form.customerAddress}
-								class="w-full border border-line px-3 py-2 text-sm bg-base text-fg focus:outline-none focus:border-signal transition-colors"
+								class="w-full border rounded-xs border-line px-3 py-2 text-sm bg-base text-fg focus:outline-none focus:border-signal transition-colors"
 								placeholder="Calle, número, localidad" />
 						</div>
 					{/if}
@@ -315,14 +315,14 @@
 				<div class="space-y-2">
 					{#each filteredMethods as pm (pm.id)}
 						<button type="button" onclick={() => (form = { ...form, paymentMethod: pm.id })}
-							class={`w-full flex items-center gap-3 p-3 border transition-all ${form.paymentMethod === pm.id ? 'border-fg bg-panel' : 'border-line hover:border-fg/60'}`}>
+							class={`w-full flex items-center gap-3 p-3 border rounded-xs transition-all ${form.paymentMethod === pm.id ? 'border-fg bg-panel' : 'border-line hover:border-fg/60'}`}>
 							<pm.icon size={18} class={form.paymentMethod === pm.id ? 'text-fg' : 'text-mute'} />
 							<div class="text-left">
 								<p class="text-xs font-medium">{pm.label}</p>
 								<p class="text-[10px] text-mute">{pm.description}</p>
 							</div>
 							{#if form.paymentMethod === pm.id}
-								<div class="ml-auto w-4 h-4 border border-fg flex items-center justify-center">
+								<div class="ml-auto w-4 h-4 border rounded-xs border-fg flex items-center justify-center">
 									<div class="w-1.5 h-1.5 bg-fg"></div>
 								</div>
 							{/if}
@@ -334,22 +334,22 @@
 			<!-- Step 3: Confirmar -->
 			{#if step === 3}
 				<div class="space-y-3">
-					<div class="border border-line p-3">
+					<div class="border rounded-xs border-line p-3">
 						<h3 class="text-xs font-medium text-fg mb-2 flex items-center gap-1.5">
 							<Ticket size={14} /> Cupón de descuento
 						</h3>
 						{#if !appliedCoupon}
 							<div class="flex gap-2">
 								<input type="text" bind:value={couponCode} oninput={(e) => (couponCode = e.currentTarget.value.toUpperCase())} placeholder="Código"
-									class="flex-1 border border-line px-3 py-1.5 text-sm bg-base text-fg focus:outline-none focus:border-signal transition-colors uppercase"
+									class="flex-1 border rounded-xs border-line px-3 py-1.5 text-sm bg-base text-fg focus:outline-none focus:border-signal transition-colors uppercase"
 									disabled={validatingCoupon} />
 								<button type="button" onclick={handleApplyCoupon} disabled={!couponCode.trim() || validatingCoupon}
-									class="px-3 py-1.5 border border-line text-fg text-xs font-medium hover:bg-panel disabled:opacity-50 transition-colors">
+									class="px-3 py-1.5 border rounded-xs border-line text-fg text-xs font-medium hover:bg-panel disabled:opacity-50 transition-colors">
 									{#if validatingCoupon}<Loader2 size={12} class="animate-spin" />{:else}Aplicar{/if}
 								</button>
 							</div>
 						{:else}
-							<div class="flex items-center justify-between bg-panel border border-line px-3 py-2">
+							<div class="flex items-center justify-between bg-panel border rounded-xs border-line px-3 py-2">
 								<div class="flex items-center gap-2">
 									<Ticket size={14} class="text-mute" />
 									<div>
@@ -365,7 +365,7 @@
 						{#if couponError}<p class="text-[10px] text-mute mt-1">{couponError}</p>{/if}
 					</div>
 
-					<div class="border border-line p-3 space-y-2">
+					<div class="border rounded-xs border-line p-3 space-y-2">
 						<h3 class="text-xs font-medium text-fg">Resumen</h3>
 						<div class="text-xs space-y-1 bg-panel p-2">
 							<div class="flex justify-between">
@@ -435,7 +435,7 @@
 			<div class="flex gap-2 mt-4">
 				{#if step > 0}
 					<button type="button" onclick={() => { error = ''; step = step - 1; window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-						class="px-4 py-2 border border-line text-xs font-medium text-fg hover:bg-panel transition-colors">
+						class="px-4 py-2 border rounded-xs border-line text-xs font-medium text-fg hover:bg-panel transition-colors">
 						Atrás
 					</button>
 				{/if}

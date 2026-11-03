@@ -99,11 +99,11 @@
 {#if !$cartHydrated}
 	<!-- Esqueleto hasta hidratar el carrito persistido (R4) -->
 	<div class="max-w-3xl mx-auto px-4 py-10 bg-base pt-10">
-		<div class="border border-line bg-surface p-4 animate-pulse h-32"></div>
+		<div class="border rounded-xs border-line bg-surface p-4 animate-pulse h-32"></div>
 	</div>
 {:else if items.length === 0}
 	<div class="min-h-[60vh] flex flex-col items-center justify-center px-4 bg-base pt-20">
-		<div class="w-16 h-16 border border-line flex items-center justify-center mb-4">
+		<div class="w-16 h-16 border rounded-xs border-line flex items-center justify-center mb-4">
 			<ShoppingBag size={32} class="text-mute" />
 		</div>
 		<h1 class="font-display font-semibold text-2xl text-fg mb-2">Carrito en vacío</h1>
@@ -132,7 +132,7 @@
 		{/if}
 
 		{#if stockWarnings.length > 0}
-			<div class="border border-amber/40 bg-panel p-4 mb-4">
+			<div class="border rounded-xs border-amber/40 bg-panel p-4 mb-4">
 				<div class="flex items-start gap-2">
 					<AlertTriangle size={14} class="text-amber shrink-0 mt-0.5" />
 					<div>
@@ -146,7 +146,7 @@
 		{/if}
 
 		{#if deliveryEnabled && !isFreeShipping}
-			<div class="border border-line bg-surface p-4 mb-4">
+			<div class="border rounded-xs border-line bg-surface p-4 mb-4">
 				<div class="flex items-center gap-2 mb-2">
 					<Truck size={14} class="text-mute" />
 					<p class="font-mono text-xs font-medium text-fg">Faltan ${missingForFreeShipping.toLocaleString('es-AR')} para envío sin cargo</p>
@@ -158,7 +158,7 @@
 		{/if}
 
 		{#if deliveryEnabled && isFreeShipping}
-			<div class="border border-signal/50 bg-panel p-4 mb-4">
+			<div class="border rounded-xs border-signal/50 bg-panel p-4 mb-4">
 				<div class="flex items-center gap-2">
 					<Truck size={14} class="text-signal" />
 					<p class="font-mono text-xs font-medium text-fg">Envío sin cargo activado</p>
@@ -170,8 +170,8 @@
 			{#each items as item (item.key)}
 				{@const stockInfo = productStocks[item.key]}
 				{@const currentStock = stockInfo?.stock ?? null}
-				<div class="flex gap-3 p-3 bg-surface border border-line">
-					<div class="relative w-20 h-20 overflow-hidden bg-panel border border-line shrink-0">
+				<div class="flex gap-3 p-3 bg-surface border rounded-xs border-line">
+					<div class="relative w-20 h-20 overflow-hidden bg-panel border rounded-xs border-line shrink-0">
 						{#if item.image}
 							<img src={imgUrl(item.image)} alt={item.product.name} loading="lazy" class="absolute inset-0 w-full h-full object-cover" />
 						{:else}
@@ -196,7 +196,7 @@
 						{/if}
 
 						<div class="flex items-center gap-3 mt-2.5">
-							<div class="flex items-center border border-line bg-base">
+							<div class="flex items-center border rounded-xs border-line bg-base">
 								<button
 									type="button"
 									onclick={() => cart.updateQuantity(item.key, item.quantity - 1)}
@@ -231,7 +231,7 @@
 		</div>
 
 		<div class="sticky bottom-0 bg-base border-t border-line pt-4">
-			<div class="bg-surface border border-line p-4">
+			<div class="bg-surface border rounded-xs border-line p-4">
 				<div class="flex justify-between font-mono text-sm mb-2">
 					<span class="text-mute uppercase tracking-[0.14em] text-[11px]">Subtotal</span>
 					<span class="text-fg tel">${total.toLocaleString('es-AR')}</span>

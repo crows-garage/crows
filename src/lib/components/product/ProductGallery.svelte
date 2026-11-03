@@ -27,7 +27,7 @@
 <svelte:window onkeydown={handleKey} />
 
 {#if !images?.length}
-	<div class="relative aspect-square bg-panel flex items-center justify-center border border-line overflow-hidden">
+	<div class="relative aspect-square bg-panel flex items-center justify-center border rounded-xs border-line overflow-hidden">
 		<div class="absolute inset-0 graticule"></div>
 		<span class="relative font-mono text-[10px] uppercase tracking-[0.28em] text-mute">Sin imagen</span>
 	</div>
@@ -39,7 +39,7 @@
 				<button
 					type="button"
 					onclick={() => (active = i)}
-					class={`relative w-16 h-16 overflow-hidden border transition-all ${active === i ? 'border-signal' : 'border-line hover:border-mute'}`}
+					class={`relative w-16 h-16 overflow-hidden border rounded-xs transition-all ${active === i ? 'border-signal' : 'border-line hover:border-mute'}`}
 				>
 					<img src={imgUrl(img)} alt={`Foto ${i + 1}`} loading="lazy" class="absolute inset-0 w-full h-full object-cover" />
 				</button>
@@ -50,7 +50,7 @@
 		<div class="flex-1">
 			<button
 				type="button"
-				class="relative aspect-square bg-panel border border-line overflow-hidden w-full group"
+				class="relative aspect-square bg-panel border rounded-xs border-line overflow-hidden w-full group"
 				onclick={() => {
 					lightboxIndex = active
 					showLightbox = true
@@ -58,7 +58,7 @@
 			>
 				<img src={imgUrl(images[active])} alt="Producto" class="absolute inset-0 w-full h-full object-contain p-4" />
 				<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-					<span class="font-mono text-[9px] uppercase tracking-[0.2em] text-mute border border-line bg-surface/90 px-2 py-1">Ampliar imagen</span>
+					<span class="font-mono text-[9px] uppercase tracking-[0.2em] text-mute border rounded-xs border-line bg-surface/90 px-2 py-1">Ampliar imagen</span>
 				</div>
 			</button>
 
@@ -68,7 +68,7 @@
 					<button
 						type="button"
 						onclick={() => (active = i)}
-						class={`relative w-16 h-16 overflow-hidden border shrink-0 transition-all ${active === i ? 'border-signal' : 'border-line'}`}
+						class={`relative w-16 h-16 overflow-hidden border rounded-xs shrink-0 transition-all ${active === i ? 'border-signal' : 'border-line'}`}
 					>
 						<img src={imgUrl(img)} alt={`Foto ${i + 1}`} loading="lazy" class="absolute inset-0 w-full h-full object-cover" />
 					</button>

@@ -14,7 +14,7 @@
 			href={imgUrl(media.url)}
 			target="_blank"
 			rel="noopener noreferrer"
-			class="group relative aspect-square overflow-hidden bg-panel border border-line flex flex-col items-center justify-center gap-2 p-4 hover:border-signal transition-colors"
+			class="group relative aspect-square overflow-hidden bg-panel border rounded-xs border-line flex flex-col items-center justify-center gap-2 p-4 hover:border-signal transition-colors"
 		>
 			<FileText class="w-6 h-6 text-mute group-hover:text-signal transition-colors" />
 			<span class="font-mono text-[9px] uppercase tracking-[0.18em] text-mute text-center line-clamp-2">
@@ -26,12 +26,12 @@
 			href={media.type === 'video' ? imgUrl(media.url) : src}
 			target="_blank"
 			rel="noopener noreferrer"
-			class="group relative block aspect-square overflow-hidden bg-panel border border-line"
+			class="group relative block aspect-square overflow-hidden bg-panel border rounded-xs border-line"
 		>
 			<img src={src} alt={media.alt || name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
 			{#if media.type === 'video'}
 				<span class="absolute inset-0 flex items-center justify-center bg-night/30">
-					<span class="w-10 h-10 border border-brand/80 bg-night/60 flex items-center justify-center">
+					<span class="w-10 h-10 border rounded-xs border-brand/80 bg-night/60 flex items-center justify-center">
 						<Play class="w-4 h-4 text-white fill-current" />
 					</span>
 				</span>
@@ -52,7 +52,7 @@
 				{#each active.slice(0, 6) as gallery, i}
 					{@const media = gallery.media || []}
 					{@const sorted = [...media].sort((a, b) => (a.position ?? 0) - (b.position ?? 0))}
-					<article class="border border-line bg-surface">
+					<article class="border rounded-xs border-line bg-surface">
 						<div class="flex items-end justify-between gap-4 p-5 border-b border-line">
 							<div class="min-w-0">
 								<p class="eyebrow mb-1.5">Grupo {String(i + 1).padStart(2, '0')}</p>

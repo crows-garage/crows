@@ -55,7 +55,7 @@
 </script>
 
 <svelte:head>
-	<title>Biblioteca — CursoX</title>
+	<title>Biblioteca — Crow Projects</title>
 	<meta name="description" content="Documentos y publicaciones de la institución disponibles para descarga." />
 </svelte:head>
 
@@ -77,9 +77,9 @@
 				{#each data.docs as doc (doc.id)}
 					{@const price = formatPrice(doc.price)}
 					{@const membersOnly = doc.visibility === 'MEMBERS_ONLY'}
-					<article class="bg-panel border border-line p-5 flex flex-col gap-3">
+					<article class="bg-panel border rounded-xs border-line p-5 flex flex-col gap-3">
 						<div class="flex items-start gap-3">
-							<span class="w-10 h-10 border border-line bg-panel flex items-center justify-center flex-shrink-0">
+							<span class="w-10 h-10 border rounded-xs border-line bg-panel flex items-center justify-center flex-shrink-0">
 								<FileText size={16} class="text-fg/70" />
 							</span>
 							<div class="min-w-0 flex-1">

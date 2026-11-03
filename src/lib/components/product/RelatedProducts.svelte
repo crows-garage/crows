@@ -7,7 +7,7 @@
 {#if products?.length}
 	<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-5">
 		{#each products as product (product.id)}
-			<a href={`/producto/${product.slug}`} class="group border border-line bg-surface block transition-colors hover:border-signal">
+			<a href={`/producto/${product.slug}`} class="group border rounded-xs border-line bg-surface block transition-colors hover:border-signal">
 				<div class="relative aspect-square bg-panel overflow-hidden">
 					{#if getFirstImage(product)}
 						<img src={imgUrl(getFirstImage(product))} alt={product.name} loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />

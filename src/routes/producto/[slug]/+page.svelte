@@ -26,7 +26,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.product?.name || 'Curso'} — CursoX</title>
+	<title>{data.product?.name || 'Curso'} — Crow Projects</title>
 	<meta name="description" content={data.product?.description?.slice(0, 160) || ''} />
 </svelte:head>
 

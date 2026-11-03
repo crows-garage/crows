@@ -17,7 +17,7 @@
 		</div>
 		<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
 			{#each PILLARS as [number, Icon, title, text]}
-				<article class="border border-line bg-surface p-6 sm:p-7 lg:min-h-[270px]">
+				<article class="border rounded-xs border-line bg-surface p-6 sm:p-7 lg:min-h-[270px]">
 					<div class="mb-10 flex items-start justify-between">
 						<Icon class="w-6 h-6 text-signal" strokeWidth={1.5} aria-hidden="true" />
 						<span class="font-mono text-[10px] tracking-[0.2em] text-mute">{number}</span>

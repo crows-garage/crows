@@ -16,7 +16,7 @@
 
 		<div class="space-y-2">
 			{#each faqs as faq (faq.id)}
-				<div class="border border-line bg-surface">
+				<div class="border rounded-xs border-line bg-surface">
 					<button
 						type="button"
 						onclick={() => (openId = openId === faq.id ? null : faq.id)}

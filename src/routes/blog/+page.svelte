@@ -44,8 +44,8 @@
 {/snippet}
 
 <svelte:head>
-	<title>Publicaciones — CursoX</title>
-	<meta name="description" content="Ideas, experiencias y conocimiento compartido por la comunidad de CursoX." />
+	<title>Publicaciones — Crow Projects</title>
+	<meta name="description" content="Ideas, experiencias y conocimiento compartido por la comunidad de Crow Projects." />
 </svelte:head>
 
 <div class="min-h-screen bg-base pb-16">
@@ -59,15 +59,15 @@
 
 	{#if published.length === 0}
 		<div class="max-w-7xl mx-auto px-4 py-16">
-			<div class="border border-line bg-surface p-10 text-center">
+			<div class="border rounded-xs border-line bg-surface p-10 text-center">
 				<p class="font-mono text-xs uppercase tracking-[0.2em] text-mute">Aún no hay noticias publicadas</p>
-				<p class="text-sm text-mute mt-2">Volvé pronto para leer las últimas novedades de CursoX.</p>
+				<p class="text-sm text-mute mt-2">Volvé pronto para leer las últimas novedades de Crow Projects.</p>
 			</div>
 		</div>
 	{:else}
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			{#if featured}
-				<a href={`/blog/${featured.slug}`} class="group grid md:grid-cols-2 border border-line bg-surface transition-colors hover:border-signal">
+				<a href={`/blog/${featured.slug}`} class="group grid md:grid-cols-2 border rounded-xs border-line bg-surface transition-colors hover:border-signal">
 					<div class="relative aspect-[16/10] md:aspect-auto md:min-h-[360px] overflow-hidden bg-panel">
 						{#if imgUrl(featured.coverImage)}
 							<img src={imgUrl(featured.coverImage)} alt={featured.title} loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -98,7 +98,7 @@
 			{#if rest.length > 0}
 				<div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 					{#each rest as post (post.id)}
-						<a href={`/blog/${post.slug}`} class="group border border-line bg-surface flex flex-col transition-colors hover:border-signal">
+						<a href={`/blog/${post.slug}`} class="group border rounded-xs border-line bg-surface flex flex-col transition-colors hover:border-signal">
 							<div class="relative aspect-[16/10] overflow-hidden bg-panel">
 								{#if imgUrl(post.coverImage)}
 									<img src={imgUrl(post.coverImage)} alt={post.title} loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />

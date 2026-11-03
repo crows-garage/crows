@@ -39,7 +39,7 @@
 	</div>
 {:else}
 	<div class="max-w-xl mx-auto px-4 py-12 text-center">
-		<div class="w-16 h-16 border border-line bg-panel flex items-center justify-center mx-auto mb-5">
+		<div class="w-16 h-16 border rounded-xs border-line bg-panel flex items-center justify-center mx-auto mb-5">
 			{#if isPaid}
 				<CheckCircle2 size={36} class="text-fg" />
 			{:else}
@@ -55,7 +55,7 @@
 				: 'Tu pedido fue registrado. Te contactaremos para coordinar el pago.'}
 		</p>
 
-		<div class="border border-line bg-surface p-4 text-left mb-6">
+		<div class="border rounded-xs border-line bg-surface p-4 text-left mb-6">
 			<div class="flex justify-between items-center mb-3">
 				<span class="font-mono text-[10px] uppercase tracking-[0.14em] text-mute">N° de pedido</span>
 				<span class="font-mono text-sm tel text-fg">#{order?.id || orderId}</span>

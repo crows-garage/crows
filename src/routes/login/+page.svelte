@@ -24,7 +24,7 @@
 </script>
 
 <svelte:head>
-	<title>Iniciar sesión — CursoX</title>
+	<title>Iniciar sesión — Crow Projects</title>
 </svelte:head>
 
 <div class="min-h-screen pt-20 pb-16 bg-base">
@@ -41,7 +41,7 @@
 					id="login-email"
 					type="email"
 					bind:value={email}
-					class="w-full px-3 py-2 border border-line bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors"
+					class="w-full px-3 py-2 border rounded-xs border-line bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors"
 					placeholder="tu@email.com"
 					required
 				/>
@@ -53,7 +53,7 @@
 					id="login-password"
 					type="password"
 					bind:value={password}
-					class="w-full px-3 py-2 border border-line bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors"
+					class="w-full px-3 py-2 border rounded-xs border-line bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors"
 					placeholder="••••••••"
 					required
 				/>

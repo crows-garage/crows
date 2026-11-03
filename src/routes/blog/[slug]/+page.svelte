@@ -29,7 +29,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.post.title} — CursoX</title>
+	<title>{data.post.title} — Crow Projects</title>
 	<meta name="description" content={data.post.excerpt || data.post.title} />
 </svelte:head>
 
@@ -38,7 +38,7 @@
 		<div class="flex flex-col lg:flex-row gap-12">
 			<article class="flex-1 min-w-0">
 				<!-- Cabecera de nota -->
-				<header class="border border-line bg-surface p-5 sm:p-8 mb-8">
+				<header class="border rounded-xs border-line bg-surface p-5 sm:p-8 mb-8">
 					<div class="flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-mute mb-5">
 						<span class="tel">Publicado: {formatDate(data.post.createdAt)}</span>
 						<span>·</span>
@@ -61,7 +61,7 @@
 				</header>
 
 				{#if data.post.coverImage}
-					<div class="relative aspect-[16/9] overflow-hidden border border-line bg-panel mb-8">
+					<div class="relative aspect-[16/9] overflow-hidden border rounded-xs border-line bg-panel mb-8">
 						<img src={imgUrl(data.post.coverImage)} alt={data.post.title} loading="lazy" class="w-full h-full object-cover" />
 					</div>
 				{/if}
@@ -79,12 +79,12 @@
 
 			{#if data.otherPosts.length > 0}
 				<aside class="lg:w-80 xl:w-96 flex-shrink-0">
-					<div class="border border-line bg-surface p-6 lg:sticky lg:top-40">
+					<div class="border rounded-xs border-line bg-surface p-6 lg:sticky lg:top-40">
 						<h3 class="eyebrow mb-6">Más noticias</h3>
 						<div class="space-y-5">
 							{#each data.otherPosts.slice(0, 6) as p (p.id)}
 								<a href={`/blog/${p.slug}`} class="group flex gap-4">
-									<div class="w-16 h-16 flex-shrink-0 overflow-hidden border border-line bg-panel">
+									<div class="w-16 h-16 flex-shrink-0 overflow-hidden border rounded-xs border-line bg-panel">
 										{#if imgUrl(p.coverImage)}
 											<img src={imgUrl(p.coverImage)} alt={p.title} loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
 										{:else}

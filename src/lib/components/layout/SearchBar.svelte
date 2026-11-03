@@ -66,7 +66,7 @@
 	</form>
 
 	{#if showSuggestions && suggestions.length > 0}
-		<div class="absolute top-full left-0 right-0 mt-1 bg-surface border border-line z-50 max-h-64 overflow-y-auto shadow-lg">
+		<div class="absolute top-full left-0 right-0 mt-1 bg-surface border rounded-xs border-line z-50 max-h-64 overflow-y-auto shadow-lg">
 			{#each suggestions as suggestion}
 				<button
 					type="button"

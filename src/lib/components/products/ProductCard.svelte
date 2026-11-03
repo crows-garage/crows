@@ -93,7 +93,7 @@
 	const lowStock = $derived(stock > 0 && stock <= 5)
 </script>
 
-<div class="group bg-surface border border-line transition-colors duration-200 flex flex-col overflow-hidden h-full hover:border-signal">
+<div class="group bg-surface border rounded-xs border-line transition-colors duration-200 flex flex-col overflow-hidden h-full hover:border-signal">
 	<!-- Imagen -->
 	<a href={`/producto/${product.slug}`} class="relative aspect-square bg-panel overflow-hidden">
 		{#if imageUrl}
@@ -110,7 +110,7 @@
 			type="button"
 			onclick={handleToggleFavorite}
 			disabled={favoriteLoading}
-			class={`absolute top-2 right-2 z-10 w-9 h-9 flex items-center justify-center border transition-all ${isFavorite ? 'bg-signal border-signal text-base' : 'bg-surface/90 border-line text-mute hover:border-signal hover:text-fg'}`}
+			class={`absolute top-2 right-2 z-10 w-9 h-9 flex items-center justify-center border rounded-xs transition-all ${isFavorite ? 'bg-signal border-signal text-base' : 'bg-surface/90 border-line text-mute hover:border-signal hover:text-fg'}`}
 			title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
 			aria-label={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
 		>
@@ -128,7 +128,7 @@
 		{#if product.labels?.length > 0}
 			<div class="absolute top-2 left-2 flex flex-col gap-1">
 				{#each product.labels.slice(0, 2) as label}
-					<span class="inline-flex items-center gap-1 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.12em] bg-signal text-base border border-signal">
+					<span class="inline-flex items-center gap-1 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.12em] bg-signal text-base border rounded-xs border-signal">
 						{label.emoji} {label.name}
 					</span>
 				{/each}
@@ -137,7 +137,7 @@
 
 		{#if outOfStock}
 			<div class="absolute inset-0 bg-base/85 flex items-center justify-center backdrop-blur-sm">
-				<span class="px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] bg-surface border border-rec text-rec">Sin stock</span>
+				<span class="px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] bg-surface border rounded-xs border-rec text-rec">Sin stock</span>
 			</div>
 		{/if}
 	</a>

@@ -35,7 +35,7 @@
 </script>
 
 <svelte:head>
-	<title>Proyectos — CursoX</title>
+	<title>Proyectos — Crow Projects</title>
 	<meta name="description" content="Proyectos futuros y en curso de la institución, con su hoja de ruta." />
 </svelte:head>
 
@@ -56,7 +56,7 @@
 			<div class="space-y-8">
 				{#each data.projects as project (project.id)}
 					{@const milestones = project.milestones || []}
-					<article class="bg-panel border border-line overflow-hidden">
+					<article class="bg-panel border rounded-xs border-line overflow-hidden">
 						{#if project.coverImage}
 							<img src={imgUrl(project.coverImage) || project.coverImage} alt={project.name} loading="lazy" class="w-full h-40 object-cover" />
 						{/if}
@@ -109,13 +109,13 @@
 									<div class="space-y-3">
 										{#each milestones as m, idx}
 											<div class="flex items-start gap-3">
-												<span class="w-6 h-6 border bg-base flex items-center justify-center text-[10px] font-mono text-mute flex-shrink-0">
+												<span class="w-6 h-6 border rounded-xs bg-base flex items-center justify-center text-[10px] font-mono text-mute flex-shrink-0">
 													{idx + 1}
 												</span>
 												<div class="min-w-0 flex-1">
 													<div class="flex items-center gap-2 flex-wrap">
 														<p class={`text-sm ${m.status === 'DONE' ? 'text-mute line-through' : 'text-fg'}`}>{m.title}</p>
-														<span class={`text-[9px] font-semibold uppercase tracking-[0.15em] border px-1.5 py-0.5 ${MILESTONE_STYLES[m.status] || MILESTONE_STYLES.PLANNED}`}>
+														<span class={`text-[9px] font-semibold uppercase tracking-[0.15em] border rounded-xs px-1.5 py-0.5 ${MILESTONE_STYLES[m.status] || MILESTONE_STYLES.PLANNED}`}>
 															{MILESTONE_LABELS[m.status] || m.status}
 														</span>
 													</div>

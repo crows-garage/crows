@@ -56,7 +56,7 @@
 </script>
 
 <svelte:head>
-	<title>Contacto — CursoX</title>
+	<title>Contacto — Crow Projects</title>
 	<meta name="description" content="Contactanos: WhatsApp, email, redes sociales y ubicación." />
 </svelte:head>
 
@@ -82,7 +82,7 @@
 			<div class="lg:col-span-1 space-y-6">
 				<!-- WhatsApp -->
 				{#if whatsappLink}
-					<div class="p-6 border border-line bg-surface">
+					<div class="p-6 border rounded-xs border-line bg-surface">
 						<div class="flex items-center gap-3 mb-3">
 							<div class="w-12 h-12 bg-signal flex items-center justify-center">
 								<Phone class="w-6 h-6 text-white" />
@@ -105,7 +105,7 @@
 
 				<!-- Email -->
 				{#if emails.length > 0}
-					<div class="p-6 border border-line bg-surface">
+					<div class="p-6 border rounded-xs border-line bg-surface">
 						<div class="flex items-center gap-3 mb-3">
 							<div class="w-12 h-12 bg-signal/10 flex items-center justify-center">
 								<Mail class="w-6 h-6 text-signal" />
@@ -125,7 +125,7 @@
 
 				<!-- Redes sociales -->
 				{#if socialItems.length > 0}
-					<div class="p-6 border border-line bg-surface">
+					<div class="p-6 border rounded-xs border-line bg-surface">
 						<h3 class="font-semibold text-fg mb-3">Redes Sociales</h3>
 						<div class="flex gap-3">
 							{#each socialItems as { label, href, name }}
@@ -145,7 +145,7 @@
 
 				<!-- Ubicación -->
 				{#if address}
-					<div class="p-6 border border-line bg-surface">
+					<div class="p-6 border rounded-xs border-line bg-surface">
 						<h3 class="font-semibold text-fg mb-3 flex items-center gap-2">
 							<MapPin class="w-5 h-5 text-signal" />
 							Ubicación
@@ -159,7 +159,7 @@
 						>
 							Ver en Google Maps →
 						</a>
-						<div class="overflow-hidden border border-line">
+						<div class="overflow-hidden border rounded-xs border-line">
 							<iframe
 								src={`https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`}
 								width="100%"
@@ -177,11 +177,11 @@
 
 			<!-- Columna derecha: formulario -->
 			<div class="lg:col-span-2">
-				<div class="p-6 md:p-8 border border-line bg-surface">
+				<div class="p-6 md:p-8 border rounded-xs border-line bg-surface">
 					<h2 class="text-xl font-semibold text-fg mb-6">Enviá tu consulta</h2>
 					{#if sent}
 						<div class="text-center py-8">
-							<div class="w-16 h-16 bg-signal/10 border border-line flex items-center justify-center mx-auto mb-4">
+							<div class="w-16 h-16 bg-signal/10 border rounded-xs border-line flex items-center justify-center mx-auto mb-4">
 								<Send class="w-8 h-8 text-signal" />
 							</div>
 							<h3 class="text-lg font-semibold text-fg mb-2">¡Mensaje listo!</h3>
