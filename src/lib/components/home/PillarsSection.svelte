@@ -9,7 +9,7 @@
 	]
 </script>
 
-<section id="pilares" class="py-16 sm:py-20 lg:py-28 border-t border-line opacity-0 transition-[opacity]_200ms ease-out [&_visible]:opacity-100">
+<section id="pilares" class="py-16 sm:py-20 lg:py-28 border-t border-line">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="max-w-2xl mb-10 sm:mb-14">
 			<p class="eyebrow !text-signal mb-3">02 · Una comunidad para hacer</p>
