@@ -1,5 +1,5 @@
 <script>
-	import { ArrowDown, ArrowRight, GitHub } from '@lucide/svelte'
+	import { ArrowDown, ArrowRight } from '@lucide/svelte'
 	import { imgUrl } from '#lib/utils.js'
 
 	let { store = null, org = null } = $props()
@@ -18,7 +18,7 @@
 		<h1 class="mt-7 max-w-4xl font-display font-semibold text-[clamp(3.5rem,10vw,8rem)] leading-[0.86] tracking-[-0.06em]">Explorá.<br />Conectá.<br /><span class="text-brand">Creá.</span></h1>
 			<div class="mt-9 flex flex-wrap gap-3">
 				<a href="#proposito" class="btn btn-primary">Descubrí Crow Projects <ArrowDown class="w-3.5 h-3.5" /></a>
-				<a href="https://github.com/crows-garage/crows" class="btn border-white/30 text-white hover:text-brand">Colaborar <GitHub class="w-12 h-12 text-white/30 hover:text-brand" /></a>
+				<a href="https://github.com/crows-garage/crows" class="btn border-white/30 text-white hover:text-brand">Pensá en grande <ArrowRight class="w-3.5 h-3.5" /></a>
 			</div>
 			<div class="mt-8 max-w-xl border-l-2 border-brand/70 pl-4">
 				<p class="font-mono text-[10px] uppercase tracking-[0.16em] text-brand">Proyecto abierto · Para todos los IES</p>
