@@ -1,6 +1,7 @@
 <script>
 	import { ExternalLink, Users } from '@lucide/svelte'
 	import { organizationApi } from '#lib/api/organization.js'
+	{imgUrl} from '#lib/utils.js'
 
 	let projects = $state([])
 	let loading = $state(true)
@@ -46,7 +47,7 @@
 								{#if project.coverImage}
 									<div class="aspect-w-4 aspect-h-3 rounded-t-xs overflow-hidden mb-3">
 										<img
-											src={project.coverImage}
+											src={imgUrl(project.coverImage)}
 											alt={project.name || 'Proyecto'}
 											loading="lazy"
 											class="w-full h-full object-cover"
