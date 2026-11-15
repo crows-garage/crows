@@ -1,5 +1,6 @@
 <script>
 	import { ArrowUpRight, BookOpen, Lightbulb, UsersRound } from '@lucide/svelte'
+	import { onMount } from 'svelte'
 
 	const PILLARS = [
 		['01', BookOpen, 'Aprendizaje', 'Un espacio para encontrar y compartir apuntes, materiales y recursos organizados por carreras y materias.'],
@@ -7,9 +8,22 @@
 		['03', ArrowUpRight, 'Colaboración', 'La posibilidad de presentar una idea, encontrar talentos complementarios y formar un equipo.'],
 		['04', Lightbulb, 'Innovación', 'Un entorno para llevar una inquietud hacia un proyecto, una investigación, un emprendimiento o una competencia.']
 	]
+
+	let visible = $state(false)
+
+	onMount(() => {
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				visible = entry.isIntersecting
+			},
+			{ threshold: 0.2 }
+		)
+		const target = document.querySelector('#pilares')
+		if (target) observer.observe(target)
+	})
 </script>
 
-<section id="pilares" class="py-16 sm:py-20 lg:py-28 border-t border-line">
+<section id="pilares" class="py-16 sm:py-20 lg:py-28 border-t border-line opacity-0 transition-opacity duration-500 class:opacity-100={visible} class:visible={visible}">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="max-w-2xl mb-10 sm:mb-14">
 			<p class="eyebrow !text-signal mb-3">02 · Una comunidad para hacer</p>
