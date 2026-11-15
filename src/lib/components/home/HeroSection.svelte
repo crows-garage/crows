@@ -27,13 +27,13 @@
 		</div>
 		<div class="border rounded-xs border-brand/30 bg-night/60 p-5 sm:p-7 backdrop-blur-sm">
 			<div class="mb-8 flex items-center justify-between border-b border-white/15 pb-4">
-				<span class="eyebrow !text-brand">La idea en movimiento</span>
+				<span class="eyebrow !text-brand"></span>
 				<span class="font-mono text-[10px] text-white/50">01 / 04</span>
 			</div>
-			<p class="font-display font-semibold text-2xl sm:text-3xl leading-tight">...<br />Una comunidad de ideas.</p>
-			<p class="mt-5 text-sm leading-relaxed text-white/70">La curiosidad nos lleva a descubrir. El conocimiento nos permite crecer. La colaboración nos lleva más lejos.</p>
+			<p class="font-display font-semibold text-2xl sm:text-3xl leading-tight">Una comunidad de<br class="text-brand"/> ideas y proyectos</p>
+			<p class="mt-5 text-sm leading-relaxed text-white/70">Las ideas nos conectan. Los equipos las hacen realidad</p>
 			<div class="mt-10 grid grid-cols-3 border-t border-white/15 pt-4 font-mono text-[9px] uppercase tracking-[0.14em] text-white/50">
-				<span>Compartir</span><span class="text-center">Conectar</span><span class="text-right">Construir</span>
+				<span>Explorá</span><span class="text-center">Conectá</span><span class="text-right">Creá</span>
 			</div>
 		</div>
 	</div>
