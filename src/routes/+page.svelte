@@ -20,8 +20,8 @@
 <div class="bg-base">
 	<HeroSection org={data.org} />
 	<PurposeSection />
-	<PillarsSection />
 	<ProjectsSection projects={data.projects} />
+	<PillarsSection />
 	<VisionSection />
 	<BlogShowcase posts={data.posts} />
 	<AgendaStrip events={data.events} />

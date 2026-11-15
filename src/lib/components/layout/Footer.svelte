@@ -202,12 +202,16 @@
 		bind:this={creditsRef}
 		class={`border-t border-signal/20 py-4 bg-base transition-all duration-700 ${isRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
 	>
-		<div class="max-w-7xl mx-auto px-4 flex items-center justify-center gap-2">
+		<div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
 			<a href="https://hodsoftware.com/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 hover:opacity-80 transition-opacity">
 				<img src="/HOD.png" alt="HOD software" width="20" height="20" class="opacity-60" />
 				<p class="font-mono text-[10px] uppercase tracking-[0.24em] text-fg/60">
 					Desarrollado por HOD software
 				</p>
+			</a>
+			<a href="https://www.instagram.com/hod_software/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.24em] text-fg/60 hover:text-signal transition-colors" aria-label="Instagram de HOD Software">
+				<SocialIcon name="instagram" className="w-4 h-4" />
+				@hod_software
 			</a>
 		</div>
 	</div>

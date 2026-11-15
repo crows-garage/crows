@@ -44,9 +44,8 @@
 	<div class="absolute inset-0 graticule opacity-20" aria-hidden="true"></div>
 
 	<div class="relative mx-auto grid min-h-[100svh] w-full max-w-7xl items-center gap-12 px-4 pb-10 pt-28 sm:px-6 sm:pb-14 sm:pt-32 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20 lg:px-8 lg:pt-28">
-		<div class="relative">
-			<img src="/ligth.svg" alt="" aria-hidden="true" class="pointer-events-none absolute right-0 top-0 w-14 opacity-80 sm:hidden" />
-			<h1 class="mt-7 max-w-4xl pr-16 font-display font-semibold text-[clamp(3.2rem,8vw,7rem)] leading-[0.88] tracking-[-0.06em] sm:pr-0">
+		<div>
+			<h1 class="mt-7 max-w-4xl font-display font-semibold text-[clamp(3.2rem,8vw,7rem)] leading-[0.88] tracking-[-0.06em]">
 				Explorá.<br />Conectá.<br /><span class="text-brand">Creá.</span>
 			</h1>
 			<div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
