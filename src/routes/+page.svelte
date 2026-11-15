@@ -22,8 +22,8 @@
 	<PurposeSection />
 	<ProjectsSection projects={data.projects} />
 	<PillarsSection />
+	<AgendaStrip events={data.events} />
 	<VisionSection />
 	<BlogShowcase posts={data.posts} />
-	<AgendaStrip events={data.events} />
 	<GalleryShowcase galleries={data.galleries} />
 </div>
