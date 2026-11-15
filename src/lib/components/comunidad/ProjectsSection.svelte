@@ -1,7 +1,8 @@
 <script>
-	import { ExternalLink, Users } from '@lucide/svelte'
+	import { onMount } from 'svelte'
+	import { ExternalLink, Loader2, MessageSquare, Users } from '@lucide/svelte'
 	import { organizationApi } from '#lib/api/organization.js'
-	{imgUrl} from '#lib/utils.js'
+	import { imgUrl } from '#lib/utils.js'
 
 	let projects = $state([])
 	let loading = $state(true)
@@ -38,24 +39,20 @@
 					</div>
 				{:else}
 					<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-						{#each projects as project}
-							<div
-								class="border rounded-xs border-line bg-surface p-4 hover:bg-surface/80 transition-colors cursor-pointer"
-								onclick={() => window.location.href = `/proyecto/${project.slug}`
-							}
-							>
+						{#each projects as project (project.id)}
+							<article class="border rounded-xs border-line bg-surface overflow-hidden hover:bg-surface/80 transition-colors">
 								{#if project.coverImage}
-									<div class="aspect-w-4 aspect-h-3 rounded-t-xs overflow-hidden mb-3">
+									<a href={`/proyecto/${project.slug || project.id}`} class="block aspect-[4/3] overflow-hidden">
 										<img
 											src={imgUrl(project.coverImage)}
 											alt={project.name || 'Proyecto'}
 											loading="lazy"
-											class="w-full h-full object-cover"
+											class="w-full h-full object-cover hover:scale-105 transition-transform"
 										/>
-									</div>
+									</a>
 								{/if}
 								<div class="p-3">
-									<h3 class="text-sm font-medium text-fg line-clamp-2">{project.name || 'Sin título'}</h3>
+									<h3 class="text-sm font-medium text-fg line-clamp-2"><a href={`/proyecto/${project.slug || project.id}`} class="hover:text-signal">{project.name || 'Sin título'}</a></h3>
 									<p class="text-[9px] text-muted-foreground line-clamp-1 mt-1">{project.description || 'Descripción breve'}</p>
 									<div class="mt-2 flex gap-2">
 										<a
@@ -74,7 +71,7 @@
 										</button>
 									</div>
 								</div>
-							</div>
+							</article>
 						{/each}
 					</div>
 				{/if}

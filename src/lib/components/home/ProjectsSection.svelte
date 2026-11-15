@@ -1,5 +1,6 @@
 <script>
 	import { ArrowUpRight, Check, Users } from "@lucide/svelte";
+	import { imgUrl } from "#lib/utils.js";
 
 	let { projects = [] } = $props();
 </script>
@@ -35,19 +36,20 @@
 			<p class="eyebrow !text-signal mb-4">Proyectos publicados · {projects.length}</p>
 			<div class="grid grid-cols-2 gap-3">
 				{#each projects.slice(0, 3) as project}
-					<article
-						class="border rounded-xs border-line bg-surface p-3"
-					>
-						<h3 class="font-display font-semibold text-base text-fg">
-							{project.name}
-						</h3>
-						{#if project.description}
-							<p
-								class="mt-1 text-xs text-mute leading-relaxed line-clamp-2"
-							>
-								{project.description}
-							</p>
-						{/if}
+					<article class="border rounded-xs border-line bg-surface overflow-hidden">
+						<a href={`/proyecto/${project.slug || project.id}`} class="block">
+							{#if project.coverImage}
+								<img src={imgUrl(project.coverImage)} alt={project.name} loading="lazy" class="h-32 w-full object-cover" />
+							{/if}
+							<div class="p-3">
+								<h3 class="font-display font-semibold text-base text-fg hover:text-signal transition-colors">
+									{project.name}
+								</h3>
+								{#if project.description}
+									<p class="mt-1 text-xs text-mute leading-relaxed line-clamp-2">{project.description}</p>
+								{/if}
+							</div>
+						</a>
 					</article>
 				{/each}
 			</div>

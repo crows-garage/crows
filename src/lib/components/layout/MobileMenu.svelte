@@ -9,8 +9,6 @@
 
 	const NAV_LINKS = [
 		{ href: '/', label: 'Inicio' },
-		{ href: '/productos', label: 'Recursos' },
-		{ href: '/turnos', label: 'Turnos' },
 		{ href: '/comunidad', label: 'Comunidad' },
 		{ href: '/biblioteca', label: 'Biblioteca' },
 		{ href: '/proyectos', label: 'Proyectos' },

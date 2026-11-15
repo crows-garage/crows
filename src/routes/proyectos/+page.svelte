@@ -56,14 +56,24 @@
 			<div class="space-y-8">
 				{#each data.projects as project (project.id)}
 					{@const milestones = project.milestones || []}
+					{@const imageUrls = [project.coverImage, ...(project.images || []).map((image) => image?.url)].filter(Boolean)}
 					<article class="bg-panel border rounded-xs border-line overflow-hidden">
-						{#if project.coverImage}
-							<img src={imgUrl(project.coverImage) || project.coverImage} alt={project.name} loading="lazy" class="w-full h-40 object-cover" />
+						{#if imageUrls.length > 0}
+							<a href={`/proyecto/${project.slug || project.id}`} class="block">
+								<img src={imgUrl(imageUrls[0])} alt={project.name} loading="lazy" class="w-full h-40 object-cover hover:opacity-90 transition-opacity" />
+								{#if imageUrls.length > 1}
+									<div class="grid grid-cols-4 gap-1 p-1 bg-base">
+										{#each imageUrls.slice(1, 5) as image, index}
+											<img src={imgUrl(image)} alt={`${project.name} imagen ${index + 2}`} loading="lazy" class="h-16 w-full object-cover" />
+										{/each}
+									</div>
+								{/if}
+							</a>
 						{/if}
 						<div class="p-5 sm:p-6">
 							<div class="flex items-start justify-between gap-3 flex-wrap">
 								<div class="min-w-0">
-									<h2 class="text-lg font-medium text-fg leading-snug">{project.name}</h2>
+									<h2 class="text-lg font-medium text-fg leading-snug"><a href={`/proyecto/${project.slug || project.id}`} class="hover:text-signal transition-colors">{project.name}</a></h2>
 									{#if project.category}
 										<p class="text-[11px] text-mute mt-1 flex items-center gap-1 uppercase tracking-[0.15em]">
 											<MapPin size={10} /> {project.category}
@@ -99,6 +109,7 @@
 								{#if project.startDate}<span>Inicio: {formatDate(project.startDate)}</span>{/if}
 								{#if project.endDate}<span>Cierre estimado: {formatDate(project.endDate)}</span>{/if}
 							</div>
+							<a href={`/proyecto/${project.slug || project.id}`} class="inline-block mt-4 text-xs uppercase tracking-[0.16em] text-signal hover:text-fg transition-colors">Ver proyecto →</a>
 
 							<!-- Roadmap -->
 							{#if milestones.length > 0}

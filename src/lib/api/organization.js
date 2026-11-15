@@ -17,6 +17,11 @@ export const organizationApi = {
 		return unwrap(body)
 	},
 
+	project: async (idOrSlug) => {
+		const body = await fetchJSON(`${ORG_ROOT}/projects/${encodeURIComponent(idOrSlug)}`)
+		return body?.data ?? body
+	},
+
 	// solo PUBLISHED + PUBLIC; devuelve array
 	library: async () => {
 		const body = await fetchJSON(`${ORG_ROOT}/library?limit=50`)

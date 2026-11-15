@@ -19,8 +19,6 @@
 	const pathname = $derived(page.url.pathname)
 
 	const NAV_LINKS = [
-		{ href: '/productos', label: 'Recursos' },
-		{ href: '/turnos', label: 'Turnos' },
 		{ href: '/comunidad', label: 'Comunidad' },
 		{ href: '/biblioteca', label: 'Biblioteca' },
 		{ href: '/proyectos', label: 'Proyectos' },
