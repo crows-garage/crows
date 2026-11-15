@@ -1,5 +1,5 @@
 <script>
-	import { ImageIcon, FileText, Play } from '@lucide/svelte'
+	import { ImageIcon, FileText } from '@lucide/svelte'
 	import { imgUrl } from '#lib/utils.js'
 
 	let { galleries = [] } = $props()
@@ -21,21 +21,27 @@
 				{media.alt || 'Documento'}
 			</span>
 		</a>
+	{:else if media.type === 'video'}
+		<div class="group relative aspect-square overflow-hidden bg-panel border rounded-xs border-line">
+			<video
+				src={imgUrl(media.url)}
+				poster={media.thumbnail ? imgUrl(media.thumbnail) : undefined}
+				controls
+				muted
+				playsinline
+				preload="metadata"
+				aria-label={media.alt || name}
+				class="absolute inset-0 w-full h-full object-cover"
+			></video>
+		</div>
 	{:else}
 		<a
-			href={media.type === 'video' ? imgUrl(media.url) : src}
+			href={src}
 			target="_blank"
 			rel="noopener noreferrer"
 			class="group relative block aspect-square overflow-hidden bg-panel border rounded-xs border-line"
 		>
 			<img src={src} alt={media.alt || name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-			{#if media.type === 'video'}
-				<span class="absolute inset-0 flex items-center justify-center bg-night/30">
-					<span class="w-10 h-10 border rounded-xs border-brand/80 bg-night/60 flex items-center justify-center">
-						<Play class="w-4 h-4 text-white fill-current" />
-					</span>
-				</span>
-			{/if}
 		</a>
 	{/if}
 {/snippet}
@@ -62,7 +68,7 @@
 								{/if}
 							</div>
 							<span class="font-mono text-[9px] uppercase tracking-[0.18em] text-mute tel shrink-0">
-								{media.length} imagen{media.length !== 1 ? 'es' : ''}
+								{media.length} elemento{media.length !== 1 ? 's' : ''}
 							</span>
 						</div>
 

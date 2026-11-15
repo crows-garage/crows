@@ -8,7 +8,6 @@
 	import BlogShowcase from '#lib/components/home/BlogShowcase.svelte'
 	import AgendaStrip from '#lib/components/home/AgendaStrip.svelte'
 	import GalleryShowcase from '#lib/components/home/GalleryShowcase.svelte'
-	import BlackSunSection from '#lib/components/home/BlackSunSection.svelte'
 
 	let { data } = $props()
 </script>
@@ -27,5 +26,4 @@
 	<BlogShowcase posts={data.posts} />
 	<AgendaStrip events={data.events} />
 	<GalleryShowcase galleries={data.galleries} />
-	<BlackSunSection />
 </div>

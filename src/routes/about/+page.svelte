@@ -2,6 +2,7 @@
 <script>
 	import { Mail, Phone, Globe, MapPin, GraduationCap, Users } from '@lucide/svelte'
 	import { imgUrl } from '#lib/utils.js'
+	import BlackSunSection from '#lib/components/home/BlackSunSection.svelte'
 
 	let { data } = $props()
 
@@ -95,6 +96,8 @@
 				{/each}
 			</div>
 		</section>
+
+		<BlackSunSection />
 
 		<!-- Autoridades -->
 		{#if activeAuthorities.length > 0}

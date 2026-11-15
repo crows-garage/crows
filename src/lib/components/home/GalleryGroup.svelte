@@ -1,12 +1,12 @@
 // ≙ GalleryGroup (export de src/components/home/GalleryShowcase.jsx), usado
 // por la home y por /galeria.
 <script>
-	import { ImageIcon, FileText, Play } from '@lucide/svelte'
+	import { ImageIcon, FileText } from '@lucide/svelte'
 	import { imgUrl } from '#lib/utils.js'
 
-	let { gallery, index = 0 } = $props()
+	let { gallery, index = 0, mediaOverride = null } = $props()
 
-	const media = $derived(gallery.media || [])
+	const media = $derived(mediaOverride ?? gallery.media ?? [])
 	const sorted = $derived([...media].sort((a, b) => (a.position ?? 0) - (b.position ?? 0)))
 </script>
 
@@ -24,21 +24,27 @@
 				{m.alt || 'Documento'}
 			</span>
 		</a>
+	{:else if m.type === 'video'}
+		<div class="group relative aspect-square overflow-hidden bg-panel border rounded-xs border-line">
+			<video
+				src={imgUrl(m.url)}
+				poster={m.thumbnail ? imgUrl(m.thumbnail) : undefined}
+				controls
+				muted
+				playsinline
+				preload="metadata"
+				aria-label={m.alt || name}
+				class="absolute inset-0 w-full h-full object-cover"
+			></video>
+		</div>
 	{:else}
 		<a
-			href={m.type === 'video' ? imgUrl(m.url) : src}
+			href={src}
 			target="_blank"
 			rel="noopener noreferrer"
 			class="group relative block aspect-square overflow-hidden bg-panel border rounded-xs border-line"
 		>
 			<img src={src} alt={m.alt || name} loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-			{#if m.type === 'video'}
-				<span class="absolute inset-0 flex items-center justify-center bg-night/30">
-					<span class="w-10 h-10 border rounded-xs border-brand/80 bg-night/60 flex items-center justify-center">
-						<Play class="w-4 h-4 text-white fill-current" />
-					</span>
-				</span>
-			{/if}
 		</a>
 	{/if}
 {/snippet}
@@ -53,7 +59,7 @@
 			{/if}
 		</div>
 		<span class="font-mono text-[9px] uppercase tracking-[0.18em] text-mute tel shrink-0">
-			{media.length} imagen{media.length !== 1 ? 'es' : ''}
+			{media.length} elemento{media.length !== 1 ? 's' : ''}
 		</span>
 	</div>
 
