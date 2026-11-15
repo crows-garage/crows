@@ -1,0 +1,16 @@
+
+> crow-clone@0.0.1 prepare
+> svelte-kit sync || echo ''
+
+
+added 207 packages, and audited 214 packages in 54s
+
+70 packages are looking for funding
+  run `npm fund` for details
+
+2 low severity vulnerabilities
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.

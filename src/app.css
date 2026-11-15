@@ -1,0 +1,477 @@
+/* Identidad 0SC1: blanco/negro, teal de marca, superficies duras y
+   metadatos monoespaciados. Tokens semánticos con tema claro y oscuro. */
+
+@import "tailwindcss";
+
+@theme inline {
+  --color-base: var(--c-base);
+  --color-surface: var(--c-surface);
+  --color-panel: var(--c-panel);
+  --color-fg: var(--c-fg);
+  --color-mute: var(--c-mute);
+  --color-line: var(--c-line);
+  --color-signal: var(--c-signal);
+  --color-night: var(--c-night);
+  --color-rec: var(--c-rec);
+  --color-amber: var(--c-amber);
+  --color-brand: var(--c-brand);
+
+  --font-sans: var(--font-body-mplus), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-rajdhani), var(--font-body-mplus), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-jetbrains), ui-monospace, 'SF Mono', monospace;
+  --font-brand: var(--font-brand-dela), var(--font-display-rajdhani), ui-sans-serif, sans-serif;
+}
+
+:root {
+  /* Familias self-hosted vía @fontsource */
+  --font-body-mplus: 'M PLUS 2';
+  --font-display-rajdhani: 'Rajdhani';
+  --font-mono-jetbrains: 'JetBrains Mono';
+  --font-brand-dela: 'Dela Gothic One';
+
+  color-scheme: light;
+
+  /* Tema claro: signal/rec/amber son variantes oscuras accesibles de
+     #2ca798 / #ff3370 sobre superficies blancas */
+  --c-base: #d0d0d0;
+  --c-surface: #dad4c3;
+  --c-panel: #e2e2e3;
+  --c-fg: #222222;
+  --c-mute: #595959;
+  --c-line: #a6a6a6;
+  --c-signal: #0f5f56;
+  --c-night: #222222;
+  --c-rec: #a81446;
+  --c-amber: #8a5a00;
+  --c-brand: #2ca798;
+  --c-on-primary: #dad4c3;
+
+  /* Radio unificado de componentes (2 px) */
+  --radius-ui: 0.125rem;
+  --c-feather: rgba(44, 167, 152, 0.35);
+}
+
+/* Tema oscuro: mismos tokens, valores invertidos (Tailwind 4 usa la variante
+   dark por media query; acá responde a la clase .dark del store de tema). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+.dark {
+  color-scheme: dark;
+
+  --c-base: #000000;
+  --c-surface: #1b1b1b;
+  --c-panel: #242424;
+  --c-fg: #ffffff;
+  --c-mute: #a3a3a3;
+  --c-line: #3d3d3d;
+  --c-signal: #2ca798;
+  --c-night: #050505;
+  --c-rec: #ff3370;
+  --c-amber: #d9a441;
+  --c-brand: #2ca798;
+  --c-on-primary: #ffffff;
+
+  /* Radio unificado de componentes (2 px) */
+  --radius-ui: 0.125rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--c-base);
+  color: var(--c-fg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+::selection {
+  background: var(--c-signal);
+  color: var(--c-on-primary);
+}
+
+.dark ::selection {
+  color: #050505;
+}
+
+/* Foco visible con el color de acción, legible en ambos temas */
+:focus-visible {
+  outline: 2px solid var(--c-signal);
+  outline-offset: 2px;
+}
+
+/* Scrollbar de la interfaz */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--c-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--c-line);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-mute);
+}
+
+/* ────────────────────────────────────────────────
+   Etiquetas y utilidades de documento
+   ──────────────────────────────────────────────── */
+
+/* Etiqueta estándar (eyebrow / label de sección) */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--c-mute);
+}
+
+/* Cifras de ancho fijo: precios y datos no bailan */
+.tel {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Panel enmarcado con hairline */
+.panel {
+  border: 1px solid var(--c-line);
+  background: var(--c-surface);
+  border-radius: var(--radius-ui);
+}
+
+/* Fondo técnico: grilla de instrumentación, definida una sola vez */
+.graticule {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--c-line) 45%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--c-line) 45%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Marco técnico de 1 px con línea de marca */
+.tech-frame {
+  position: relative;
+  border: 1px solid var(--c-feather);
+  border-radius: var(--radius-ui);
+}
+
+/* Etiqueta técnica montada sobre el borde superior del marco */
+.tech-label {
+  position: absolute;
+  top: -10px;
+  left: 0.75rem;
+  padding: 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  background: var(--c-surface);
+  color: var(--c-mute);
+  line-height: 1.25;
+}
+
+/* ────────────────────────────────────────────────
+   Componentes base
+   ──────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-ui);
+  border: 1px solid var(--c-line);
+  background: var(--c-surface);
+  color: var(--c-fg);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn:hover {
+  border-color: var(--c-signal);
+  color: var(--c-signal);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-primary {
+  background: var(--c-signal);
+  border-color: var(--c-signal);
+  color: var(--c-on-primary);
+}
+
+.btn-primary:hover {
+  background: var(--c-brand);
+  border-color: var(--c-brand);
+  color: #050505;
+}
+
+.input {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  border-radius: var(--radius-ui);
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  color: var(--c-fg);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--c-signal);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--c-signal) 14%, transparent);
+}
+
+.input::placeholder {
+  color: var(--c-mute);
+}
+
+.input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Chip de variante / filtro (estado compacto: pill) */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0.3rem 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 9999px;
+  border: 1px solid var(--c-line);
+  color: var(--c-mute);
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.chip:hover {
+  border-color: var(--c-signal);
+  color: var(--c-signal);
+}
+
+.chip-active {
+  background: var(--c-signal);
+  border-color: var(--c-signal);
+  color: var(--c-on-primary);
+}
+
+.dark .chip-active {
+  color: #050505;
+}
+
+/* Indicador de estado */
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* ────────────────────────────────────────────────
+   Tipografía de documento (markdown de artículos)
+   ──────────────────────────────────────────────── */
+.article {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--c-fg);
+}
+
+.article h1,
+.article h2,
+.article h3,
+.article h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  margin: 1.8em 0 0.6em;
+  color: var(--c-fg);
+}
+
+.article h1 { font-size: 1.9rem; }
+.article h2 {
+  font-size: 1.5rem;
+  padding-bottom: 0.35em;
+  border-bottom: 1px solid var(--c-line);
+}
+.article h3 { font-size: 1.2rem; }
+.article h4 { font-size: 1.05rem; }
+
+.article p { margin: 1.1em 0; }
+
+.article a {
+  color: var(--c-signal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.article strong { font-weight: 600; }
+
+.article blockquote {
+  border-left: 2px solid var(--c-brand);
+  padding-left: 1.1rem;
+  margin: 1.6em 0;
+  color: var(--c-mute);
+  font-style: italic;
+}
+
+.article ul,
+.article ol { margin: 1.2em 0; padding-left: 1.5em; }
+.article li { margin: 0.45em 0; }
+.article li::marker { color: var(--c-signal); }
+
+.article code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--c-panel);
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius-ui);
+}
+
+.article pre {
+  background: var(--c-panel);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-ui);
+  padding: 1rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  line-height: 1.6;
+  margin: 1.4em 0;
+}
+
+.article pre code { background: none; padding: 0; }
+
+.article img {
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-ui);
+  max-width: 100%;
+  height: auto;
+  margin: 1.5em 0;
+}
+
+.article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.9em;
+}
+
+.article th,
+.article td {
+  border: 1px solid var(--c-line);
+  padding: 0.55em 0.8em;
+  text-align: left;
+}
+
+.article th {
+  background: var(--c-panel);
+  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.article hr {
+  border: none;
+  border-top: 1px solid var(--c-line);
+  margin: 2.5em 0;
+}
+
+.article iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-ui);
+  margin: 1.5em 0;
+  display: block;
+}
+
+/* Utilidades heredadas */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Respeto por el movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Sección con superficie secundaria (alternancia) */
+.section-panel {
+  background: var(--c-panel);
+}
