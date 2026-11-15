@@ -5,7 +5,7 @@
 
 	let { store = null, org = null } = $props()
 
-	let activeIndex = $state(HERO_MEDIA.length > 1 ? 1 : 0)
+	let activeIndex = $state(0)
 	const activeMedia = $derived(HERO_MEDIA[activeIndex])
 	const cover = $derived(imgUrl(org?.coverImage))
 
@@ -44,13 +44,14 @@
 	<div class="absolute inset-0 graticule opacity-20" aria-hidden="true"></div>
 
 	<div class="relative mx-auto grid min-h-[100svh] w-full max-w-7xl items-center gap-12 px-4 pb-10 pt-28 sm:px-6 sm:pb-14 sm:pt-32 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20 lg:px-8 lg:pt-28">
-		<div>
-			<h1 class="mt-7 max-w-4xl font-display font-semibold text-[clamp(3.2rem,8vw,7rem)] leading-[0.88] tracking-[-0.06em]">
+		<div class="relative">
+			<img src="/ligth.svg" alt="" aria-hidden="true" class="pointer-events-none absolute right-0 top-0 w-14 opacity-80 sm:hidden" />
+			<h1 class="mt-7 max-w-4xl pr-16 font-display font-semibold text-[clamp(3.2rem,8vw,7rem)] leading-[0.88] tracking-[-0.06em] sm:pr-0">
 				Explorá.<br />Conectá.<br /><span class="text-brand">Creá.</span>
 			</h1>
-			<div class="mt-9 flex flex-wrap gap-3">
-				<a href="#proposito" class="btn btn-primary">Descubrí Crow Projects <ArrowDown class="w-3.5 h-3.5" /></a>
-				<a href="https://github.com/crows-garage/crows" target="_blank" rel="noopener noreferrer" class="btn border-white/30 text-white hover:text-brand">
+			<div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+				<a href="#proposito" class="btn btn-primary min-h-12 w-full sm:w-64">Descubrí Crow Projects <ArrowDown class="w-3.5 h-3.5" /></a>
+				<a href="https://github.com/crows-garage/crows" target="_blank" rel="noopener noreferrer" class="btn min-h-12 w-full border-white/30 text-white hover:text-brand sm:w-64">
 					<svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor" aria-hidden="true">
 						<path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.74.08-.74 1.2.08 1.84 1.23 1.84 1.23 1.07 1.83 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z" />
 					</svg>

@@ -29,7 +29,7 @@
 <section id="pilares" class="py-16 sm:py-20 lg:py-28 border-t border-line">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div use:scrollReveal class="max-w-2xl mb-10 sm:mb-14 pillar-reveal">
-			<p class="eyebrow !text-signal mb-3">02 · Una comunidad para hacer</p>
+			<p class="eyebrow !text-signal mb-3">03 · Una comunidad para hacer</p>
 			<h2 class="font-display font-semibold text-3xl sm:text-4xl tracking-tight text-fg">Aprendé algo. Conocé a alguien. Creá algo nuevo.</h2>
 		</div>
 		<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">

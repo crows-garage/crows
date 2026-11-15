@@ -38,7 +38,7 @@
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div>
 			<p class="eyebrow !text-signal mb-3 flex items-center gap-2">
-				<Users class="w-4 h-4" /> 03 · PROYECTOS DE LA COMUNIDAD
+				<Users class="w-4 h-4" /> 02 · PROYECTOS DE LA COMUNIDAD
 			</p>
 			<h2 class="font-display font-semibold text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-tight text-fg">
 				Las ideas nos conectan. Los equipos las hacen realidad
@@ -50,26 +50,27 @@
 
 		{#if Array.isArray(projects) && projects.length > 0}
 			<div class="mt-8 border border-line rounded-xs bg-panel p-3 sm:p-4">
-				<div class="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto_auto_auto] gap-2">
-					<label class="relative block">
+				<div class="grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_auto_auto_auto]">
+					<label class="relative block min-w-0 sm:col-span-2 lg:col-span-1">
 						<span class="sr-only">Buscar proyectos</span>
 						<Search class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-mute" />
-						<input bind:value={query} type="search" placeholder="Buscar proyectos..." class="input w-full pl-9" />
+						<input bind:value={query} type="search" placeholder="Buscar proyectos..." class="input min-w-0 w-full pl-9" />
 					</label>
-					<select bind:value={selectedCategory} class="input" aria-label="Filtrar por categoría">
+					<select bind:value={selectedCategory} class="input min-w-0 w-full" aria-label="Filtrar por categoría">
 						<option value="">Todas las categorías</option>
 						{#each categories as category}
 							<option value={category}>{category}</option>
 						{/each}
 					</select>
-					<select bind:value={selectedStatus} class="input" aria-label="Filtrar por estado">
+					<select bind:value={selectedStatus} class="input min-w-0 w-full" aria-label="Filtrar por estado">
 						<option value="">Todos los estados</option>
 						<option value="ACTIVE">En curso</option>
 						<option value="COMPLETED">Completados</option>
 						<option value="CANCELLED">Cancelados</option>
 					</select>
-					<button type="button" onclick={clearFilters} class="btn px-3" aria-label="Limpiar filtros" title="Limpiar filtros">
+					<button type="button" onclick={clearFilters} class="btn min-h-[44px] w-full px-3 sm:w-auto" aria-label="Limpiar filtros" title="Limpiar filtros">
 						<X class="w-4 h-4" />
+						<span class="sm:hidden">Limpiar filtros</span>
 					</button>
 				</div>
 				<p class="mt-3 text-[10px] uppercase tracking-[0.18em] text-mute">{filteredProjects.length} de {projects.length} proyectos</p>
