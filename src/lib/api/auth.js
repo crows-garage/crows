@@ -40,6 +40,12 @@ export const authApi = {
 
 	updateProfile: (data) => request('/customer/me', { method: 'PUT', body: JSON.stringify(data) }),
 
+	updateAvatar: async (file) => {
+		const body = new FormData()
+		body.append('file', file)
+		return request('/customer/avatar', { method: 'POST', body })
+	},
+
 	logout: async () => {
 		try {
 			await request('/customer/logout', { method: 'POST' })

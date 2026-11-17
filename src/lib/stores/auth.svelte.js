@@ -85,6 +85,16 @@ class AuthState {
 			return { success: false, error: message }
 		}
 	}
+
+	async updateAvatar(file) {
+		try {
+			const updated = await authApi.updateAvatar(file)
+			this.user = updated.customer
+			return { success: true }
+		} catch (err) {
+			return { success: false, error: err.response?.data?.error || 'No se pudo actualizar el avatar' }
+		}
+	}
 }
 
 export const auth = new AuthState()
