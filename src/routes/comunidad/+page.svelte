@@ -33,7 +33,7 @@
 		try {
 			const [postsData, membersData, blogData, eventsData] = await Promise.all([
 				communityApi.getPosts(),
-				communityApi.getMembers(),
+				auth.user ? communityApi.getMembers().catch(() => []) : Promise.resolve([]),
 				organizationApi.blog().catch(() => []),
 				organizationApi.events().catch(() => [])
 			])

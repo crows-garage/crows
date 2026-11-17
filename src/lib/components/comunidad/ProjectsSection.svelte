@@ -38,9 +38,9 @@
 						<p class="text-sm text-muted-foreground">Aún no hay proyectos publicados</p>
 					</div>
 				{:else}
-					<div class="-mx-1 flex snap-x snap-mandatory gap-4 overflow-x-auto px-1 pb-4 [scrollbar-width:thin]">
+					<div class="space-y-4">
 						{#each projects as project (project.id)}
-							<div class="w-[min(86vw,360px)] shrink-0 snap-start sm:w-[340px]">
+							<div>
 								<ProjectCard {project} compact />
 							</div>
 						{/each}
