@@ -29,11 +29,10 @@ export const organizationApi = {
 	uploadProjectFile: async (projectId, file, gallery = false) => {
 		const form = new FormData()
 		form.append('file', file)
-		const response = await fetch(`${BASE}${ORG_ROOT.replace(BASE, '')}/projects/${projectId}${gallery ? '/images' : '/upload-image'}`, {
-			method: 'POST', body: form, credentials: 'include'
+		return request(`${ORG_ROOT.replace(BASE, '')}/projects/${projectId}${gallery ? '/images' : '/upload-image'}`, {
+			method: 'POST',
+			body: form
 		})
-		if (!response.ok) throw new Error('No se pudo subir la imagen')
-		return response.json()
 	},
 
 	// solo PUBLISHED + PUBLIC; devuelve array

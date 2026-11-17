@@ -53,16 +53,17 @@ export async function postJSON(url, body) {
 export async function request(url, options = {}) {
 	const { headers: extraHeaders, body, ...restOptions } = options
 	const hasBody = body !== undefined && body !== null
+	const isFormData = typeof FormData !== 'undefined' && body instanceof FormData
 
 	const doFetch = () =>
 		fetch(`${BASE}${url}`, {
 			...restOptions,
 			headers: {
-				...(hasBody ? { 'Content-Type': 'application/json' } : {}),
+				...(hasBody && !isFormData ? { 'Content-Type': 'application/json' } : {}),
 				...extraHeaders
 			},
 			credentials: 'include',
-			body: hasBody ? (typeof body === 'string' ? body : JSON.stringify(body)) : undefined
+			body: hasBody ? (isFormData ? body : typeof body === 'string' ? body : JSON.stringify(body)) : undefined
 		})
 
 	let res = await doFetch()
