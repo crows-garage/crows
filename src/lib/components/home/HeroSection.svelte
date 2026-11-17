@@ -19,7 +19,7 @@
 	})
 
 	function previousMedia() {
-		activeIndex = (activeIndex - 1 + HERO_MEDIA.length) % HERO_MEDIA.length
+		activeIndex = (activeIndex - 1 + heroMedia.length) % heroMedia.length
 	}
 
 	function nextMedia() {
@@ -38,14 +38,9 @@
 </script>
 
 <section class="relative flex min-h-[100svh] items-center overflow-hidden bg-night text-white">
-	{#if activeMedia}
-		{#if activeMedia.mediaType === 'VIDEO'}
-			<video src={imgUrl(activeMedia.image)} poster={activeMedia.poster ? imgUrl(activeMedia.poster) : undefined} class="absolute inset-0 h-full w-full object-cover opacity-20" autoplay muted loop playsinline preload="metadata"></video>
-		{:else}
-			<img src={imgUrl(activeMedia.image)} alt="" class="absolute inset-0 h-full w-full object-cover opacity-20" />
-		{/if}
-	{/if}
-	<div class="absolute inset-0 bg-gradient-to-br from-night via-night/95 to-brand/20"></div>
+	<video src="/hero/video2.mp4" class="absolute inset-0 h-full w-full object-cover opacity-45" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+	<div class="absolute inset-0 bg-gradient-to-br from-night/95 via-night/75 to-night/55"></div>
+	<div class="absolute inset-0 bg-brand/10 mix-blend-screen"></div>
 
 	<div class="relative mx-auto grid min-h-[100svh] w-full max-w-7xl items-center gap-12 px-4 pb-10 pt-28 sm:px-6 sm:pb-14 sm:pt-32 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20 lg:px-8 lg:pt-28">
 		<div>
