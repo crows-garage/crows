@@ -88,8 +88,8 @@
 				<div class="flex items-center justify-between gap-3 border-b border-white/15 pb-4">
 					<span class="eyebrow !text-brand">Banners y videos de la comunidad</span>
 					<div class="flex items-center gap-1">
-						<button type="button" onclick={previousMedia} class="p-1 text-white/60 hover:text-brand" aria-label="Video anterior"><ChevronLeft size={16} /></button>
-						<button type="button" onclick={nextMedia} class="p-1 text-white/60 hover:text-brand" aria-label="Video siguiente"><ChevronRight size={16} /></button>
+						<button type="button" onclick={(event) => { event.preventDefault(); event.stopPropagation(); previousMedia() }} class="p-1 text-white/60 hover:text-brand" aria-label="Video anterior"><ChevronLeft size={16} /></button>
+						<button type="button" onclick={(event) => { event.preventDefault(); event.stopPropagation(); nextMedia() }} class="p-1 text-white/60 hover:text-brand" aria-label="Video siguiente"><ChevronRight size={16} /></button>
 					</div>
 				</div>
 				<p class="mt-4 text-sm leading-relaxed text-white/70">Mirá lo que estamos construyendo y encontrá el próximo proyecto del que quieras formar parte.</p>
@@ -97,7 +97,7 @@
 					{#each heroMedia as media, index}
 						<button
 							type="button"
-							onclick={() => (activeIndex = index)}
+							onclick={(event) => { event.preventDefault(); event.stopPropagation(); activeIndex = index }}
 							class={`h-1.5 flex-1 rounded-full transition-colors ${activeIndex === index ? 'bg-brand' : 'bg-white/20 hover:bg-white/40'}`}
 							aria-label={`Mostrar ${media.title}`}
 						></button>
