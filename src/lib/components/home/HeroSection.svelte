@@ -5,6 +5,8 @@
 	let { store = null, org = null, ctas = [] } = $props()
 
 	let activeIndex = $state(0)
+	let touchStartX = $state(null)
+	let swiping = $state(false)
 	const heroMedia = $derived((ctas || []).filter((cta) => cta.active !== false && cta.image))
 	const activeMedia = $derived(heroMedia[activeIndex % Math.max(heroMedia.length, 1)])
 	const destination = $derived(activeMedia ? targetHref(activeMedia) : '')
@@ -24,6 +26,22 @@
 
 	function nextMedia() {
 		activeIndex = (activeIndex + 1) % heroMedia.length
+	}
+
+	function handleTouchStart(event) {
+		touchStartX = event.touches[0]?.clientX ?? null
+		swiping = false
+	}
+
+	function handleTouchEnd(event) {
+		if (touchStartX === null) return
+		const distance = (event.changedTouches[0]?.clientX ?? touchStartX) - touchStartX
+		if (Math.abs(distance) > 40 && heroMedia.length > 1) {
+			swiping = true
+			distance < 0 ? nextMedia() : previousMedia()
+			window.setTimeout(() => (swiping = false), 0)
+		}
+		touchStartX = null
 	}
 
 	function targetHref(media) {
@@ -64,7 +82,7 @@
 			</div>
 		</div>
 
-		<svelte:element this={destination ? 'a' : 'div'} href={destination || undefined} class="block overflow-hidden rounded-2xl border border-white/15 bg-white/10 backdrop-blur-xl shadow-2xl shadow-black/20">
+		<svelte:element this={destination ? 'a' : 'div'} href={destination || undefined} onclick={(event) => swiping && event.preventDefault()} ontouchstart={handleTouchStart} ontouchend={handleTouchEnd} class="block touch-pan-y overflow-hidden rounded-2xl border border-white/15 bg-white/10 backdrop-blur-xl shadow-2xl shadow-black/20">
 			{#if activeMedia}
 			<div class="relative aspect-video bg-black/40">
 				{#if activeMedia.mediaType === 'VIDEO'}
@@ -86,7 +104,6 @@
 
 			<div class="p-5 sm:p-6">
 				<div class="flex items-center justify-between gap-3 border-b border-white/15 pb-4">
-					<span class="eyebrow !text-brand">Banners y videos de la comunidad</span>
 					<div class="flex items-center gap-1">
 						<button type="button" onclick={(event) => { event.preventDefault(); event.stopPropagation(); previousMedia() }} class="p-1 text-white/60 hover:text-brand" aria-label="Video anterior"><ChevronLeft size={16} /></button>
 						<button type="button" onclick={(event) => { event.preventDefault(); event.stopPropagation(); nextMedia() }} class="p-1 text-white/60 hover:text-brand" aria-label="Video siguiente"><ChevronRight size={16} /></button>
