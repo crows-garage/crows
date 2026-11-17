@@ -1,5 +1,6 @@
 <script>
 	import { FolderKanban, Flag, Users, X } from '@lucide/svelte'
+	import { auth } from '#lib/stores/auth.svelte.js'
 	import ProjectCard from '#lib/components/projects/ProjectCard.svelte'
 
 	let { data } = $props()
@@ -117,8 +118,12 @@
 			<h2 class="mt-2 font-display text-2xl sm:text-3xl font-semibold text-fg">Convertirla en proyecto empieza por registrarte.</h2>
 			<p class="mt-2 max-w-xl text-sm leading-relaxed text-mute">Creá tu cuenta para presentar una propuesta, sumar imágenes y encontrar personas que quieran participar.</p>
 			<div class="mt-5 flex flex-wrap gap-3">
-				<a href="/register?redirect=/proyectos/nuevo" class="btn btn-primary">Registrarme y crear proyecto</a>
-				<a href="/login?redirect=/proyectos/nuevo" class="btn">Ya tengo una cuenta</a>
+				{#if auth.user}
+					<a href="/proyectos/nuevo" class="btn btn-primary">Crear mi proyecto</a>
+				{:else}
+					<a href="/register?redirect=/proyectos/nuevo" class="btn btn-primary">Registrarme y crear proyecto</a>
+					<a href="/login?redirect=/proyectos/nuevo" class="btn">Ya tengo una cuenta</a>
+				{/if}
 				<a href="/comunidad#proyectos-comunidad" class="btn">Ver proyectos de la comunidad</a>
 			</div>
 		</div>

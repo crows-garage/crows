@@ -177,14 +177,6 @@
 					</a>
 				</div>
 			</div>
-		{:else if !membership}
-			<div class="bg-panel border rounded-xs border-line p-5">
-				<p class="text-sm text-mute">
-					Tu cuenta aún no está vinculada a la institución.
-					<a href="/register" class="text-fg underline">Completá tu perfil</a>
-					para poder participar.
-				</p>
-			</div>
 		{:else if membershipStatus === 'PENDING'}
 			<div class="bg-panel border rounded-xs border-line p-5 flex items-start gap-3">
 				<Hourglass size={20} class="text-mute flex-shrink-0 mt-0.5" />
