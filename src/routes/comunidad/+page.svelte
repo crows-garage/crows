@@ -2,9 +2,11 @@
 	import { Loader2, MessageSquare, Hourglass, XCircle, Users, ThumbsUp, Pin } from '@lucide/svelte'
 	import { auth } from '#lib/stores/auth.svelte.js'
 	import { communityApi } from '#lib/api/community.js'
+	import { organizationApi } from '#lib/api/organization.js'
 	import { ORG_SLUG } from '#lib/api/client.js'
 	import PollSection from '#lib/components/comunidad/PollSection.svelte'
 	import ProjectsSection from '#lib/components/comunidad/ProjectsSection.svelte'
+	import CommunityResources from '#lib/components/comunidad/CommunityResources.svelte'
 
 	function formatDate(iso) {
 		try {
@@ -15,6 +17,8 @@
 	}
 
 	let posts = $state([])
+	let blogPosts = $state([])
+	let events = $state([])
 	let loading = $state(true)
 	let error = $state('')
 	let membership = $state(null)
@@ -27,8 +31,15 @@
 
 	async function load() {
 		try {
-			const [postsData, membersData] = await Promise.all([communityApi.getPosts(), communityApi.getMembers()])
+			const [postsData, membersData, blogData, eventsData] = await Promise.all([
+				communityApi.getPosts(),
+				communityApi.getMembers(),
+				organizationApi.blog().catch(() => []),
+				organizationApi.events().catch(() => [])
+			])
 			posts = postsData || []
+			blogPosts = blogData || []
+			events = eventsData || []
 			if (auth.user?.userId) {
 				const mine = (membersData || []).find((m) => m.userId === auth.user.userId && !m.deletedAt)
 				membership = mine || null
@@ -324,5 +335,6 @@
 		{/if}
 
 		<ProjectsSection />
+		<CommunityResources posts={blogPosts} {events} />
 	</div>
 </div>

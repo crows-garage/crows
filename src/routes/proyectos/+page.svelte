@@ -1,7 +1,7 @@
 <script>
-	import { FolderKanban, Flag, MapPin, Search, X } from '@lucide/svelte'
-	import { imgUrl } from '#lib/utils.js'
+	import { FolderKanban, Flag, Search, X } from '@lucide/svelte'
 	import { PROJECT_CATEGORIES } from '#lib/projectCategories.js'
+	import ProjectCard from '#lib/components/projects/ProjectCard.svelte'
 
 	let { data } = $props()
 	let query = $state('')
@@ -39,12 +39,6 @@
 		IN_PROGRESS: 'En progreso',
 		DONE: 'Completado',
 		DELAYED: 'Demorado'
-	}
-
-	const STATUS_LABELS = {
-		ACTIVE: 'En curso',
-		COMPLETED: 'Completado',
-		CANCELLED: 'Cancelado'
 	}
 
 	function formatDate(iso) {
@@ -109,62 +103,9 @@
 			<div class="space-y-8">
 				{#each filteredProjects as project (project.id)}
 					{@const milestones = project.milestones || []}
-					{@const imageUrls = [project.coverImage, ...(project.images || []).map((image) => image?.url)].filter(Boolean)}
-					<article class="bg-panel border rounded-xs border-line overflow-hidden">
-						{#if imageUrls.length > 0}
-							<a href={`/proyecto/${project.slug || project.id}`} class="block">
-								<img src={imgUrl(imageUrls[0])} alt={project.name} loading="lazy" class="w-full h-40 object-cover hover:opacity-90 transition-opacity" />
-								{#if imageUrls.length > 1}
-									<div class="grid grid-cols-4 gap-1 p-1 bg-base">
-										{#each imageUrls.slice(1, 5) as image, index}
-											<img src={imgUrl(image)} alt={`${project.name} imagen ${index + 2}`} loading="lazy" class="h-16 w-full object-cover" />
-										{/each}
-									</div>
-								{/if}
-							</a>
-						{/if}
-						<div class="p-5 sm:p-6">
-							<div class="flex items-start justify-between gap-3 flex-wrap">
-								<div class="min-w-0">
-									<h2 class="text-lg font-medium text-fg leading-snug"><a href={`/proyecto/${project.slug || project.id}`} class="hover:text-signal transition-colors">{project.name}</a></h2>
-									{#if project.category}
-										<p class="text-[11px] text-mute mt-1 flex items-center gap-1 uppercase tracking-[0.15em]">
-											<MapPin size={10} /> {project.category}
-										</p>
-									{/if}
-								</div>
-								<div class="flex items-center gap-2 flex-shrink-0">
-									<span class={`text-[9px] font-semibold uppercase tracking-[0.2em] px-2 py-0.5 ${
-										project.status === 'COMPLETED'
-											? 'bg-signal/15 text-signal'
-											: project.status === 'ACTIVE'
-												? 'bg-fg text-base'
-												: 'bg-line text-mute'
-									}`}>
-										{STATUS_LABELS[project.status] || project.status}
-									</span>
-								</div>
-							</div>
-
-							{#if project.description}
-								<p class="text-sm text-fg/80 leading-relaxed mt-3 whitespace-pre-wrap line-clamp-4">{project.description}</p>
-							{/if}
-
-							<!-- Progreso -->
-							<div class="flex items-center gap-3 mt-4">
-								<div class="flex-1 h-1.5 bg-line/40 overflow-hidden">
-									<div class={`h-full ${project.status === 'COMPLETED' ? 'bg-signal' : 'bg-fg'}`} style={`width: ${project.progress || 0}%`}></div>
-								</div>
-								<span class="text-[10px] font-mono text-mute">{project.progress || 0}%</span>
-							</div>
-
-							<div class="flex items-center gap-4 mt-2 text-[11px] text-mute">
-								{#if project.startDate}<span>Inicio: {formatDate(project.startDate)}</span>{/if}
-								{#if project.endDate}<span>Cierre estimado: {formatDate(project.endDate)}</span>{/if}
-							</div>
-							<a href={`/proyecto/${project.slug || project.id}`} class="inline-block mt-4 text-xs uppercase tracking-[0.16em] text-signal hover:text-fg transition-colors">Ver proyecto →</a>
-
-							<!-- Roadmap -->
+					<div>
+						<ProjectCard {project} />
+						<div class="border-x border-b border-line bg-panel px-5 pb-5 sm:px-6 sm:pb-6">
 							{#if milestones.length > 0}
 								<div class="mt-6 border-t border-line pt-4">
 									<p class="text-[10px] uppercase tracking-[0.3em] text-mute mb-3 flex items-center gap-1.5">
@@ -194,7 +135,7 @@
 								</div>
 							{/if}
 						</div>
-					</article>
+					</div>
 				{/each}
 			</div>
 		{/if}

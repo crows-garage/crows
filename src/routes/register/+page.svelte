@@ -12,6 +12,7 @@
 	let loading = $state(false)
 	let error = $state('')
 	let done = $state(false)
+	const redirectTo = $derived(page.url.searchParams.get('redirect') || '/')
 
 	async function handleSubmit(event) {
 		event.preventDefault()
@@ -73,7 +74,7 @@
 				<CheckCircle2 size={32} class="mx-auto text-signal mb-3" />
 				<h2 class="text-lg font-medium text-fg">Cuenta creada</h2>
 				<p class="text-sm text-mute mt-2">Tu solicitud para participar en la comunidad quedó pendiente de aprobación.</p>
-				<a href="/login" class="inline-block mt-5 px-4 py-2 bg-signal text-base text-sm font-medium hover:bg-brand">Iniciar sesión</a>
+		<a href={`/login?redirect=${encodeURIComponent(redirectTo)}`} class="inline-block mt-5 px-4 py-2 bg-signal text-base text-sm font-medium hover:bg-brand">Iniciar sesión</a>
 			</div>
 		{:else}
 			<form onsubmit={handleSubmit} class="space-y-4">
@@ -101,7 +102,7 @@
 				<button type="submit" disabled={loading} class="w-full py-2.5 bg-signal text-base text-sm font-medium hover:bg-brand transition-colors disabled:opacity-50">{loading ? 'Creando cuenta...' : 'Crear cuenta'}</button>
 			</form>
 
-			<p class="text-center text-xs text-mute mt-6">¿Ya tenés cuenta? <a href="/login" class="text-fg underline hover:no-underline">Iniciá sesión</a></p>
+			<p class="text-center text-xs text-mute mt-6">¿Ya tenés cuenta? <a href={`/login?redirect=${encodeURIComponent(redirectTo)}`} class="text-fg underline hover:no-underline">Iniciá sesión</a></p>
 		{/if}
 	</div>
 </div>

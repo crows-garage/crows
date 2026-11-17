@@ -132,9 +132,14 @@
 				{/if}
 
 				<div class="border border-line bg-panel p-4">
+					<div id="participacion" class="scroll-mt-24">
 					<div class="flex items-center gap-2 text-sm text-fg"><Users size={15} class="text-signal" /> Participación</div>
 					{#if !auth.user}
-						<a href={`/login?redirect=/proyecto/${project.slug || project.id}`} class="inline-block mt-3 text-xs text-signal underline">Iniciá sesión para participar</a>
+						<p class="mt-2 text-xs text-mute">Ingresá o registrate para enviar tu solicitud.</p>
+						<div class="mt-3 flex flex-wrap gap-2">
+							<a href={`/login?redirect=${encodeURIComponent(`/proyecto/${project.slug || project.id}#participacion`)}`} class="inline-flex items-center justify-center bg-signal text-base px-4 py-2 text-xs font-medium hover:bg-brand">Ingresar</a>
+							<a href={`/register?redirect=${encodeURIComponent(`/proyecto/${project.slug || project.id}#participacion`)}`} class="inline-flex items-center justify-center border border-line text-fg px-4 py-2 text-xs font-medium hover:border-signal hover:text-signal">Registrarse</a>
+						</div>
 					{:else if application?.status === 'PENDING'}
 						<p class="mt-2 text-xs text-mute">Tu solicitud está pendiente de revisión.</p>
 					{:else if application?.status === 'ACCEPTED'}
@@ -151,6 +156,7 @@
 							</form>
 						{/if}
 					{/if}
+					</div>
 				</div>
 
 				<div class="border-t border-line pt-5 space-y-3">

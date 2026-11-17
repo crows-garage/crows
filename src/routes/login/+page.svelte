@@ -1,11 +1,13 @@
 <script>
 	import { goto } from '$app/navigation'
+	import { page } from '$app/state'
 	import { auth } from '#lib/stores/auth.svelte.js'
 
 	let email = $state('')
 	let password = $state('')
 	let error = $state('')
 	let loading = $state(false)
+	const redirectTo = $derived(page.url.searchParams.get('redirect') || '/')
 
 	async function handleSubmit(e) {
 		e.preventDefault()
@@ -14,7 +16,7 @@
 
 		try {
 			await auth.login(email, password)
-			goto('/')
+			goto(redirectTo)
 		} catch (err) {
 			error = err.message || 'Error al iniciar sesión'
 		} finally {
@@ -74,7 +76,7 @@
 
 		<p class="text-center text-xs text-mute mt-6">
 			¿No tienes cuenta?
-			<a href="/register" class="text-fg underline hover:no-underline transition-colors">Regístrate</a>
+			<a href={`/register?redirect=${encodeURIComponent(redirectTo)}`} class="text-fg underline hover:no-underline transition-colors">Regístrate</a>
 		</p>
 	</div>
 </div>

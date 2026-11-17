@@ -14,7 +14,7 @@
 		</div>
 		<div class="space-y-5 text-base sm:text-lg leading-relaxed text-mute">
 			<p>En una institución hay estudiantes con conocimientos, intereses y ganas de hacer cosas grandes. Muchas veces no tienen un espacio para descubrir quién puede complementar sus ideas.</p>
-			<p>Crow nace para achicar esa distancia. Es una plataforma educativa y colaborativa impulsada por HOD Software.</p>
+			<p>Crow nace para achicar esa distancia. Es una plataforma educativa y colaborativa impulsada por <a href="https://hodsoftware.com" target="_blank" rel="noopener noreferrer" class="font-semibold text-signal underline decoration-signal/40 underline-offset-4 hover:text-fg">HOD SOFTWARE</a>.</p>
 			<p class="border-l-2 border-signal pl-5 text-fg">El conocimiento es el punto de partida. La colaboración es lo que permite construir cosas grandes.</p>
 		</div>
 	</div>
