@@ -4,6 +4,7 @@
 	import { communityApi } from '#lib/api/community.js'
 	import { ORG_SLUG } from '#lib/api/client.js'
 	import PollSection from '#lib/components/comunidad/PollSection.svelte'
+	import ProjectsSection from '#lib/components/comunidad/ProjectsSection.svelte'
 
 	function formatDate(iso) {
 		try {
@@ -321,5 +322,7 @@
 				{/each}
 			</div>
 		{/if}
+
+		<ProjectsSection />
 	</div>
 </div>

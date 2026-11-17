@@ -68,6 +68,10 @@
 			<p class="text-[10px] uppercase tracking-[0.3em] mb-2 text-mute">Colaboracion</p>
 			<h1 class="text-2xl sm:text-3xl font-display font-semibold tracking-tight text-fg">Proyectos</h1>
 			<p class="text-sm text-mute mt-2">Ideas y proyectos que pueden crecer con las personas correctas.</p>
+			<div class="flex flex-wrap items-center justify-center gap-3 mt-5">
+				<a href="/proyectos/nuevo" class="btn btn-primary">Crear proyecto</a>
+				<a href="/comunidad#proyectos-comunidad" class="btn">Ver proyectos de la comunidad</a>
+			</div>
 		</div>
 
 		<div class="border border-line rounded-xs bg-panel p-3 sm:p-4 mb-8">

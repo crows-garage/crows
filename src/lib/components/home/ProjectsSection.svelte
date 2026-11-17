@@ -46,6 +46,10 @@
 			<p class="mt-3 text-base sm:text-lg leading-relaxed text-mute">
 				Un proyecto no siempre necesita más ideas. A veces solo necesita una conexión y un impulso. Encontrá personas que compartan tus intereses, descubrí proyectos en los que participar y sumate a construir algo juntos.
 			</p>
+			<div class="flex flex-wrap gap-3 mt-5">
+				<a href="/proyectos/nuevo" class="btn btn-primary">Crear un proyecto</a>
+				<a href="/proyectos" class="btn">Explorar proyectos</a>
+			</div>
 		</div>
 
 		{#if Array.isArray(projects) && projects.length > 0}
@@ -80,19 +84,20 @@
 				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
 					{#each filteredProjects as project (project.id)}
 						<article class="border rounded-xs border-line bg-surface overflow-hidden">
-							<a href={`/proyecto/${project.slug || project.id}`} class="block">
+							<div class="block">
 								{#if project.coverImage}
 									<img src={imgUrl(project.coverImage)} alt={project.name} loading="lazy" class="h-40 w-full object-cover hover:opacity-90 transition-opacity" />
 								{/if}
 								<div class="p-4">
 									<div class="flex items-center justify-between gap-2">
-										<h3 class="font-display font-semibold text-base text-fg hover:text-signal transition-colors">{project.name}</h3>
+										<h3 class="font-display font-semibold text-base text-fg hover:text-signal transition-colors"><a href={`/proyecto/${project.slug || project.id}`}>{project.name}</a></h3>
 										{#if project.status}<span class="shrink-0 text-[9px] uppercase tracking-[0.12em] text-signal">{statusLabels[project.status] || project.status}</span>{/if}
 									</div>
 									{#if project.category}<p class="mt-1 text-[10px] uppercase tracking-[0.15em] text-mute">{project.category}</p>{/if}
 									{#if project.description}<p class="mt-2 text-xs text-mute leading-relaxed line-clamp-3">{project.description}</p>{/if}
+									<a href={`/proyecto/${project.slug || project.id}`} class="inline-flex mt-4 text-xs uppercase tracking-[0.14em] text-signal hover:text-fg transition-colors">Participar en este proyecto →</a>
 								</div>
-							</a>
+							</div>
 						</article>
 					{/each}
 				</div>
