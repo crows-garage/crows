@@ -38,7 +38,7 @@
 </script>
 
 <section class="relative flex min-h-[100svh] items-center overflow-hidden bg-night text-white">
-	<video src="/hero/video2.mp4" class="absolute inset-0 h-full w-full object-cover opacity-45" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+	<video src="/hero/video4.mp4" class="absolute inset-0 h-full w-full object-cover opacity-45" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
 	<div class="absolute inset-0 bg-gradient-to-br from-night/95 via-night/75 to-night/55"></div>
 	<div class="absolute inset-0 bg-brand/10 mix-blend-screen"></div>
 
