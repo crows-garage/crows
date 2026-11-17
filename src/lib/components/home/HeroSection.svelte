@@ -1,17 +1,18 @@
 <script>
 	import { ArrowDown, ChevronLeft, ChevronRight, Play } from '@lucide/svelte'
-	import { HERO_MEDIA } from '#lib/data/heroMedia.js'
 	import { imgUrl } from '#lib/utils.js'
 
-	let { store = null, org = null } = $props()
+	let { store = null, org = null, ctas = [] } = $props()
 
 	let activeIndex = $state(0)
-	const activeMedia = $derived(HERO_MEDIA[activeIndex])
-	const cover = $derived(imgUrl(org?.coverImage))
+	const heroMedia = $derived((ctas || []).filter((cta) => cta.active !== false && cta.image))
+	const activeMedia = $derived(heroMedia[activeIndex % Math.max(heroMedia.length, 1)])
+	const destination = $derived(activeMedia ? targetHref(activeMedia) : '')
 
 	$effect(() => {
+		if (heroMedia.length < 2) return
 		const timer = window.setInterval(() => {
-			activeIndex = (activeIndex + 1) % HERO_MEDIA.length
+			activeIndex = (activeIndex + 1) % heroMedia.length
 		}, 8000)
 
 		return () => window.clearInterval(timer)
@@ -22,26 +23,29 @@
 	}
 
 	function nextMedia() {
-		activeIndex = (activeIndex + 1) % HERO_MEDIA.length
+		activeIndex = (activeIndex + 1) % heroMedia.length
+	}
+
+	function targetHref(media) {
+		if (media.targetType === 'URL' && media.targetId) return media.targetId
+		if (media.targetType === 'CATEGORY' && media.targetId) return `/productos?categoria=${encodeURIComponent(media.targetId)}`
+		return ''
+	}
+
+	function mediaLabel(media) {
+		return media.mediaType === 'VIDEO' ? 'Video' : 'Banner'
 	}
 </script>
 
 <section class="relative flex min-h-[100svh] items-center overflow-hidden bg-night text-white">
-	<!-- Background video remains the main visual layer. -->
-	<video
-		src="/video4.mp4"
-		class="absolute inset-0 w-full h-full object-cover opacity-20"
-		autoplay
-		muted
-		loop
-		playsinline
-		preload="metadata"
-	></video>
-	{#if org?.coverImage}
-		<img src={cover} alt="" class="absolute inset-0 w-full h-full object-cover opacity-20" />
+	{#if activeMedia}
+		{#if activeMedia.mediaType === 'VIDEO'}
+			<video src={imgUrl(activeMedia.image)} poster={activeMedia.poster ? imgUrl(activeMedia.poster) : undefined} class="absolute inset-0 h-full w-full object-cover opacity-20" autoplay muted loop playsinline preload="metadata"></video>
+		{:else}
+			<img src={imgUrl(activeMedia.image)} alt="" class="absolute inset-0 h-full w-full object-cover opacity-20" />
+		{/if}
 	{/if}
 	<div class="absolute inset-0 bg-gradient-to-br from-night via-night/95 to-brand/20"></div>
-	<div class="absolute inset-0 graticule opacity-20" aria-hidden="true"></div>
 
 	<div class="relative mx-auto grid min-h-[100svh] w-full max-w-7xl items-center gap-12 px-4 pb-10 pt-28 sm:px-6 sm:pb-14 sm:pt-32 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20 lg:px-8 lg:pt-28">
 		<div>
@@ -65,34 +69,29 @@
 			</div>
 		</div>
 
-		<div class="overflow-hidden rounded-xs border border-brand/30 bg-night/70 backdrop-blur-sm">
+		<svelte:element this={destination ? 'a' : 'div'} href={destination || undefined} class="block overflow-hidden rounded-2xl border border-white/15 bg-white/10 backdrop-blur-xl shadow-2xl shadow-black/20">
+			{#if activeMedia}
 			<div class="relative aspect-video bg-black/40">
-				{#key activeMedia.src}
-					<video
-						src={activeMedia.src}
-						class="absolute inset-0 h-full w-full object-cover"
-						autoplay
-						muted
-						loop
-						playsinline
-						preload="metadata"
-					></video>
-				{/key}
+				{#if activeMedia.mediaType === 'VIDEO'}
+					{#key activeMedia.image}<video src={imgUrl(activeMedia.image)} poster={activeMedia.poster ? imgUrl(activeMedia.poster) : undefined} class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline preload="metadata"></video>{/key}
+				{:else}
+					<img src={imgUrl(activeMedia.image)} alt={activeMedia.title || 'Banner'} class="absolute inset-0 h-full w-full object-cover" />
+				{/if}
 				<div class="absolute inset-0 bg-gradient-to-t from-night/90 via-transparent to-transparent"></div>
 				<div class="absolute left-4 top-4 flex items-center gap-2">
 					<span class="flex items-center gap-1.5 rounded-xs border border-brand/60 bg-night/70 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.16em] text-brand">
-						<Play size={10} fill="currentColor" /> {activeMedia.label}
+						<Play size={10} fill="currentColor" /> {mediaLabel(activeMedia)}
 					</span>
 				</div>
 				<div class="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
-					<p class="font-display text-lg leading-tight text-white">{activeMedia.title}</p>
-					<span class="font-mono text-[10px] text-white/60">{String(activeIndex + 1).padStart(2, '0')} / {String(HERO_MEDIA.length).padStart(2, '0')}</span>
+					<p class="font-display text-lg leading-tight text-white">{activeMedia.title || 'Crow Projects'}</p>
+					<span class="font-mono text-[10px] text-white/60">{String(activeIndex + 1).padStart(2, '0')} / {String(heroMedia.length).padStart(2, '0')}</span>
 				</div>
 			</div>
 
 			<div class="p-5 sm:p-6">
 				<div class="flex items-center justify-between gap-3 border-b border-white/15 pb-4">
-					<span class="eyebrow !text-brand">Eventos y proyectos en movimiento</span>
+					<span class="eyebrow !text-brand">Banners y videos de la comunidad</span>
 					<div class="flex items-center gap-1">
 						<button type="button" onclick={previousMedia} class="p-1 text-white/60 hover:text-brand" aria-label="Video anterior"><ChevronLeft size={16} /></button>
 						<button type="button" onclick={nextMedia} class="p-1 text-white/60 hover:text-brand" aria-label="Video siguiente"><ChevronRight size={16} /></button>
@@ -100,7 +99,7 @@
 				</div>
 				<p class="mt-4 text-sm leading-relaxed text-white/70">Mirá lo que estamos construyendo y encontrá el próximo proyecto del que quieras formar parte.</p>
 				<div class="mt-5 flex gap-1.5" aria-label="Seleccionar video">
-					{#each HERO_MEDIA as media, index}
+					{#each heroMedia as media, index}
 						<button
 							type="button"
 							onclick={() => (activeIndex = index)}
@@ -110,6 +109,9 @@
 					{/each}
 				</div>
 			</div>
-		</div>
+			{:else}
+				<div class="flex min-h-64 items-center justify-center p-8 text-center text-sm text-white/60">Agregá banners desde el panel para mostrar contenido en la hero.</div>
+			{/if}
+		</svelte:element>
 	</div>
 </section>

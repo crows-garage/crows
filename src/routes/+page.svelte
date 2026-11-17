@@ -17,7 +17,7 @@
 
 <AnalyticsTracker />
 <div class="bg-base">
-	<HeroSection org={data.org} />
+	<HeroSection org={data.org} ctas={data.ctas} />
 	<PurposeSection />
 	<ProjectsSection projects={data.projects} />
 	<PillarsSection />
