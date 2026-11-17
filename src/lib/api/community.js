@@ -5,6 +5,7 @@ import { BASE, STORE_SLUG, ORG_ROOT, request, unwrap } from './client.js'
 
 function authorName(author) {
 	const c = author?.customers?.[0]
+	if (c?.username) return `@${c.username}`
 	if (c?.firstName) return `${c.firstName}${c.lastName ? ' ' + c.lastName : ''}`
 	if (author?.email) return author.email.split('@')[0]
 	return 'Institución'

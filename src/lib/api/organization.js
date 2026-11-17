@@ -2,7 +2,7 @@
 // proyectos, biblioteca, blog, galerías, autoridades y turnero.
 // Todos los métodos fallan en silencio: si la organización no está configurada,
 // las secciones simplemente no se muestran. Des-envuelve {data, pagination}.
-import { ORG_ROOT, fetchJSON, unwrap } from './client.js'
+import { BASE, ORG_ROOT, fetchJSON, request, unwrap } from './client.js'
 
 export const organizationApi = {
 	profile: () => fetchJSON(`${ORG_ROOT}`),
@@ -20,6 +20,20 @@ export const organizationApi = {
 	project: async (idOrSlug) => {
 		const body = await fetchJSON(`${ORG_ROOT}/projects/${encodeURIComponent(idOrSlug)}`)
 		return body?.data ?? body
+	},
+	createProject: (data) => request(`${ORG_ROOT.replace(BASE, '')}/projects`, { method: 'POST', body: data }),
+	addProjectLink: (projectId, data) => request(`${ORG_ROOT.replace(BASE, '')}/projects/${projectId}/links`, { method: 'POST', body: data }),
+	getMyProjectApplication: (projectId) => request(`${ORG_ROOT.replace(BASE, '')}/projects/${projectId}/applications/me`),
+	applyToProject: (projectId, data) => request(`${ORG_ROOT.replace(BASE, '')}/projects/${projectId}/applications`, { method: 'POST', body: data }),
+	cancelProjectApplication: (projectId) => request(`${ORG_ROOT.replace(BASE, '')}/projects/${projectId}/applications/me`, { method: 'DELETE' }),
+	uploadProjectFile: async (projectId, file, gallery = false) => {
+		const form = new FormData()
+		form.append('file', file)
+		const response = await fetch(`${BASE}${ORG_ROOT.replace(BASE, '')}/projects/${projectId}${gallery ? '/images' : '/upload-image'}`, {
+			method: 'POST', body: form, credentials: 'include'
+		})
+		if (!response.ok) throw new Error('No se pudo subir la imagen')
+		return response.json()
 	},
 
 	// solo PUBLISHED + PUBLIC; devuelve array

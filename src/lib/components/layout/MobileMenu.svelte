@@ -41,6 +41,8 @@
 					{link.label}
 				</a>
 			{/each}
+			<a href="/perfil" onclick={onClose} class="block px-3 py-3 font-mono text-[12px] uppercase tracking-[0.08em] text-fg border-b border-line/50 hover:bg-panel hover:text-signal transition-colors">Mi perfil</a>
+			<a href="/proyectos/nuevo" onclick={onClose} class="block px-3 py-3 font-mono text-[12px] uppercase tracking-[0.08em] text-fg border-b border-line/50 hover:bg-panel hover:text-signal transition-colors">Crear proyecto</a>
 
 			{#if roots.length > 0}
 				<div>

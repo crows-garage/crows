@@ -1,6 +1,7 @@
 <script>
 	import { FolderKanban, Flag, MapPin, Search, X } from '@lucide/svelte'
 	import { imgUrl } from '#lib/utils.js'
+	import { PROJECT_CATEGORIES } from '#lib/projectCategories.js'
 
 	let { data } = $props()
 	let query = $state('')
@@ -8,7 +9,7 @@
 	let selectedStatus = $state('')
 
 	const projects = $derived(data.projects || [])
-	const categories = $derived([...new Set(projects.map((project) => project.category).filter(Boolean))].sort())
+	const categories = $derived([...new Set([...PROJECT_CATEGORIES, ...projects.map((project) => project.category).filter(Boolean)])].sort())
 	const filteredProjects = $derived(
 		projects.filter((project) => {
 			const haystack = `${project.name || ''} ${project.description || ''}`.toLowerCase()

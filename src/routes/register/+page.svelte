@@ -10,6 +10,7 @@
 	let formData = $state({
 		firstName: '',
 		lastName: '',
+		username: '',
 		email: '',
 		phone: '',
 		password: '',
@@ -81,6 +82,7 @@
 		const registerData = {
 			firstName: formData.firstName.trim(),
 			lastName: formData.lastName.trim(),
+			username: formData.username.trim() || undefined,
 			email: formData.email.toLowerCase().trim(),
 			password: formData.password,
 			phone: formData.phone.trim() || undefined,
@@ -218,6 +220,11 @@
 							placeholder="Nombre"
 						/>
 						{#if fieldErrors.firstName}<p class="mt-1 text-[10px] text-mute">{fieldErrors.firstName}</p>{/if}
+					</div>
+					<div class="mt-4">
+						<label class="block text-xs font-medium text-fg/70 mb-1" for="reg-username">Nombre de usuario</label>
+						<input id="reg-username" name="username" value={formData.username} oninput={handleChange} class="w-full px-3 py-2 border rounded-xs border-line bg-base text-fg text-sm focus:outline-none focus:border-signal transition-colors" placeholder="tu_usuario" pattern="[A-Za-z0-9_-]+" minlength="3" />
+						<p class="mt-1 text-[10px] text-mute">Podés usar letras, números, guion y guion bajo.</p>
 					</div>
 
 					<div>

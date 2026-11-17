@@ -1,6 +1,8 @@
 <script>
-	import { ArrowLeft, Flag, MapPin } from '@lucide/svelte'
+	import { ArrowLeft, ExternalLink, Flag, MapPin, Users } from '@lucide/svelte'
 	import { imgUrl } from '#lib/utils.js'
+	import { auth } from '#lib/stores/auth.svelte.js'
+	import { organizationApi } from '#lib/api/organization.js'
 
 	let { data } = $props()
 	const project = $derived(data.project)
@@ -15,6 +17,30 @@
 	])
 
 	let active = $state(0)
+	let application = $state(null)
+	let applicationLoading = $state(false)
+	let applicationError = $state('')
+	let showApplicationForm = $state(false)
+	let applicationForm = $state({ message: '', skills: '', availability: '' })
+
+	$effect(() => {
+		if (auth.user && project?.id) {
+			organizationApi.getMyProjectApplication(project.id).then((value) => (application = value)).catch(() => (application = null))
+		}
+	})
+
+	async function apply() {
+		applicationLoading = true
+		applicationError = ''
+		try {
+			application = await organizationApi.applyToProject(project.id, applicationForm)
+			showApplicationForm = false
+		} catch (error) {
+			applicationError = error?.response?.data?.message || error?.response?.data?.error || error.message || 'No se pudo enviar la solicitud'
+		} finally {
+			applicationLoading = false
+		}
+	}
 
 	const STATUS_LABELS = {
 		ACTIVE: 'En curso',
@@ -96,6 +122,36 @@
 				{#if project.description}
 					<p class="text-base leading-relaxed text-fg/80 whitespace-pre-line">{project.description}</p>
 				{/if}
+
+				{#if project.links?.length}
+					<div class="flex flex-wrap gap-2">
+						{#each project.links as link}
+							<a href={link.url} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-line px-3 py-2 text-xs text-fg hover:border-signal hover:text-signal transition-colors"><ExternalLink size={13} /> {link.title}</a>
+						{/each}
+					</div>
+				{/if}
+
+				<div class="border border-line bg-panel p-4">
+					<div class="flex items-center gap-2 text-sm text-fg"><Users size={15} class="text-signal" /> Participación</div>
+					{#if !auth.user}
+						<a href={`/login?redirect=/proyecto/${project.slug || project.id}`} class="inline-block mt-3 text-xs text-signal underline">Iniciá sesión para participar</a>
+					{:else if application?.status === 'PENDING'}
+						<p class="mt-2 text-xs text-mute">Tu solicitud está pendiente de revisión.</p>
+					{:else if application?.status === 'ACCEPTED'}
+						<p class="mt-2 text-xs text-signal">Ya participás en este proyecto.</p>
+					{:else}
+						<button type="button" onclick={() => (showApplicationForm = !showApplicationForm)} class="mt-3 bg-signal text-base px-4 py-2 text-xs font-medium hover:bg-brand">Participar en el proyecto</button>
+						{#if showApplicationForm}
+							<form onsubmit={(event) => { event.preventDefault(); apply() }} class="mt-4 space-y-2">
+								<textarea bind:value={applicationForm.message} placeholder="¿Por qué te interesa participar?" class="input w-full min-h-20"></textarea>
+								<input bind:value={applicationForm.skills} placeholder="Tus habilidades" class="input w-full" />
+								<input bind:value={applicationForm.availability} placeholder="Disponibilidad" class="input w-full" />
+								{#if applicationError}<p class="text-xs text-rec">{applicationError}</p>{/if}
+								<button disabled={applicationLoading} class="btn btn-primary text-xs">{applicationLoading ? 'Enviando...' : 'Enviar solicitud'}</button>
+							</form>
+						{/if}
+					{/if}
+				</div>
 
 				<div class="border-t border-line pt-5 space-y-3">
 					<div class="flex items-center justify-between text-xs uppercase tracking-[0.14em] text-mute">

@@ -55,20 +55,16 @@
 									<h3 class="text-sm font-medium text-fg line-clamp-2"><a href={`/proyecto/${project.slug || project.id}`} class="hover:text-signal">{project.name || 'Sin título'}</a></h3>
 									<p class="text-[9px] text-muted-foreground line-clamp-1 mt-1">{project.description || 'Descripción breve'}</p>
 									<div class="mt-2 flex gap-2">
-										<a
-											href={`https://github.com/crows-garage/crows/projects/${project.id || 0}`}
-											target="_blank"
-											rel="noopener noreferrer"
-											class="text-xs font-medium text-brand underline hover:text-signal"
-										>
-											<ExternalLink class="w-4 h-4" /> Ver en GitHub
-										</a>
-										<button
-											class="flex items-center gap-1 text-xs font-medium text-signal hover:underline"
-											onclick={() => alert('Función de colaborar en desarrollo')}
-										>
+										{#if project.links?.[0]}
+											<a href={project.links[0].url} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-medium text-brand underline hover:text-signal">
+												<ExternalLink class="w-4 h-4" /> {project.links[0].title}
+											</a>
+										{:else}
+											<a href={`/proyecto/${project.slug || project.id}`} class="text-xs font-medium text-brand underline hover:text-signal">Ver proyecto</a>
+										{/if}
+										<a href={`/proyecto/${project.slug || project.id}`} class="flex items-center gap-1 text-xs font-medium text-signal hover:underline">
 											<Users size={14} /> Colaborar
-										</button>
+										</a>
 									</div>
 								</div>
 							</article>
