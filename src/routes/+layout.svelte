@@ -14,6 +14,7 @@
 	import '@fontsource/dela-gothic-one/latin-400.css'
 
 	import { Toaster } from 'svelte-french-toast'
+	import { afterNavigate } from '$app/navigation'
 	import Navbar from '#lib/components/layout/Navbar.svelte'
 	import Footer from '#lib/components/layout/Footer.svelte'
 	import AnalyticsTracker from '#lib/components/AnalyticsTracker.svelte'
@@ -22,6 +23,11 @@
 	import { theme } from '#lib/stores/theme.svelte.js'
 
 	let { data, children } = $props()
+
+	afterNavigate(({ from, to }) => {
+		if (!from || to.url.hash) return
+		window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+	})
 
 	// ≙ useEffect(() => checkAuth()) del AuthProvider
 	$effect(() => {
