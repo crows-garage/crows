@@ -21,9 +21,9 @@
 	let openCat = $state(false)
 </script>
 
-<div class="fixed inset-0 z-50 lg:hidden">
-	<div class="absolute inset-0 bg-black/50" onclick={onClose}></div>
-	<div class="absolute inset-y-0 left-0 w-80 max-w-[88vw] bg-surface border-r border-line flex flex-col animate-fade-in">
+	<div class="fixed inset-0 z-50 lg:hidden">
+	<div class="absolute inset-0 bg-black/35 backdrop-blur-sm" onclick={onClose}></div>
+	<div class="glass-sidebar absolute inset-y-3 left-3 w-80 max-w-[calc(100vw-1.5rem)] rounded-3xl border flex flex-col animate-fade-in overflow-hidden">
 		<div class="flex items-center justify-between p-4 border-b border-line">
 			<span class="font-brand text-signal text-base leading-none">Crow Projects</span>
 			<button onclick={onClose} class="p-2 hover:bg-panel" aria-label="Cerrar menú">
@@ -36,13 +36,13 @@
 				<a
 					href={link.href}
 					onclick={onClose}
-					class="block px-3 py-3 font-mono text-[12px] uppercase tracking-[0.08em] text-fg border-b border-line/50 hover:bg-panel hover:text-signal transition-colors"
+				class="block rounded-xl px-3 py-3 font-mono text-[12px] uppercase tracking-[0.08em] text-fg hover:bg-white/10 hover:text-signal transition-colors"
 				>
 					{link.label}
 				</a>
 			{/each}
-			<a href="/perfil" onclick={onClose} class="block px-3 py-3 font-mono text-[12px] uppercase tracking-[0.08em] text-fg border-b border-line/50 hover:bg-panel hover:text-signal transition-colors">Mi perfil</a>
-			<a href="/proyectos/nuevo" onclick={onClose} class="block px-3 py-3 font-mono text-[12px] uppercase tracking-[0.08em] text-fg border-b border-line/50 hover:bg-panel hover:text-signal transition-colors">Crear proyecto</a>
+			<a href="/perfil" onclick={onClose} class="block rounded-xl px-3 py-3 font-mono text-[12px] uppercase tracking-[0.08em] text-fg hover:bg-white/10 hover:text-signal transition-colors">Mi perfil</a>
+			<a href="/proyectos/nuevo" onclick={onClose} class="block rounded-xl px-3 py-3 font-mono text-[12px] uppercase tracking-[0.08em] text-fg hover:bg-white/10 hover:text-signal transition-colors">Crear proyecto</a>
 
 			{#if roots.length > 0}
 				<div>

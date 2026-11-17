@@ -39,7 +39,7 @@
 	}
 </script>
 
-<header class={`fixed top-4 inset-x-0 mx-auto  w-[calc(100%_-_2rem)] max-w-7xl z-40 border-b border-line bg-surface/90 backdrop-blur transition-colors duration-300 ${scrolled ? 'bg-surface' : ''}`}>
+<header class={`glass-nav fixed top-4 inset-x-0 mx-auto w-[calc(100%_-_2rem)] max-w-7xl z-40 rounded-2xl border transition-colors duration-300 ${scrolled ? 'bg-surface/75' : ''}`}>
 	<div class="px-4 sm:px-6">
 		<div class="flex h-14 items-center justify-between gap-3">
 			<button
@@ -75,7 +75,7 @@
 							<User class="w-5 h-5" />
 							<span class="hidden md:inline text-sm">{auth.user.firstName}</span>
 						</button>
-						<div class="absolute right-0 top-full mt-1 w-44 bg-surface border rounded-xs border-line shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 overflow-hidden">
+						<div class="glass-card absolute right-0 top-full mt-2 w-44 rounded-2xl border shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 overflow-hidden">
 							<a href="/perfil" class="block w-full px-4 py-2.5 text-sm text-fg hover:bg-panel">Mi perfil</a>
 							<a href="/proyectos/nuevo" class="block w-full px-4 py-2.5 text-sm text-fg hover:bg-panel">Crear proyecto</a>
 							<a href="/orders" class="block w-full px-4 py-2.5 text-sm text-fg hover:bg-panel">Mis pedidos</a>

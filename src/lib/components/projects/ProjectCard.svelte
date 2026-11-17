@@ -26,7 +26,7 @@
 	}
 </script>
 
-<article class={`group overflow-hidden rounded-2xl border border-line bg-surface transition-all hover:-translate-y-0.5 hover:border-signal hover:shadow-lg hover:shadow-night/5 ${compact ? '' : 'lg:grid lg:grid-cols-[1.05fr_0.95fr]'}`}>
+<article class={`glass-card group overflow-hidden rounded-2xl border transition-all hover:-translate-y-0.5 hover:border-signal hover:shadow-lg hover:shadow-night/5 ${compact ? '' : 'lg:grid lg:grid-cols-[1.05fr_0.95fr]'}`}>
 	<div class="relative aspect-[16/10] overflow-hidden bg-panel lg:aspect-auto lg:min-h-[250px]">
 		{#if images.length}
 			<img src={imgUrl(images[activeImage].src)} alt={project.name || 'Proyecto'} loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-opacity duration-300" style={`object-position: ${images[activeImage].position}`} />
