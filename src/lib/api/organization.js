@@ -26,6 +26,8 @@ export const organizationApi = {
 	getMyProjectApplication: (projectId) => request(`${ORG_ROOT.replace(BASE, '')}/projects/${projectId}/applications/me`),
 	applyToProject: (projectId, data) => request(`${ORG_ROOT.replace(BASE, '')}/projects/${projectId}/applications`, { method: 'POST', body: data }),
 	cancelProjectApplication: (projectId) => request(`${ORG_ROOT.replace(BASE, '')}/projects/${projectId}/applications/me`, { method: 'DELETE' }),
+	listProjectApplications: (projectId) => request(`${ORG_ROOT.replace(BASE, '')}/projects/${projectId}/applications`),
+	reviewProjectApplication: (projectId, applicationId, data) => request(`${ORG_ROOT.replace(BASE, '')}/projects/${projectId}/applications/${applicationId}`, { method: 'PUT', body: data }),
 	uploadProjectFile: async (projectId, file, gallery = false) => {
 		const form = new FormData()
 		form.append('file', file)

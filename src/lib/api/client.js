@@ -10,6 +10,12 @@ export const ORG_SLUG = PUBLIC_ORG_SLUG || STORE_SLUG
 export const STORE_ROOT = `${BASE}/stores/${STORE_SLUG}`
 export const ORG_ROOT = `${BASE}/organizations/${ORG_SLUG}`
 
+export const notificationsApi = {
+	list: () => request(`${STORE_ROOT.replace(BASE, '')}/notifications?limit=50`),
+	markRead: (id) => request(`${STORE_ROOT.replace(BASE, '')}/notifications/${id}/read`, { method: 'PUT' }),
+	markAllRead: () => request(`${STORE_ROOT.replace(BASE, '')}/notifications/read-all`, { method: 'PUT' })
+}
+
 // ─── Refresh automático (una sola vez al 401) ─────────────
 let isRefreshing = false
 let refreshPromise = null

@@ -1,6 +1,9 @@
 <script>
 	import { goto } from '$app/navigation'
 	import { auth } from '#lib/stores/auth.svelte.js'
+	import { CheckCircle2, Bell, X } from '@lucide/svelte'
+	import { notificationsApi } from '#lib/api/client.js'
+	import { organizationApi } from '#lib/api/organization.js'
 
 	let form = $state({ firstName: '', username: '', phone: '' })
 	let loading = $state(true)
@@ -8,6 +11,10 @@
 	let uploading = $state(false)
 	let message = $state('')
 	let error = $state('')
+	let notifications = $state([])
+	let notificationsLoading = $state(false)
+	let notificationsLoaded = $state(false)
+	let reviewing = $state(null)
 
 	$effect(() => {
 		if (!auth.loading) {
@@ -16,8 +23,52 @@
 				form = { firstName: auth.user.firstName || '', username: auth.user.username || '', phone: auth.user.phone || '' }
 				loading = false
 			}
+			if (auth.user && !notificationsLoading && !notificationsLoaded) loadNotifications()
 		}
 	})
+
+	async function loadNotifications() {
+		notificationsLoading = true
+		try {
+			const result = await notificationsApi.list()
+			notifications = result?.data || []
+		} catch {
+			notifications = []
+		} finally {
+			notificationsLoading = false
+			notificationsLoaded = true
+		}
+	}
+
+	function applicationFrom(notification) {
+		const match = notification.type?.match(/^PROJECT_APPLICATION:(\d+):(\d+)$/)
+		return match ? { projectId: Number(match[1]), applicationId: Number(match[2]) } : null
+	}
+
+	function isProjectNotification(notification) {
+		return Boolean(applicationFrom(notification) || notification.type?.startsWith('PROJECT_APPLICATION_REVIEWED:'))
+	}
+
+	async function review(notification, status) {
+		const application = applicationFrom(notification)
+		if (!application) return
+		reviewing = `${notification.id}:${status}`
+		try {
+			await organizationApi.reviewProjectApplication(application.projectId, application.applicationId, { status })
+			await notificationsApi.markRead(notification.id)
+			notifications = notifications.map((item) => item.id === notification.id ? { ...item, read: true, title: status === 'ACCEPTED' ? 'Solicitud aceptada' : 'Solicitud rechazada' } : item)
+		} catch (err) {
+			error = err?.response?.data?.message || err?.response?.data?.error || 'No se pudo actualizar la solicitud.'
+		} finally {
+			reviewing = null
+		}
+	}
+
+	async function markNotificationRead(notification) {
+		if (notification.read) return
+		await notificationsApi.markRead(notification.id).catch(() => {})
+		notifications = notifications.map((item) => item.id === notification.id ? { ...item, read: true } : item)
+	}
 
 	async function save() {
 		saving = true
@@ -57,6 +108,21 @@
 		<p class="eyebrow text-signal">Cuenta</p>
 		<h1 class="text-3xl font-display text-fg mt-2">Mi perfil</h1>
 		<p class="text-sm text-mute mt-2 mb-8">Tu información visible para la comunidad y los proyectos.</p>
+		<section class="mb-6 space-y-3">
+			<div class="flex items-center justify-between"><h2 class="eyebrow flex items-center gap-2"><Bell size={14} /> Notificaciones</h2>{#if notifications.length}<button type="button" onclick={() => notificationsApi.markAllRead().then(() => (notifications = notifications.map((item) => ({ ...item, read: true }))))} class="text-[10px] uppercase tracking-[0.12em] text-mute hover:text-signal">Marcar todas como leídas</button>{/if}</div>
+			{#if notificationsLoading}<p class="text-sm text-mute">Cargando notificaciones...</p>
+			{:else if notifications.filter(isProjectNotification).length === 0}<div class="border border-line bg-panel p-4 text-sm text-mute">No tenés notificaciones nuevas.</div>
+			{:else}
+				{#each notifications.filter(isProjectNotification) as notification}
+					{@const application = applicationFrom(notification)}
+					<div class={`border p-4 ${notification.read ? 'border-line bg-panel/60' : 'border-brand/40 bg-brand/10'}`} onclick={() => markNotificationRead(notification)}>
+						<div class="flex items-start gap-3"><CheckCircle2 size={18} class="mt-0.5 shrink-0 text-brand" /><div class="min-w-0 flex-1"><p class="text-sm font-semibold text-fg">{notification.title}</p><p class="mt-1 text-xs leading-relaxed text-mute">{notification.message}</p>
+							{#if application && notification.type.startsWith('PROJECT_APPLICATION:') && !notification.read}<div class="mt-3 flex gap-2"><button type="button" disabled={reviewing !== null} onclick={(event) => { event.stopPropagation(); review(notification, 'ACCEPTED') }} class="btn btn-primary text-xs">{reviewing === `${notification.id}:ACCEPTED` ? 'Aceptando...' : 'Aceptar'}</button><button type="button" disabled={reviewing !== null} onclick={(event) => { event.stopPropagation(); review(notification, 'REJECTED') }} class="btn text-xs"><X size={13} /> Rechazar</button></div>{/if}
+						</div></div>
+					</div>
+				{/each}
+			{/if}
+		</section>
 		<form onsubmit={(event) => { event.preventDefault(); save() }} class="glass-card space-y-5 p-5 sm:p-7">
 			<div class="flex items-center gap-4">
 				<div class="h-20 w-20 shrink-0 overflow-hidden rounded-full border border-line bg-signal/20 grid place-items-center text-2xl font-display text-signal">

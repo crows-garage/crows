@@ -28,7 +28,7 @@
 	$effect(() => {
 		if (auth.user && project?.id) {
 			organizationApi.getMyProjectApplication(project.id)
-				.then((value) => (application = value))
+				.then((value) => (application = value?.data ?? value))
 				.catch(() => (application = null))
 				.finally(() => (applicationChecked = true))
 		}
@@ -44,7 +44,8 @@
 		applicationLoading = true
 		applicationError = ''
 		try {
-			application = await organizationApi.applyToProject(project.id, applicationForm)
+			const result = await organizationApi.applyToProject(project.id, applicationForm)
+			application = result?.data ?? result
 			showApplicationForm = false
 			showSuccessModal = true
 		} catch (error) {
