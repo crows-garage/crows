@@ -108,14 +108,14 @@
 		<p class="eyebrow text-signal">Cuenta</p>
 		<h1 class="text-3xl font-display text-fg mt-2">Mi perfil</h1>
 		<p class="text-sm text-mute mt-2 mb-8">Tu información visible para la comunidad y los proyectos.</p>
-		<section class="mb-6 space-y-3">
+		<section id="notificaciones" class="mb-6 scroll-mt-24 space-y-3">
 			<div class="flex items-center justify-between"><h2 class="eyebrow flex items-center gap-2"><Bell size={14} /> Notificaciones</h2>{#if notifications.length}<button type="button" onclick={() => notificationsApi.markAllRead().then(() => (notifications = notifications.map((item) => ({ ...item, read: true }))))} class="text-[10px] uppercase tracking-[0.12em] text-mute hover:text-signal">Marcar todas como leídas</button>{/if}</div>
 			{#if notificationsLoading}<p class="text-sm text-mute">Cargando notificaciones...</p>
 			{:else if notifications.filter(isProjectNotification).length === 0}<div class="border border-line bg-panel p-4 text-sm text-mute">No tenés notificaciones nuevas.</div>
 			{:else}
 				{#each notifications.filter(isProjectNotification) as notification}
 					{@const application = applicationFrom(notification)}
-					<div class={`border p-4 ${notification.read ? 'border-line bg-panel/60' : 'border-brand/40 bg-brand/10'}`} onclick={() => markNotificationRead(notification)}>
+					<div class={`border p-4 ${notification.read ? 'border-line bg-panel/60' : 'border-brand/40 bg-brand/10'}`}>
 						<div class="flex items-start gap-3"><CheckCircle2 size={18} class="mt-0.5 shrink-0 text-brand" /><div class="min-w-0 flex-1"><p class="text-sm font-semibold text-fg">{notification.title}</p><p class="mt-1 text-xs leading-relaxed text-mute">{notification.message}</p>
 							{#if application && notification.type.startsWith('PROJECT_APPLICATION:') && !notification.read}<div class="mt-3 flex gap-2"><button type="button" disabled={reviewing !== null} onclick={(event) => { event.stopPropagation(); review(notification, 'ACCEPTED') }} class="btn btn-primary text-xs">{reviewing === `${notification.id}:ACCEPTED` ? 'Aceptando...' : 'Aceptar'}</button><button type="button" disabled={reviewing !== null} onclick={(event) => { event.stopPropagation(); review(notification, 'REJECTED') }} class="btn text-xs"><X size={13} /> Rechazar</button></div>{/if}
 						</div></div>

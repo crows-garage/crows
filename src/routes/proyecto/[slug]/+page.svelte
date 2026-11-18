@@ -130,6 +130,9 @@
 					{#if project.category}
 						<p class="mt-3 flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-mute"><MapPin size={13} /> {project.category}</p>
 					{/if}
+					{#if project.creator?.firstName}
+						<p class="mt-3 text-xs text-mute">Creado por <strong class="text-fg">{project.creator.firstName} {project.creator.lastName || ''}</strong>{project.creator.profession ? ` · ${project.creator.profession}` : ''}</p>
+					{/if}
 				</div>
 
 				{#if project.description}
