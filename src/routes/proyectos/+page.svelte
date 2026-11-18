@@ -80,8 +80,8 @@
 					{@const milestones = project.milestones || []}
 					<div>
 						<ProjectCard {project} />
-						<div class="border-x border-b border-line bg-panel px-5 pb-5 sm:px-6 sm:pb-6">
-							{#if milestones.length > 0}
+						{#if milestones.length > 0}
+							<div class="border-x border-b border-line bg-panel px-5 pb-5 sm:px-6 sm:pb-6">
 								<div class="mt-6 border-t border-line pt-4">
 									<p class="text-[10px] uppercase tracking-[0.3em] text-mute mb-3 flex items-center gap-1.5">
 										<Flag size={11} /> Hoja de ruta
@@ -108,8 +108,8 @@
 										{/each}
 									</div>
 								</div>
-							{/if}
-						</div>
+							</div>
+						{/if}
 					</div>
 				{/each}
 			</div>
