@@ -153,7 +153,10 @@
 							<a href={`/register?redirect=${encodeURIComponent(`/proyecto/${project.slug || project.id}#participacion`)}`} class="inline-flex items-center justify-center border border-line text-fg px-4 py-2 text-xs font-medium hover:border-signal hover:text-signal">Registrarse</a>
 						</div>
 					{:else if application?.status === 'PENDING'}
-						<div class="mt-3 rounded-xl border border-signal/35 bg-signal/10 p-4"><p class="text-sm font-semibold text-signal">Solicitud enviada</p><p class="mt-1 text-xs leading-relaxed text-mute">Tu solicitud está pendiente de revisión.</p></div>
+						<div class="mt-3 flex items-start gap-3 rounded-xl border border-brand/40 bg-brand/10 p-4 text-brand">
+							<CheckCircle2 size={18} class="mt-0.5 shrink-0" />
+							<div><p class="text-sm font-semibold">Solicitud enviada correctamente</p><p class="mt-1 text-xs leading-relaxed text-fg/70">Recibimos tu propuesta para este proyecto. El equipo la revisará y te avisará cuando haya novedades.</p></div>
+						</div>
 					{:else if application?.status === 'ACCEPTED'}
 						<p class="mt-2 text-xs text-signal">Ya participás en este proyecto.</p>
 					{:else}
