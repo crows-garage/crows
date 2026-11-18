@@ -1,6 +1,8 @@
 <script>
 	import { X, ChevronDown } from '@lucide/svelte'
-	import { buildCategoryTree } from '#lib/utils.js'
+	import { buildCategoryTree, imgUrl } from '#lib/utils.js'
+	import { User } from '@lucide/svelte'
+	import { auth } from '#lib/stores/auth.svelte.js'
 
 	let { categories = [], onClose } = $props()
 
@@ -25,7 +27,7 @@
 	<div class="absolute inset-0 bg-black/35 backdrop-blur-sm" onclick={onClose}></div>
 	<div class="glass-sidebar absolute inset-y-3 left-3 w-80 max-w-[calc(100vw-1.5rem)] rounded-3xl border flex flex-col animate-fade-in overflow-hidden">
 		<div class="flex items-center justify-between p-4 border-b border-line">
-			<span class="font-brand text-signal text-base leading-none">Crow Projects</span>
+			<div class="flex items-center gap-2"><span class="grid h-8 w-8 place-items-center overflow-hidden rounded-full border border-line bg-panel text-signal">{#if auth.user?.avatarUrl}<img src={imgUrl(auth.user.avatarUrl)} alt="" class="h-full w-full object-cover" />{:else}<User class="h-4 w-4" />{/if}</span><span class="font-brand text-signal text-base leading-none">Crow Projects</span></div>
 			<button onclick={onClose} class="p-2 hover:bg-panel" aria-label="Cerrar menú">
 				<X class="w-5 h-5 text-mute" />
 			</button>

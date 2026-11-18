@@ -4,6 +4,7 @@
 	import { Menu, User, LogOut, Sun, Moon } from '@lucide/svelte'
 	import { theme, toggleTheme } from '#lib/stores/theme.svelte.js'
 	import MobileMenu from './MobileMenu.svelte'
+	import { imgUrl } from '#lib/utils.js'
 
 	let { categories = [], store = null, org = null } = $props()
 
@@ -71,11 +72,12 @@
 
 				{#if auth.user}
 					<div class="relative group">
-						<button type="button" class="flex items-center gap-1 p-2 text-fg/80 hover:text-signal hover:bg-panel transition-colors">
-							<User class="w-5 h-5" />
-							<span class="hidden md:inline text-sm">{auth.user.firstName}</span>
+						<button type="button" class="flex items-center p-1 text-fg/80 hover:text-signal transition-colors" aria-label="Abrir menú de perfil">
+							<span class="grid h-8 w-8 place-items-center overflow-hidden rounded-full border border-line bg-panel text-signal">
+								{#if auth.user.avatarUrl}<img src={imgUrl(auth.user.avatarUrl)} alt="" class="h-full w-full object-cover" />{:else}<User class="h-4 w-4" />{/if}
+							</span>
 						</button>
-						<div class="glass-card absolute right-0 top-full mt-2 w-44 rounded-2xl border shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 overflow-hidden">
+						<div class="absolute right-0 top-full z-50 mt-2 w-44 overflow-hidden rounded-2xl border border-line bg-panel shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
 							<a href="/perfil" class="block w-full px-4 py-2.5 text-sm text-fg hover:bg-panel">Mi perfil</a>
 							<a href="/proyectos/nuevo" class="block w-full px-4 py-2.5 text-sm text-fg hover:bg-panel">Crear proyecto</a>
 							<a href="/orders" class="block w-full px-4 py-2.5 text-sm text-fg hover:bg-panel">Mis pedidos</a>
