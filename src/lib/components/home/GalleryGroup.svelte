@@ -1,5 +1,3 @@
-// ≙ GalleryGroup (export de src/components/home/GalleryShowcase.jsx), usado
-// por la home y por /galeria.
 <script>
 	import { ImageIcon, FileText } from '@lucide/svelte'
 	import { imgUrl } from '#lib/utils.js'
