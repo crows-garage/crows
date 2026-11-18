@@ -1,4 +1,3 @@
-// ≙ src/app/about/page.jsx (server): perfil de la organización + autoridades.
 import { organizationApi } from '#lib/api/organization.js'
 import { api } from '#lib/api/store.js'
 

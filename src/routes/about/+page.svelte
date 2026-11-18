@@ -1,4 +1,3 @@
-// ≙ src/app/about/page.jsx: visión, historia, autoridades y contacto.
 <script>
 	import { Mail, Phone, Globe, MapPin, GraduationCap, Users } from '@lucide/svelte'
 	import { imgUrl } from '#lib/utils.js'

@@ -22,11 +22,21 @@
 	let applicationError = $state('')
 	let showApplicationForm = $state(false)
 	let showSuccessModal = $state(false)
+	let applicationChecked = $state(false)
 	let applicationForm = $state({ message: '', skills: '', availability: '' })
 
 	$effect(() => {
 		if (auth.user && project?.id) {
-			organizationApi.getMyProjectApplication(project.id).then((value) => (application = value)).catch(() => (application = null))
+			organizationApi.getMyProjectApplication(project.id)
+				.then((value) => (application = value))
+				.catch(() => (application = null))
+				.finally(() => (applicationChecked = true))
+		}
+	})
+
+	$effect(() => {
+		if (applicationChecked && auth.user && !application && typeof window !== 'undefined' && window.location.hash === '#participacion') {
+			showApplicationForm = true
 		}
 	})
 
@@ -148,15 +158,6 @@
 						<p class="mt-2 text-xs text-signal">Ya participás en este proyecto.</p>
 					{:else}
 						<button type="button" onclick={() => (showApplicationForm = !showApplicationForm)} class="mt-3 bg-signal text-base px-4 py-2 text-xs font-medium hover:bg-brand">Participar en el proyecto</button>
-						{#if showApplicationForm}
-							<form onsubmit={(event) => { event.preventDefault(); apply() }} class="mt-4 space-y-2">
-								<textarea bind:value={applicationForm.message} placeholder="¿Por qué te interesa participar?" class="input w-full min-h-20"></textarea>
-								<input bind:value={applicationForm.skills} placeholder="Tus habilidades" class="input w-full" />
-								<input bind:value={applicationForm.availability} placeholder="Disponibilidad" class="input w-full" />
-								{#if applicationError}<p class="text-xs text-rec">{applicationError}</p>{/if}
-								<button disabled={applicationLoading} class="btn btn-primary text-xs">{applicationLoading ? 'Enviando...' : 'Enviar solicitud'}</button>
-							</form>
-						{/if}
 					{/if}
 					</div>
 				</div>
@@ -200,6 +201,27 @@
 		{/if}
 	</div>
 </div>
+
+{#if showApplicationForm}
+	<div class="fixed inset-0 z-50 grid place-items-center bg-night/70 p-4 backdrop-blur-sm" role="presentation" onclick={(event) => event.target === event.currentTarget && (showApplicationForm = false)}>
+		<div class="relative w-full max-w-lg rounded-2xl border border-line bg-panel p-6 shadow-2xl" role="dialog" aria-modal="true" aria-labelledby="application-form-title">
+			<button type="button" onclick={() => (showApplicationForm = false)} class="absolute right-4 top-4 text-mute hover:text-fg" aria-label="Cerrar formulario"><X size={18} /></button>
+			<p class="eyebrow text-signal">Participación</p>
+			<h2 id="application-form-title" class="mt-2 font-display text-2xl font-semibold text-fg">Participar en el proyecto</h2>
+			<p class="mt-2 text-sm text-mute">Contanos cómo te gustaría aportar a <strong class="text-fg">{project.name}</strong>.</p>
+			<form onsubmit={(event) => { event.preventDefault(); apply() }} class="mt-5 space-y-3">
+				<textarea bind:value={applicationForm.message} placeholder="¿Por qué te interesa participar?" class="input min-h-24 w-full"></textarea>
+				<input bind:value={applicationForm.skills} placeholder="Tus habilidades" class="input w-full" />
+				<input bind:value={applicationForm.availability} placeholder="Disponibilidad" class="input w-full" />
+				{#if applicationError}<p class="text-xs text-rec">{applicationError}</p>{/if}
+				<div class="flex justify-end gap-2 pt-2">
+					<button type="button" onclick={() => (showApplicationForm = false)} class="btn text-xs">Cancelar</button>
+					<button type="submit" disabled={applicationLoading} class="btn btn-primary text-xs">{applicationLoading ? 'Enviando...' : 'Enviar solicitud'}</button>
+				</div>
+			</form>
+		</div>
+	</div>
+{/if}
 
 {#if showSuccessModal}
 	<div class="fixed inset-0 z-50 grid place-items-center bg-night/70 p-4 backdrop-blur-sm" role="presentation" onclick={(event) => event.target === event.currentTarget && (showSuccessModal = false)}>
