@@ -57,7 +57,7 @@
 		{#if project?.description}<p class="mt-3 line-clamp-3 text-sm leading-relaxed text-mute">{project.description}</p>{/if}
 		<div class="mt-auto flex flex-wrap items-center gap-3 pt-5">
 			<a href={`/proyecto/${slug}#participacion`} class="inline-flex items-center gap-2 rounded-full bg-signal px-4 py-2.5 text-xs font-semibold text-base transition-colors hover:bg-brand"><Users size={14} /> Participar</a>
-			<a href={`/proyecto/${slug}`} class="text-xs uppercase tracking-[0.15em] text-mute hover:text-fg">Ver proyecto</a>
+			<a href={`/proyecto/${slug}`} class="inline-flex items-center gap-2 rounded-full border border-signal px-4 py-2.5 text-xs font-semibold text-signal transition-colors hover:bg-signal hover:text-base">Ver proyecto</a>
 		</div>
 	</div>
 </article>

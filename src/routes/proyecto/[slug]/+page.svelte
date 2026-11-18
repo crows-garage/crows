@@ -1,5 +1,5 @@
 <script>
-	import { ArrowLeft, ExternalLink, Flag, MapPin, Users } from '@lucide/svelte'
+	import { ArrowLeft, CheckCircle2, ExternalLink, Flag, MapPin, Users, X } from '@lucide/svelte'
 	import { imgUrl } from '#lib/utils.js'
 	import { auth } from '#lib/stores/auth.svelte.js'
 	import { organizationApi } from '#lib/api/organization.js'
@@ -21,6 +21,7 @@
 	let applicationLoading = $state(false)
 	let applicationError = $state('')
 	let showApplicationForm = $state(false)
+	let showSuccessModal = $state(false)
 	let applicationForm = $state({ message: '', skills: '', availability: '' })
 
 	$effect(() => {
@@ -35,6 +36,7 @@
 		try {
 			application = await organizationApi.applyToProject(project.id, applicationForm)
 			showApplicationForm = false
+			showSuccessModal = true
 		} catch (error) {
 			applicationError = error?.response?.data?.message || error?.response?.data?.error || error.message || 'No se pudo enviar la solicitud'
 		} finally {
@@ -141,7 +143,7 @@
 							<a href={`/register?redirect=${encodeURIComponent(`/proyecto/${project.slug || project.id}#participacion`)}`} class="inline-flex items-center justify-center border border-line text-fg px-4 py-2 text-xs font-medium hover:border-signal hover:text-signal">Registrarse</a>
 						</div>
 					{:else if application?.status === 'PENDING'}
-						<p class="mt-2 text-xs text-mute">Tu solicitud está pendiente de revisión.</p>
+						<div class="mt-3 rounded-xl border border-signal/35 bg-signal/10 p-4"><p class="text-sm font-semibold text-signal">Solicitud enviada</p><p class="mt-1 text-xs leading-relaxed text-mute">Tu solicitud está pendiente de revisión.</p></div>
 					{:else if application?.status === 'ACCEPTED'}
 						<p class="mt-2 text-xs text-signal">Ya participás en este proyecto.</p>
 					{:else}
@@ -198,3 +200,16 @@
 		{/if}
 	</div>
 </div>
+
+{#if showSuccessModal}
+	<div class="fixed inset-0 z-50 grid place-items-center bg-night/70 p-4 backdrop-blur-sm" role="presentation" onclick={(event) => event.target === event.currentTarget && (showSuccessModal = false)}>
+		<div class="glass-card relative w-full max-w-md rounded-2xl border border-signal/40 p-7 text-center shadow-none" role="dialog" aria-modal="true" aria-labelledby="application-success-title">
+			<button type="button" onclick={() => (showSuccessModal = false)} class="absolute right-4 top-4 text-mute hover:text-fg" aria-label="Cerrar confirmación"><X size={18} /></button>
+			<div class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-signal/15 text-signal"><CheckCircle2 size={30} /></div>
+			<p class="eyebrow mt-5 text-signal">Participación</p>
+			<h2 id="application-success-title" class="mt-2 font-display text-3xl font-semibold text-fg">Solicitud enviada</h2>
+			<p class="mt-3 text-sm leading-relaxed text-mute">Tu propuesta para participar en <strong class="text-fg">{project.name}</strong> fue recibida. El equipo la va a revisar y te avisará cuando haya novedades.</p>
+			<button type="button" onclick={() => (showSuccessModal = false)} class="btn btn-primary mt-6">Continuar</button>
+		</div>
+	</div>
+{/if}
