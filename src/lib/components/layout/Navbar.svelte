@@ -9,13 +9,6 @@
 	let { categories = [], store = null, org = null } = $props()
 
 	let showMobile = $state(false)
-	let scrolled = $state(false)
-
-	$effect(() => {
-		const handler = () => (scrolled = window.scrollY > 10)
-		window.addEventListener('scroll', handler)
-		return () => window.removeEventListener('scroll', handler)
-	})
 
 	const pathname = $derived(page.url.pathname)
 
@@ -40,7 +33,7 @@
 	}
 </script>
 
-<header class={`glass-nav fixed top-4 inset-x-0 mx-auto w-[calc(100%_-_2rem)] max-w-7xl z-40 rounded-2xl border transition-colors duration-300 ${scrolled ? 'bg-surface/75' : ''}`}>
+<header class="glass-nav fixed top-4 inset-x-0 mx-auto w-[calc(100%_-_2rem)] max-w-7xl z-40 rounded-2xl border transition-colors duration-300">
 	<div class="px-4 sm:px-6">
 		<div class="flex h-14 items-center justify-between gap-3">
 			<button
