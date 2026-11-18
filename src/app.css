@@ -163,6 +163,49 @@ body {
   box-shadow: 0 18px 50px color-mix(in srgb, var(--c-night) 10%, transparent);
 }
 
+/* Las tarjetas de proyectos son superficies limpias, no vidrio flotante. */
+.project-card {
+  background: color-mix(in srgb, var(--c-panel) 86%, transparent);
+  border-color: color-mix(in srgb, var(--c-line) 62%, transparent);
+  box-shadow: none;
+}
+
+.project-card:hover {
+  background: color-mix(in srgb, var(--c-panel) 94%, transparent);
+  box-shadow: none;
+}
+
+.hero-scroll-indicator {
+  align-items: center;
+  bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.58);
+  display: none;
+  flex-direction: column;
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  gap: 0.45rem;
+  left: 50%;
+  letter-spacing: 0.18em;
+  position: absolute;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.hero-scroll-indicator svg {
+  animation: hero-scroll-bounce 1.8s ease-in-out infinite;
+  color: var(--c-brand);
+}
+
+@keyframes hero-scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.55; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+
+@media (min-width: 1024px) {
+  .hero-scroll-indicator { display: flex; }
+}
+
 .glass-nav,
 .glass-sidebar {
   background: color-mix(in srgb, var(--c-surface) 64%, transparent);

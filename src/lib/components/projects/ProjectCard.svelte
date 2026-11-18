@@ -26,8 +26,8 @@
 	}
 </script>
 
-<article class={`glass-card group overflow-hidden rounded-2xl border transition-all hover:-translate-y-0.5 hover:border-signal hover:shadow-lg hover:shadow-night/5 ${compact ? '' : 'lg:grid lg:grid-cols-[1.05fr_0.95fr]'}`}>
-	<div class="relative aspect-[16/10] overflow-hidden bg-panel lg:aspect-auto lg:min-h-[250px]">
+<article class={`project-card group overflow-hidden rounded-xl border transition-colors hover:border-signal ${compact ? '' : 'lg:grid lg:grid-cols-[1.12fr_0.88fr]'}`}>
+	<div class="relative aspect-[16/9] overflow-hidden bg-panel lg:aspect-auto lg:min-h-[360px]">
 		{#if images.length}
 			<img src={imgUrl(images[activeImage].src)} alt={project.name || 'Proyecto'} loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-opacity duration-300" style={`object-position: ${images[activeImage].position}`} />
 			{#if images.length > 1}
@@ -46,7 +46,7 @@
 		{/if}
 	</div>
 
-	<div class="flex flex-col p-5 sm:p-6">
+	<div class="flex flex-col p-5 sm:p-7 lg:p-9">
 		<div class="flex items-start justify-between gap-3">
 			<div>
 				{#if project?.category}<p class="text-[10px] uppercase tracking-[0.18em] text-signal">{project.category}</p>{/if}

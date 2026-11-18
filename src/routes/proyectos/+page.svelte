@@ -44,22 +44,24 @@
 </svelte:head>
 
 <div class="min-h-screen pt-20 pb-16 bg-base">
-	<div class="max-w-5xl mx-auto px-4">
-		<div class="mb-10">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="mb-10 max-w-4xl">
 			<p class="eyebrow !text-signal mb-3 flex items-center gap-2"><Users class="w-4 h-4" /> 02 · PROYECTOS DE LA COMUNIDAD</p>
-			<h1 class="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight text-fg">Las ideas nos conectan. Los equipos las hacen realidad.</h1>
+			<h1 class="font-display font-semibold text-3xl sm:text-4xl lg:text-6xl leading-[0.98] tracking-tight text-fg">Las ideas nos conectan.<br />Los equipos las hacen realidad.</h1>
 			<p class="mt-4 max-w-2xl text-base leading-relaxed text-mute">Explorá proyectos que buscan crecer con nuevas personas, conocimientos y ganas de construir en conjunto.</p>
 		</div>
 
-		<div class="mt-8 flex flex-wrap items-center gap-2 rounded-2xl border border-line bg-panel p-3 sm:p-4">
+		<div class="mt-8 flex flex-wrap items-center gap-3 border-y border-line py-2.5">
 			<label class="sr-only" for="project-category-filter">Filtrar por categoría</label>
-			<select id="project-category-filter" bind:value={selectedCategory} class="input min-w-[220px] flex-1 rounded-xl border-line bg-base/60" aria-label="Filtrar por categoría">
+			<select id="project-category-filter" bind:value={selectedCategory} class="input min-w-[210px] max-w-xs border-0 bg-transparent px-0 text-sm focus:ring-0" aria-label="Filtrar por categoría">
 					<option value="">Todas las categorías</option>
 					{#each categories as category}<option value={category}>{category}</option>{/each}
 			</select>
-			<button type="button" onclick={clearFilters} class="btn min-h-[44px] rounded-xl border-line px-4 hover:border-signal hover:text-signal" aria-label="Limpiar filtros" title="Limpiar filtros"><X class="w-4 h-4" /><span>Limpiar filtros</span></button>
-			<p class="w-full text-[10px] uppercase tracking-[0.18em] text-mute">{filteredProjects.length} de {projects.length} proyectos</p>
+			<span class="text-[10px] uppercase tracking-[0.18em] text-mute">{filteredProjects.length} de {projects.length} proyectos</span>
 		</div>
+		{#if selectedCategory}
+			<div class="flex justify-end pt-1"><button type="button" onclick={clearFilters} class="inline-flex items-center gap-1.5 px-1 py-1 text-[10px] uppercase tracking-[0.16em] text-mute transition-colors hover:text-signal" aria-label="Limpiar filtros" title="Limpiar filtros"><X class="w-3.5 h-3.5" /> Limpiar filtros</button></div>
+		{/if}
 
 		{#if projects.length === 0}
 			<div class="text-center py-16">
