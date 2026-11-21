@@ -1,7 +1,8 @@
 <script>
 	import { auth } from '#lib/stores/auth.svelte.js'
 	import { page } from '$app/state'
-	import { Menu, User, LogOut } from '@lucide/svelte'
+	import { Menu, User, LogIn, LogOut, Sun, Moon } from '@lucide/svelte'
+	import { theme, toggleTheme } from '#lib/stores/theme.svelte.js'
 	import MobileMenu from './MobileMenu.svelte'
 	import { imgUrl } from '#lib/utils.js'
 
@@ -79,7 +80,22 @@
 							</button>
 						</div>
 					</div>
+				{:else}
+					<a href="/login?redirect=/comunidad" class="inline-flex items-center gap-2 px-3 py-2 font-display text-[13px] font-semibold uppercase tracking-[0.08em] text-fg/80 transition-colors hover:text-signal">
+						<LogIn class="h-4 w-4" />
+						<span>Iniciar sesión</span>
+					</a>
 				{/if}
+
+				<button
+					type="button"
+					onclick={toggleTheme}
+					class="p-2 text-fg/80 transition-colors hover:text-signal"
+					aria-label={$theme === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'}
+					title={$theme === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'}
+				>
+					{#if $theme === 'dark'}<Sun class="h-5 w-5" />{:else}<Moon class="h-5 w-5" />{/if}
+				</button>
 			</div>
 		</div>
 	</div>

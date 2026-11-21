@@ -20,6 +20,7 @@
 	import AnalyticsTracker from '#lib/components/AnalyticsTracker.svelte'
 	import { auth } from '#lib/stores/auth.svelte.js'
 	import { hydrateCart } from '#lib/stores/cart.svelte.js'
+	import { theme } from '#lib/stores/theme.svelte.js'
 
 	let { data, children } = $props()
 
@@ -42,7 +43,7 @@
 <svelte:head>
 	<title>{data.metaTitle}</title>
 	<meta name="description" content={data.metaDescription} />
-	<link rel="icon" href="/dark.svg" type="image/svg+xml" />
+	<link rel="icon" href={$theme === 'dark' ? '/ligth.svg' : '/dark.svg'} type="image/svg+xml" />
 </svelte:head>
 
 <AnalyticsTracker />

@@ -1,18 +1,23 @@
-// Crow Projects usa tema claro fijo.
+// Tema claro por defecto con opción de modo oscuro desde el navbar.
 import { writable } from 'svelte/store'
 import { browser } from '$app/env'
 
 const STORAGE_KEY = 'crow-theme'
 
 function readInitialTheme() {
-	return 'light'
+	if (!browser) return 'light'
+	try {
+		return localStorage.getItem(STORAGE_KEY) === 'dark' ? 'dark' : 'light'
+	} catch {
+		return 'light'
+	}
 }
 
 export const theme = writable(readInitialTheme())
 
 if (browser) {
 	theme.subscribe((value) => {
-		document.documentElement.classList.remove('dark')
+		document.documentElement.classList.toggle('dark', value === 'dark')
 		try {
 			localStorage.setItem(STORAGE_KEY, value)
 		} catch {
