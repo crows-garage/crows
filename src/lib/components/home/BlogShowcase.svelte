@@ -32,7 +32,7 @@
 {/snippet}
 
 {#if posts.length}
-	<section id="noticias-section" class="py-16 sm:py-20 lg:py-24 border-t border-line">
+	<section id="noticias-section" class="section-surface py-16 sm:py-20 lg:py-24 border-t border-line">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
 				<div>

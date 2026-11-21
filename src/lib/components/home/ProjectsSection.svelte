@@ -18,7 +18,7 @@
 	}
 </script>
 
-<section id="proyectos" class="py-10 sm:py-16 lg:py-20 border-t border-line">
+<section id="proyectos" class="section-surface py-10 sm:py-16 lg:py-20 border-t border-line">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div>
 			<p class="eyebrow !text-signal mb-3 flex items-center gap-2">

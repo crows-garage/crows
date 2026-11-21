@@ -21,7 +21,7 @@
 </script>
 
 {#if upcoming.length}
-	<section class="py-16 sm:py-20 border-t border-line">
+	<section class="section-panel py-16 sm:py-20 border-t border-line">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="mb-8">
 				<p class="eyebrow mb-2">04 · Agenda · Oportunidades para participar</p>

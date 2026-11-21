@@ -33,7 +33,7 @@
 </script>
 
 	<header class="glass-nav fixed top-4 inset-x-0 z-40 mx-auto w-[calc(100%_-_2rem)] max-w-7xl rounded-2xl border transition-colors duration-300 lg:top-0 lg:mx-0 lg:w-full lg:max-w-none lg:rounded-none lg:border-x-0 lg:shadow-none">
-	<div class="px-4 sm:px-6">
+	<div class="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
 		<div class="flex h-14 items-center justify-between gap-3">
 			<button
 				type="button"

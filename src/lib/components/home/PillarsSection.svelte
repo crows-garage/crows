@@ -26,7 +26,7 @@
 	}
 </script>
 
-<section id="pilares" class="py-16 sm:py-20 lg:py-28 border-t border-line">
+<section id="pilares" class="section-mint py-16 sm:py-20 lg:py-28 border-t border-line">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div use:scrollReveal class="max-w-2xl mb-10 sm:mb-14 pillar-reveal">
 			<p class="eyebrow !text-signal mb-3">03 · Una comunidad para hacer</p>

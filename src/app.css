@@ -31,24 +31,23 @@
 
   color-scheme: light;
 
-  /* Tema claro: signal/rec/amber son variantes oscuras accesibles de
-     #2ca798 / #ff3370 sobre superficies blancas */
-  --c-base: #d0d0d0;
-  --c-surface: #dad4c3;
-  --c-panel: #e2e2e3;
-  --c-fg: #222222;
-  --c-mute: #595959;
-  --c-line: #a6a6a6;
-  --c-signal: #0f5f56;
-  --c-night: #222222;
-  --c-rec: #a81446;
-  --c-amber: #8a5a00;
-  --c-brand: #2ca798;
-  --c-on-primary: #dad4c3;
+  /* Tema claro: blanco limpio, azul petróleo y turquesa Crow. */
+  --c-base: #f5f8f7;
+  --c-surface: #ffffff;
+  --c-panel: #eaf2f1;
+  --c-fg: #102a2c;
+  --c-mute: #587074;
+  --c-line: #c8d9d7;
+  --c-signal: #0d6b64;
+  --c-night: #102a2c;
+  --c-rec: #b42355;
+  --c-amber: #996b13;
+  --c-brand: #22a997;
+  --c-on-primary: #ffffff;
 
   /* Radio unificado de componentes (2 px) */
   --radius-ui: 0.125rem;
-  --c-feather: rgba(44, 167, 152, 0.35);
+  --c-feather: rgba(34, 169, 151, 0.35);
 }
 
 /* Tema oscuro: mismos tokens, valores invertidos (Tailwind 4 usa la variante
@@ -543,4 +542,12 @@ body {
 /* Sección con superficie secundaria (alternancia) */
 .section-panel {
   background: var(--c-panel);
+}
+
+.section-surface {
+  background: var(--c-surface);
+}
+
+.section-mint {
+  background: #edf7f5;
 }
