@@ -50,7 +50,7 @@
 				<span class="font-display text-signal text-base sm:text-lg leading-none tracking-tight">Crow Projects</span>
 			</a>
 
-			<div class="flex items-center">
+			<div class="ml-auto flex items-center gap-1">
 				<nav class="hidden lg:flex items-center gap-1 mr-2">
 					{#each NAV_LINKS.slice(0, 5) as link}
 						<a
