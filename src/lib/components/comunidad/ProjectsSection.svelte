@@ -38,7 +38,7 @@
 						<p class="text-sm text-muted-foreground">Aún no hay proyectos publicados</p>
 					</div>
 				{:else}
-					<div class="space-y-4">
+					<div class="space-y-4 lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
 						{#each projects as project (project.id)}
 							<div>
 								<ProjectCard {project} compact />

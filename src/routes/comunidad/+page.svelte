@@ -153,7 +153,7 @@
 </svelte:head>
 
 <div class="min-h-screen pt-20 pb-16 bg-base">
-	<div class="max-w-3xl mx-auto px-4">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-8">
 			<p class="text-[10px] uppercase tracking-[0.3em] mb-2 text-mute">Comunidad</p>
 			<h1 class="text-2xl sm:text-3xl font-display font-semibold tracking-tight text-fg">Comunidad estudiantil</h1>
@@ -221,7 +221,7 @@
 				<p class="text-sm text-mute">Todavía no hay publicaciones en la comunidad</p>
 			</div>
 		{:else}
-			<div class="space-y-6 mt-6">
+			<div class="space-y-6 mt-6 lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
 				{#each posts as post (post.id)}
 					<article class="bg-panel border rounded-xs border-line">
 						<div class="p-5 border-b border-line">
