@@ -1,8 +1,7 @@
 <script>
 	import { auth } from '#lib/stores/auth.svelte.js'
 	import { page } from '$app/state'
-	import { Menu, User, LogOut, Sun, Moon } from '@lucide/svelte'
-	import { theme, toggleTheme } from '#lib/stores/theme.svelte.js'
+	import { Menu, User, LogOut } from '@lucide/svelte'
 	import MobileMenu from './MobileMenu.svelte'
 	import { imgUrl } from '#lib/utils.js'
 
@@ -33,7 +32,7 @@
 	}
 </script>
 
-<header class="glass-nav fixed top-4 inset-x-0 mx-auto w-[calc(100%_-_2rem)] max-w-7xl z-40 rounded-2xl border transition-colors duration-300">
+	<header class="glass-nav fixed top-4 inset-x-0 z-40 mx-auto w-[calc(100%_-_2rem)] max-w-7xl rounded-2xl border transition-colors duration-300 lg:top-0 lg:mx-0 lg:w-full lg:max-w-none lg:rounded-none lg:border-x-0 lg:shadow-none">
 	<div class="px-4 sm:px-6">
 		<div class="flex h-14 items-center justify-between gap-3">
 			<button
@@ -46,8 +45,7 @@
 			</button>
 
 			<a href="/" class="shrink-0 flex items-center gap-3">
-				<!-- Logo por tema: dark.svg = cuervo oscuro (tema claro), ligth.svg = cuervo beige (tema oscuro) -->
-				<img src={$theme === 'dark' ? '/ligth.svg' : '/dark.svg'} alt="Crow Projects" width="28" height="28" class="w-7 h-7 object-contain" />
+				<img src="/dark.svg" alt="Crow Projects" width="28" height="28" class="w-7 h-7 object-contain" />
 				<span class="font-display text-signal text-base sm:text-lg leading-none tracking-tight">Crow Projects</span>
 			</a>
 
@@ -56,7 +54,7 @@
 					{#each NAV_LINKS.slice(0, 5) as link}
 						<a
 							href={link.href}
-							class={`relative px-2.5 py-2 font-display text-[11px] uppercase tracking-[0.08em] transition-colors ${navLinkClass(pathname === link.href)} ${activeBorder(pathname === link.href)}`}
+							class={`relative px-3 py-2 font-display text-[13px] font-semibold uppercase tracking-[0.08em] transition-colors ${navLinkClass(pathname === link.href)} ${activeBorder(pathname === link.href)}`}
 						>
 							{link.label}
 						</a>
@@ -82,20 +80,6 @@
 						</div>
 					</div>
 				{/if}
-
-				<button
-					type="button"
-					onclick={toggleTheme}
-					class="p-2 text-fg/80 hover:text-signal transition-colors"
-					aria-label={$theme === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'}
-					title={$theme === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'}
-				>
-					{#if $theme === 'dark'}
-						<Sun class="w-5 h-5" />
-					{:else}
-						<Moon class="w-5 h-5" />
-					{/if}
-				</button>
 			</div>
 		</div>
 	</div>

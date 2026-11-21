@@ -16,7 +16,7 @@
 			<p>Hay ideas, conocimientos y personas con ganas de crear. Pero muchas veces falta un espacio donde puedan encontrarse y trabajar en conjunto.</p>
 			<p>Crow nace para cambiar eso.</p>
 			<p>Un espacio para conectar personas de distintas disciplinas, compartir conocimientos y desarrollar proyectos en colaboración.</p>
-			<p class="border-l-2 border-signal pl-5 text-fg">Una iniciativa de <a href="https://hodsoftware.com" target="_blank" rel="noopener noreferrer" class="font-semibold text-signal underline decoration-signal/40 underline-offset-4 hover:text-fg">HOD SOFTWARE</a> que busca transformar ideas en proyectos reales.</p>
+			<p class="border-l-2 border-signal pl-5 text-fg">Una iniciativa de <a href="https://hodsoftware.com" target="_blank" rel="noopener noreferrer" class="font-semibold text-fg underline decoration-transparent underline-offset-4 transition-colors hover:text-signal hover:decoration-signal/40">HOD SOFTWARE</a> que busca transformar ideas en proyectos reales.</p>
 		</div>
 	</div>
 </section>
