@@ -82,8 +82,7 @@
 						<div class="absolute right-0 top-full z-50 mt-2 w-44 overflow-hidden rounded-2xl border border-line bg-panel shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
 							<a href="/perfil" class="block w-full px-4 py-2.5 text-sm text-fg hover:bg-panel">Mi perfil</a>
 							<a href="/proyectos/nuevo" class="block w-full px-4 py-2.5 text-sm text-fg hover:bg-panel">Crear proyecto</a>
-							<a href="/orders" class="block w-full px-4 py-2.5 text-sm text-fg hover:bg-panel">Mis pedidos</a>
-							<a href="/wishlist" class="block w-full px-4 py-2.5 text-sm text-fg hover:bg-panel">Favoritos</a>
+							<a href="/proyectos/guardados" class="block w-full px-4 py-2.5 text-sm text-fg hover:bg-panel">Proyectos guardados</a>
 							<button type="button" onclick={() => auth.logout()} class="flex items-center gap-2 w-full px-4 py-2.5 text-sm text-rec hover:bg-panel">
 								<LogOut class="w-4 h-4" />
 								Cerrar sesión

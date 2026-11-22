@@ -7,6 +7,7 @@
 
 	let username = $state('')
 	let email = $state('')
+	let phone = $state('')
 	let password = $state('')
 	let showPassword = $state(false)
 	let loading = $state(false)
@@ -21,9 +22,10 @@
 		const normalizedEmail = email.trim().toLowerCase()
 		if (!/^[a-z0-9_-]{3,80}$/.test(normalizedUsername)) return (error = 'El usuario debe tener entre 3 y 80 caracteres y solo puede usar letras, números, guion y guion bajo.')
 		if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) return (error = 'Ingresá un email válido.')
+		if (phone.trim().length < 6) return (error = 'Ingresá un número de teléfono válido.')
 		if (password.length < 8) return (error = 'La contraseña debe tener al menos 8 caracteres.')
 		loading = true
-		const result = await auth.register({ firstName: normalizedUsername, lastName: '', username: normalizedUsername, email: normalizedEmail, password, organizationSlug: ORG_SLUG || STORE_SLUG })
+		const result = await auth.register({ firstName: normalizedUsername, lastName: '', username: normalizedUsername, email: normalizedEmail, phone: phone.trim(), password, organizationSlug: ORG_SLUG || STORE_SLUG })
 		loading = false
 		if (!result.success) return (error = result.error || 'No se pudo crear la cuenta.')
 		if (result.application) done = true
@@ -54,6 +56,7 @@
 					{#if error}<p class="border border-rec/30 bg-rec/10 px-3 py-2 text-xs text-rec" role="alert">{error}</p>{/if}
 					<label class="block"><span class="mb-2 block text-xs font-medium text-fg/70">Nombre de usuario</span><input bind:value={username} type="text" autocomplete="username" placeholder="tu_usuario" required class="input w-full" /></label>
 					<label class="block"><span class="mb-2 block text-xs font-medium text-fg/70">Email</span><input bind:value={email} type="email" autocomplete="email" placeholder="tu@email.com" required class="input w-full" /></label>
+					<label class="block"><span class="mb-2 block text-xs font-medium text-fg/70">Teléfono</span><input bind:value={phone} type="tel" autocomplete="tel" placeholder="+54 9 11 1234 5678" required class="input w-full" /></label>
 					<label class="block"><span class="mb-2 block text-xs font-medium text-fg/70">Contraseña</span><span class="relative block"><input bind:value={password} type={showPassword ? 'text' : 'password'} autocomplete="new-password" placeholder="Mínimo 8 caracteres" required class="input w-full pr-10" /><button type="button" onclick={() => (showPassword = !showPassword)} class="absolute right-3 top-1/2 -translate-y-1/2 text-mute hover:text-fg" aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}>{#if showPassword}<EyeOff size={16} />{:else}<Eye size={16} />{/if}</button></span></label>
 					<button type="submit" disabled={loading} class="btn btn-primary flex w-full items-center justify-center gap-2">{#if loading}<Loader2 size={16} class="animate-spin" />Creando cuenta...{:else}Crear cuenta{/if}</button>
 				</form>

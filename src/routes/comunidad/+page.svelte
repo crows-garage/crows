@@ -1,5 +1,5 @@
 <script>
-	import { Loader2, MessageSquare, Hourglass, XCircle, Users, ThumbsUp, Pin } from '@lucide/svelte'
+	import { ArrowRight, BookOpen, CalendarDays, Lightbulb, Loader2, MessageSquare, Hourglass, XCircle, Users, ThumbsUp, Pin } from '@lucide/svelte'
 	import { auth } from '#lib/stores/auth.svelte.js'
 	import { communityApi } from '#lib/api/community.js'
 	import { organizationApi } from '#lib/api/organization.js'
@@ -20,7 +20,6 @@
 	let blogPosts = $state([])
 	let events = $state([])
 	let loading = $state(true)
-	let error = $state('')
 	let membership = $state(null)
 	let commentDrafts = $state({})
 	let commentLoading = $state(null)
@@ -30,26 +29,21 @@
 	let commentsByPost = $state({}) // postId → array
 
 	async function load() {
-		try {
-			const [postsData, membersData, blogData, eventsData] = await Promise.all([
-				communityApi.getPosts(),
-				auth.user ? communityApi.getMembers().catch(() => []) : Promise.resolve([]),
-				organizationApi.blog().catch(() => []),
-				organizationApi.events().catch(() => [])
-			])
-			posts = postsData || []
-			blogPosts = blogData || []
-			events = eventsData || []
-			if (auth.user?.userId) {
-				const mine = (membersData || []).find((m) => m.userId === auth.user.userId && !m.deletedAt)
-				membership = mine || null
-			}
-			error = ''
-		} catch (err) {
-			error = 'No se pudo cargar la comunidad. Intentá de nuevo más tarde.'
-		} finally {
-			loading = false
+		const results = await Promise.allSettled([
+			communityApi.getPosts(),
+			auth.user ? communityApi.getMembers() : Promise.resolve([]),
+			organizationApi.blog(),
+			organizationApi.events()
+		])
+		posts = results[0].status === 'fulfilled' ? results[0].value || [] : []
+		const membersData = results[1].status === 'fulfilled' ? results[1].value || [] : []
+		blogPosts = results[2].status === 'fulfilled' ? results[2].value || [] : []
+		events = results[3].status === 'fulfilled' ? results[3].value || [] : []
+		if (auth.user?.userId) {
+			const mine = membersData.find((m) => m.userId === auth.user.userId && !m.deletedAt)
+			membership = mine || null
 		}
+		loading = false
 	}
 
 	// ≙ useEffect([user]) con load = useCallback([user])
@@ -145,6 +139,11 @@
 
 	const canComment = $derived(membership?.status === 'ACTIVE')
 	const membershipStatus = $derived(membership?.status)
+	const communityStats = $derived([
+		{ value: posts.length, label: 'publicaciones' },
+		{ value: blogPosts.length, label: 'recursos' },
+		{ value: events.length, label: 'actividades' }
+	])
 </script>
 
 <svelte:head>
@@ -154,10 +153,27 @@
 
 <div class="min-h-screen pt-20 pb-16 bg-base">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-8">
-			<p class="text-[10px] uppercase tracking-[0.3em] mb-2 text-mute">Comunidad</p>
-			<h1 class="text-2xl sm:text-3xl font-display font-semibold tracking-tight text-fg">Comunidad estudiantil</h1>
-			<p class="text-sm text-mute mt-2">Un espacio para compartir ideas, experiencias y oportunidades con estudiantes.</p>
+		<div class="mb-8 overflow-hidden rounded-2xl border border-line bg-panel lg:grid lg:grid-cols-[1.4fr_0.6fr]">
+			<div class="relative overflow-hidden bg-night px-6 py-8 text-white sm:px-8 lg:px-10 lg:py-10">
+				<div class="absolute inset-0 graticule opacity-20" aria-hidden="true"></div>
+				<div class="relative max-w-2xl">
+					<p class="text-[10px] uppercase tracking-[0.3em] text-brand">Comunidad Crow</p>
+					<h1 class="mt-3 max-w-xl font-display text-3xl font-semibold leading-tight sm:text-4xl">Ideas que encuentran a su gente.</h1>
+					<p class="mt-4 max-w-lg text-sm leading-relaxed text-white/70">Compartí experiencias, descubrí oportunidades y encontrá proyectos en los que podés participar.</p>
+					<div class="mt-6 flex flex-wrap gap-3">
+						<a href="#publicaciones" class="inline-flex items-center gap-2 rounded-full bg-signal px-4 py-2.5 text-xs font-semibold text-base hover:bg-brand">Ver publicaciones <ArrowRight size={14} /></a>
+						<a href="/proyectos" class="inline-flex items-center gap-2 rounded-full border border-white/25 px-4 py-2.5 text-xs font-semibold text-white hover:border-brand hover:text-brand">Explorar proyectos</a>
+					</div>
+				</div>
+			</div>
+			<div class="grid grid-cols-3 divide-x divide-line p-5 sm:p-7 lg:grid-cols-1 lg:divide-x-0 lg:divide-y lg:p-0">
+				{#each communityStats as stat}
+					<div class="flex flex-col justify-center px-3 py-2 lg:flex-row lg:items-center lg:justify-start lg:gap-4 lg:px-7 lg:py-5">
+						{#if stat.label === 'publicaciones'}<MessageSquare size={18} class="mb-2 text-signal lg:mb-0" />{:else if stat.label === 'recursos'}<BookOpen size={18} class="mb-2 text-signal lg:mb-0" />{:else}<CalendarDays size={18} class="mb-2 text-signal lg:mb-0" />{/if}
+						<div><p class="font-display text-2xl font-semibold text-fg">{stat.value}</p><p class="text-[10px] uppercase tracking-[0.14em] text-mute">{stat.label}</p></div>
+					</div>
+				{/each}
+			</div>
 		</div>
 
 		{#if auth.loading || (loading && !auth.user)}
@@ -209,19 +225,20 @@
 			<div class="mt-4 border rounded-xs border-rec/30 bg-rec/10 text-rec px-3 py-2 text-xs">{commentError}</div>
 		{/if}
 
+		<div id="publicaciones" class="mt-8 lg:grid lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start lg:gap-8">
+		<div>
 		{#if loading}
 			<div class="flex justify-center py-16">
 				<Loader2 size={24} class="animate-spin text-mute" />
 			</div>
-		{:else if error}
-			<div class="text-center py-16 text-sm text-mute">{error}</div>
 		{:else if posts.length === 0}
-			<div class="text-center py-16">
+			<div class="rounded-2xl border border-line bg-panel py-16 text-center">
 				<MessageSquare size={36} class="mx-auto text-mute/50 mb-3" />
-				<p class="text-sm text-mute">Todavía no hay publicaciones en la comunidad</p>
+				<p class="text-sm text-mute">Todavía no hay publicaciones.</p>
+				<p class="mt-1 text-xs text-mute/70">Volvé pronto para descubrir nuevas conversaciones.</p>
 			</div>
 		{:else}
-			<div class="space-y-6 mt-6 lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
+			<div class="space-y-5">
 				{#each posts as post (post.id)}
 					<article class="bg-panel border rounded-xs border-line">
 						<div class="p-5 border-b border-line">
@@ -325,6 +342,15 @@
 				{/each}
 			</div>
 		{/if}
+		</div>
+		<aside class="mt-8 space-y-4 lg:mt-0">
+			<div class="rounded-2xl border border-line bg-panel p-5">
+				<div class="flex items-center gap-2"><Lightbulb size={17} class="text-signal" /><h2 class="font-display text-lg font-semibold text-fg">Cómo participar</h2></div>
+				<div class="mt-4 space-y-4 text-sm text-mute"><p><strong class="text-fg">1.</strong> Explorá las conversaciones y encontrá temas que te interesen.</p><p><strong class="text-fg">2.</strong> Sumate a un proyecto y compartí tus habilidades.</p><p><strong class="text-fg">3.</strong> Comentá y reaccioná para aportar tu mirada.</p></div>
+			</div>
+			<div class="rounded-2xl border border-line bg-base p-5"><p class="eyebrow text-signal">Tu próximo paso</p><h2 class="mt-2 font-display text-lg font-semibold text-fg">Encontrá un proyecto para vos</h2><p class="mt-2 text-sm leading-relaxed text-mute">Conocé iniciativas activas y descubrí dónde podés aportar.</p><a href="/proyectos" class="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-signal hover:text-brand">Ver proyectos <ArrowRight size={14} /></a></div>
+		</aside>
+		</div>
 
 		<ProjectsSection />
 		<CommunityResources posts={blogPosts} {events} />

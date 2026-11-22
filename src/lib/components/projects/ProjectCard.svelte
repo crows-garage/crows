@@ -1,9 +1,13 @@
 <script>
-	import { ArrowLeft, ArrowRight, CalendarDays, Flag, Users } from '@lucide/svelte'
+	import { ArrowLeft, ArrowRight, CalendarDays, Flag, Heart, Users } from '@lucide/svelte'
 	import { imgUrl } from '#lib/utils.js'
+	import { auth } from '#lib/stores/auth.svelte.js'
+	import { organizationApi } from '#lib/api/organization.js'
 
-	let { project, compact = false } = $props()
+	let { project, compact = false, saved = false } = $props()
 	let activeImage = $state(0)
+	let isSaved = $state(saved)
+	let saveLoading = $state(false)
 
 	const images = $derived.by(() => [
 		...(project?.coverImage ? [{ src: project.coverImage, position: project.coverImagePosition || 'center' }] : []),
@@ -29,6 +33,21 @@
 		if (!value) return ''
 		return new Date(value).toLocaleDateString('es-AR', { day: 'numeric', month: 'short', year: 'numeric' }).replace('.', '')
 	}
+
+	async function toggleSaved(event) {
+		event.preventDefault()
+		event.stopPropagation()
+		if (!auth.user) return (window.location.href = `/login?redirect=/proyecto/${slug}`)
+		if (saveLoading) return
+		saveLoading = true
+		try {
+			if (isSaved) await organizationApi.removeSavedProject(project.id)
+			else await organizationApi.saveProject(project.id)
+			isSaved = !isSaved
+		} finally {
+			saveLoading = false
+		}
+	}
 </script>
 
 <article class={`project-card group overflow-hidden rounded-xl border transition-colors hover:border-signal ${compact ? '' : 'lg:grid lg:grid-cols-[1.12fr_0.88fr]'}`}>
@@ -51,13 +70,16 @@
 		{/if}
 	</div>
 
-	<div class="flex flex-col p-5 sm:p-7 lg:p-8">
+		<div class="flex flex-col p-5 sm:p-7 lg:p-8">
 		<div class="flex items-start justify-between gap-3">
 			<div>
 				{#if project?.category}<p class="text-[10px] uppercase tracking-[0.18em] text-signal">{project.category}</p>{/if}
 				<h3 class="mt-1 font-display text-xl font-semibold leading-tight text-fg"><a href={`/proyecto/${slug}`} class="hover:text-signal">{project?.name || 'Proyecto sin título'}</a></h3>
 			</div>
-			{#if project?.status}<span class="shrink-0 rounded-full bg-base px-2.5 py-1 text-[9px] uppercase tracking-[0.12em] text-mute">{statusLabels[project.status] || project.status}</span>{/if}
+			<div class="flex items-center gap-2">
+				<button type="button" onclick={toggleSaved} disabled={saveLoading} class={`grid h-9 w-9 place-items-center rounded-full border transition-colors ${isSaved ? 'border-signal bg-signal text-base' : 'border-line text-mute hover:border-signal hover:text-signal'}`} aria-label={isSaved ? 'Quitar de proyectos guardados' : 'Guardar proyecto'} title={isSaved ? 'Quitar de proyectos guardados' : 'Guardar proyecto'}><Heart size={16} class={isSaved ? 'fill-current' : ''} /></button>
+				{#if project?.status}<span class="shrink-0 rounded-full bg-base px-2.5 py-1 text-[9px] uppercase tracking-[0.12em] text-mute">{statusLabels[project.status] || project.status}</span>{/if}
+			</div>
 		</div>
 		{#if project?.description}<p class="mt-3 line-clamp-3 text-sm leading-relaxed text-mute">{project.description}</p>{/if}
 		{#if project?.progress !== undefined || project?.startDate || project?.endDate || project?.creator?.firstName || project?.milestones?.length || project?.links?.length}

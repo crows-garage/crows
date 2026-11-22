@@ -21,6 +21,9 @@ export const organizationApi = {
 		const body = await fetchJSON(`${ORG_ROOT}/projects/${encodeURIComponent(idOrSlug)}`)
 		return body?.data ?? body
 	},
+	savedProjects: () => fetchJSON(`${ORG_ROOT}/projects/saved`),
+	saveProject: (projectId) => request(`${ORG_ROOT.replace(BASE, '')}/projects/${projectId}/saved`, { method: 'POST' }),
+	removeSavedProject: (projectId) => request(`${ORG_ROOT.replace(BASE, '')}/projects/${projectId}/saved`, { method: 'DELETE' }),
 	createProject: (data) => request(`${ORG_ROOT.replace(BASE, '')}/projects`, { method: 'POST', body: data }),
 	addProjectLink: (projectId, data) => request(`${ORG_ROOT.replace(BASE, '')}/projects/${projectId}/links`, { method: 'POST', body: data }),
 	getMyProjectApplication: (projectId) => request(`${ORG_ROOT.replace(BASE, '')}/projects/${projectId}/applications/me`),

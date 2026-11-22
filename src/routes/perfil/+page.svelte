@@ -1,14 +1,16 @@
 <script>
 	import { goto } from '$app/navigation'
 	import { auth } from '#lib/stores/auth.svelte.js'
-	import { CheckCircle2, Bell, X } from '@lucide/svelte'
+	import { CheckCircle2, Bell, Loader2, X } from '@lucide/svelte'
 	import { notificationsApi } from '#lib/api/client.js'
 	import { organizationApi } from '#lib/api/organization.js'
+	import { imgUrl } from '#lib/utils.js'
 
 	let form = $state({ firstName: '', username: '', phone: '' })
 	let loading = $state(true)
 	let saving = $state(false)
 	let uploading = $state(false)
+	let avatarPreview = $state('')
 	let message = $state('')
 	let error = $state('')
 	let notifications = $state([])
@@ -74,7 +76,8 @@
 		saving = true
 		message = ''
 		error = ''
-		const result = await auth.updateProfile(form)
+		const payload = Object.fromEntries(Object.entries(form).filter(([, value]) => value.trim()))
+		const result = await auth.updateProfile(payload)
 		if (result.success) message = 'Perfil actualizado.'
 		else error = result.error || 'No se pudo actualizar el perfil.'
 		saving = false
@@ -90,9 +93,13 @@
 		uploading = true
 		message = ''
 		error = ''
+		avatarPreview = URL.createObjectURL(file)
 		const result = await auth.updateAvatar(file)
 		if (result.success) message = 'Avatar actualizado.'
-		else error = result.error || 'No se pudo actualizar el avatar.'
+		else {
+			error = result.error || 'No se pudo actualizar el avatar.'
+			avatarPreview = ''
+		}
 		uploading = false
 	}
 
@@ -125,13 +132,14 @@
 		</section>
 		<form onsubmit={(event) => { event.preventDefault(); save() }} class="glass-card space-y-5 p-5 sm:p-7">
 			<div class="flex items-center gap-4">
-				<div class="h-20 w-20 shrink-0 overflow-hidden rounded-full border border-line bg-signal/20 grid place-items-center text-2xl font-display text-signal">
-					{#if auth.user?.avatarUrl}<img src={auth.user.avatarUrl} alt="Avatar de {auth.user.firstName}" class="h-full w-full object-cover" />{:else}{initials()}{/if}
+				<div class="relative grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-full border border-signal/40 bg-signal/10 text-2xl font-display text-signal">
+					{#if avatarPreview || auth.user?.avatarUrl}<img src={avatarPreview || imgUrl(auth.user.avatarUrl)} alt="Avatar de {auth.user.firstName || 'usuario'}" class="h-full w-full object-cover" />{:else}{initials()}{/if}
+					{#if uploading}<span class="absolute inset-0 grid place-items-center bg-night/65 text-white"><Loader2 size={22} class="animate-spin" /></span>{/if}
 				</div>
 				<div><label class="btn btn-secondary cursor-pointer" for="profile-avatar">{uploading ? 'Subiendo...' : 'Cambiar avatar'}</label><input id="profile-avatar" type="file" accept="image/*" class="sr-only" onchange={uploadAvatar} disabled={uploading} /><p class="text-xs text-mute mt-2">JPG, PNG o WebP.</p></div>
 			</div>
-			<div><label class="label" for="profile-username">Nombre de usuario</label><input id="profile-username" bind:value={form.username} class="input w-full" pattern="[A-Za-z0-9_-]+" minlength="3" required /></div>
-			<div><label class="label" for="profile-first">Nombre</label><input id="profile-first" bind:value={form.firstName} class="input w-full" required /></div>
+			<div><label class="label" for="profile-username">Nombre de usuario</label><input id="profile-username" bind:value={form.username} class="input w-full" pattern="[A-Za-z0-9_-]+" minlength="3" /></div>
+			<div><label class="label" for="profile-first">Nombre</label><input id="profile-first" bind:value={form.firstName} class="input w-full" /></div>
 			<div><label class="label" for="profile-phone">Teléfono</label><input id="profile-phone" bind:value={form.phone} class="input w-full" /></div>
 			{#if message}<p class="text-xs text-signal">{message}</p>{/if}{#if error}<p class="text-xs text-rec">{error}</p>{/if}
 			<button class="btn btn-primary" disabled={saving}>{saving ? 'Guardando...' : 'Guardar perfil'}</button>
