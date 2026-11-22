@@ -20,22 +20,21 @@
 	})
 </script>
 
-<section id="proyectos-comunidad" class="py-16 sm:py-20 lg:py-24 border-t border-line">
+<section id="proyectos-comunidad" class="section-mint py-16 sm:py-20 lg:py-24 border-t border-line">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="relative overflow-hidden bg-night p-6 sm:p-8 text-white">
-			<div class="absolute inset-0 graticule opacity-20" aria-hidden="true"></div>
+		<div class="relative p-0 sm:p-2">
 			<div class="relative">
 				<h2 class="eyebrow !text-brand mb-6">Proyectos de la Comunidad</h2>
 				{#if loading}
 					<div class="flex justify-center py-12">
-						<Loader2 size={24} class="animate-spin text-muted-foreground" />
+						<Loader2 size={24} class="animate-spin text-mute" />
 					</div>
 				{:else if error}
-					<div class="text-center py-12 text-muted-foreground">{error}</div>
+					<div class="text-center py-12 text-mute">{error}</div>
 				{:else if projects.length === 0}
 					<div class="text-center py-12">
-						<MessageSquare size={36} class="mx-auto text-muted-foreground/50 mb-3" />
-						<p class="text-sm text-muted-foreground">Aún no hay proyectos publicados</p>
+						<MessageSquare size={36} class="mx-auto text-mute/50 mb-3" />
+						<p class="text-sm text-mute">Aún no hay proyectos publicados</p>
 					</div>
 				{:else}
 					<div class="space-y-4 lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
