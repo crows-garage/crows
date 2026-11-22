@@ -15,6 +15,7 @@
 
 	import { Toaster } from 'svelte-french-toast'
 	import { afterNavigate } from '$app/navigation'
+	import { page } from '$app/state'
 	import Navbar from '#lib/components/layout/Navbar.svelte'
 	import Footer from '#lib/components/layout/Footer.svelte'
 	import AnalyticsTracker from '#lib/components/AnalyticsTracker.svelte'
@@ -57,5 +58,6 @@
 	contact={data.store?.contact || {}}
 	locals={data.locals}
 	org={data.org}
+	compact={page.url.pathname === '/login'}
 />
 <Toaster />

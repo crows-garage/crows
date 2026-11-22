@@ -4,7 +4,7 @@
 	import { Mail, MapPin, Phone, MessageCircle, GraduationCap } from '@lucide/svelte'
 	import SocialIcon from '#lib/components/icons/SocialIcon.svelte'
 
-	let { categories = [], store = null, contact = null, locals = [], org = null } = $props()
+	let { categories = [], store = null, contact = null, locals = [], org = null, compact = false } = $props()
 
 	function parseSocial(socialLinks) {
 		if (!socialLinks) return {}
@@ -75,7 +75,7 @@
 	})
 </script>
 
-<footer class="bg-panel text-fg mt-20 border-t-2 border-brand">
+	<footer class={`bg-panel text-fg ${compact ? '' : 'mt-20'} border-t-2 border-brand`}>
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 			<!-- Marca + redes -->
