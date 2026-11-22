@@ -7,9 +7,11 @@
 	let activeIndex = $state(0)
 	let touchStartX = $state(null)
 	let swiping = $state(false)
-	const heroMedia = $derived((ctas || []).filter((cta) => cta.active !== false && cta.image))
+	const heroMedia = $derived((ctas || []).filter((cta) => cta.active !== false && (cta.image || cta.url)))
 	const activeMedia = $derived(heroMedia[activeIndex % Math.max(heroMedia.length, 1)])
 	const destination = $derived(activeMedia ? targetHref(activeMedia) : '')
+	const activeSource = $derived(activeMedia ? imgUrl(activeMedia.image || activeMedia.url) : '')
+	const activePoster = $derived(activeMedia?.poster || activeMedia?.posterUrl ? imgUrl(activeMedia.poster || activeMedia.posterUrl) : undefined)
 
 	$effect(() => {
 		if (heroMedia.length < 2) return
@@ -51,7 +53,11 @@
 	}
 
 	function mediaLabel(media) {
-		return media.mediaType === 'VIDEO' ? 'Video' : 'Banner'
+		return String(media.mediaType || media.type || '').toUpperCase() === 'VIDEO' ? 'Video' : 'Banner'
+	}
+
+	function isVideo(media) {
+		return String(media?.mediaType || media?.type || '').toUpperCase() === 'VIDEO'
 	}
 </script>
 
@@ -62,9 +68,18 @@
 
 	<div class="relative mx-auto grid min-h-[100svh] w-full max-w-7xl items-center gap-12 px-4 pb-10 pt-28 sm:px-6 sm:pb-14 sm:pt-32 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20 lg:px-8 lg:pt-28">
 		<div>
-			<h1 class="mt-7 max-w-4xl font-display font-semibold text-[clamp(3.2rem,8vw,7rem)] leading-[0.88] tracking-[-0.06em]">
-				Explorá.<br />Conectá.<br /><span class="text-brand">Creá.</span>
+			<p class="font-mono text-[10px] uppercase tracking-[0.3em] text-brand">Crow Projects</p>
+			<h1 class="mt-5 max-w-4xl font-display font-semibold text-[clamp(3rem,7vw,6.5rem)] leading-[0.9] tracking-[-0.06em]">
+				Las ideas nos <span class="text-brand">conectan.</span><br />
+				<span class="text-white/75">Los equipos las hacen realidad.</span>
 			</h1>
+			<p class="mt-7 max-w-xl text-lg leading-relaxed text-white/80 sm:text-xl">Tu próxima colaboración empieza acá.</p>
+			<p class="mt-2 max-w-xl text-sm leading-relaxed text-white/55 sm:text-base">Hacé lugar para una idea nueva. Descubrí proyectos y encontrá personas con quienes hacerlos realidad.</p>
+			<div class="mt-8 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
+				<div class="border-l-2 border-brand pl-3"><p class="font-display text-lg font-semibold text-white">Curiosidad</p><p class="mt-1 text-xs leading-relaxed text-white/55">Explorá, investigá y descubrí nuevas oportunidades.</p></div>
+				<div class="border-l-2 border-brand/70 pl-3"><p class="font-display text-lg font-semibold text-white">Conexión</p><p class="mt-1 text-xs leading-relaxed text-white/55">Encontrá otras habilidades, ideas y perspectivas.</p></div>
+				<div class="border-l-2 border-brand/45 pl-3"><p class="font-display text-lg font-semibold text-white">Construcción</p><p class="mt-1 text-xs leading-relaxed text-white/55">Convertí lo que aprendés en proyectos reales.</p></div>
+			</div>
 			<div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
 				<a href="#proposito" class="btn btn-primary min-h-12 w-full sm:w-64">Descubrí Crow Projects <ArrowDown class="w-3.5 h-3.5" /></a>
 				<a href="https://github.com/crows-garage/crows" target="_blank" rel="noopener noreferrer" class="btn min-h-12 w-full border-white/30 text-white hover:text-brand sm:w-64">
@@ -77,7 +92,7 @@
 			<div class="mt-8 max-w-xl border-l-2 border-brand/70 pl-4">
 				<p class="font-mono text-[10px] uppercase tracking-[0.16em] text-brand">Proyecto abierto · Para todos los IES</p>
 				<p class="mt-2 text-sm leading-relaxed text-white/55">
-					Si estudiás Desarrollo, Ciberseguridad o cualquier otra carrera, si tenés una idea o querés sumarte, Crow Projects también puede ser tu espacio.
+					Una comunidad para aprender, conectar y hacer. Si tenés una idea o querés sumarte a un equipo, Crow Projects también puede ser tu espacio.
 				</p>
 			</div>
 		</div>
@@ -85,10 +100,10 @@
 		<svelte:element this={destination ? 'a' : 'div'} href={destination || undefined} onclick={(event) => swiping && event.preventDefault()} ontouchstart={handleTouchStart} ontouchend={handleTouchEnd} class="block touch-pan-y overflow-hidden rounded-2xl border border-white/15 bg-white/10 backdrop-blur-xl shadow-2xl shadow-black/20">
 			{#if activeMedia}
 			<div class="relative aspect-video bg-black/40">
-				{#if activeMedia.mediaType === 'VIDEO'}
-					{#key activeMedia.image}<video src={imgUrl(activeMedia.image)} poster={activeMedia.poster ? imgUrl(activeMedia.poster) : undefined} class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline preload="metadata"></video>{/key}
+				{#if isVideo(activeMedia)}
+					{#key activeSource}<video src={activeSource} poster={activePoster} class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline preload="auto"></video>{/key}
 				{:else}
-					<img src={imgUrl(activeMedia.image)} alt={activeMedia.title || 'Banner'} class="absolute inset-0 h-full w-full object-cover" />
+					<img src={activeSource} alt={activeMedia.title || 'Banner'} class="absolute inset-0 h-full w-full object-cover" />
 				{/if}
 				<div class="absolute inset-0 bg-gradient-to-t from-night/90 via-transparent to-transparent"></div>
 				<div class="absolute left-4 top-4 flex items-center gap-2">
@@ -126,4 +141,5 @@
 			{/if}
 		</svelte:element>
 	</div>
+	<a href="#proposito" class="hero-scroll-indicator" aria-label="Bajar al contenido"><span>Explorar</span><ArrowDown size={17} /></a>
 </section>
