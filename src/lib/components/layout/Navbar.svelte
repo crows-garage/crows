@@ -65,7 +65,7 @@
 				<button
 					type="button"
 					onclick={toggleTheme}
-					class="p-2 text-fg/80 transition-colors hover:text-signal"
+					class="grid h-9 w-9 place-items-center rounded-full border border-line bg-panel text-fg/80 transition-colors hover:border-signal hover:text-signal"
 					aria-label={$theme === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'}
 					title={$theme === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'}
 				>

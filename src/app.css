@@ -551,3 +551,7 @@ body {
 .section-mint {
   background: #edf7f5;
 }
+
+.dark .section-mint {
+  background: var(--c-panel);
+}
