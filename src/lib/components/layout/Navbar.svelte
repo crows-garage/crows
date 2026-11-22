@@ -62,6 +62,16 @@
 					{/each}
 				</nav>
 
+				<button
+					type="button"
+					onclick={toggleTheme}
+					class="p-2 text-fg/80 transition-colors hover:text-signal"
+					aria-label={$theme === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'}
+					title={$theme === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'}
+				>
+					{#if $theme === 'dark'}<Sun class="h-5 w-5" />{:else}<Moon class="h-5 w-5" />{/if}
+				</button>
+
 				{#if auth.user}
 					<div class="relative group">
 						<button type="button" class="flex items-center p-1 text-fg/80 hover:text-signal transition-colors" aria-label="Abrir menú de perfil">
@@ -86,16 +96,6 @@
 						<span>Iniciar sesión</span>
 					</a>
 				{/if}
-
-				<button
-					type="button"
-					onclick={toggleTheme}
-					class="p-2 text-fg/80 transition-colors hover:text-signal"
-					aria-label={$theme === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'}
-					title={$theme === 'dark' ? 'Usar tema claro' : 'Usar tema oscuro'}
-				>
-					{#if $theme === 'dark'}<Sun class="h-5 w-5" />{:else}<Moon class="h-5 w-5" />{/if}
-				</button>
 			</div>
 		</div>
 	</div>
